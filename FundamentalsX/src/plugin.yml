@@ -4,7 +4,7 @@ author: WiseHollow
 main: com.wisehollow.fundamentals.Main
 api-version: 1.13
 
-softdepend: [ Vault ]
+softdepend: [ Vault, Multiverse-Core ]
 loadbefore: [ WorldEdit, FundamentalsXCounterGrief ]
 
 commands:
