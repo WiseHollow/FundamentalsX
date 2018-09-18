@@ -1,6 +1,6 @@
 package com.wisehollow.fundamentals.tasks;
 
-import com.wisehollow.fundamentals.BlockData;
+import com.wisehollow.fundamentals.utils.BlockData;
 import com.wisehollow.fundamentals.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

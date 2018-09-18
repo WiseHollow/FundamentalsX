@@ -7,15 +7,19 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by John on 10/13/2016.
  */
-public class CommandSpawnEntity implements CommandExecutor {
+public class CommandSpawnEntity implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
@@ -71,5 +75,10 @@ public class CommandSpawnEntity implements CommandExecutor {
         sender.sendMessage(Language.PREFIX + amount + " " + type.name() + " spawned at location.");
 
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
+        return Arrays.stream(EntityType.values()).filter(entityType -> entityType.isAlive() && entityType != EntityType.PLAYER).map(Enum::name).collect(Collectors.toList());
     }
 }

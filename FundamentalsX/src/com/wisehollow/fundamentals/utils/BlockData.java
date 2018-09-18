@@ -1,4 +1,4 @@
-package com.wisehollow.fundamentals;
+package com.wisehollow.fundamentals.utils;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

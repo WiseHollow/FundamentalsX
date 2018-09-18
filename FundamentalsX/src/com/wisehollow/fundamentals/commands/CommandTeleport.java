@@ -2,7 +2,7 @@ package com.wisehollow.fundamentals.commands;
 
 import com.wisehollow.fundamentals.userdata.PlayerData;
 import com.wisehollow.fundamentals.Language;
-import com.wisehollow.fundamentals.PlayerUtil;
+import com.wisehollow.fundamentals.utils.PlayerUtil;
 import com.wisehollow.fundamentals.Settings;
 import com.wisehollow.fundamentals.tasks.TeleportTask;
 import org.bukkit.command.Command;

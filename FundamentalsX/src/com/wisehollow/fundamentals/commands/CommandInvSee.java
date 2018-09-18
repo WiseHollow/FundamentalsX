@@ -1,7 +1,7 @@
 package com.wisehollow.fundamentals.commands;
 
 import com.wisehollow.fundamentals.Language;
-import com.wisehollow.fundamentals.PlayerUtil;
+import com.wisehollow.fundamentals.utils.PlayerUtil;
 import com.wisehollow.fundamentals.tasks.InventorySeeTask;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

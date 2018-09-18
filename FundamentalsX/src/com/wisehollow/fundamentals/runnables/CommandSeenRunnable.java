@@ -2,7 +2,7 @@ package com.wisehollow.fundamentals.runnables;
 
 import com.wisehollow.fundamentals.userdata.PlayerData;
 import com.wisehollow.fundamentals.Language;
-import com.wisehollow.fundamentals.PlayerUtil;
+import com.wisehollow.fundamentals.utils.PlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
