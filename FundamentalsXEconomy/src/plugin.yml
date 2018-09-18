@@ -10,25 +10,29 @@ depend: [ FundamentalsX, Vault ]
 commands:
       Econ:
                description: Manage other players wallet.
-               usage: /<command> <set/give/take> <player> <amount>
+               usage: /<command> [set|give|take] [player] [amount]
+               permission: Fundamentals.Econ
       Balance:
                description: Check how much money a player has.
-               usage: /<command> <player>
+               usage: /<command> [player]
+               permission: Fundamentals.Balance
       Bal:
                description: Check how much money a player has.
-               usage: /<command> <player>
+               usage: /<command> [player]
+               permission: Fundamentals.Balance
       Pay:
                description: Can pay money to other players.
-               usage: /<command> <player> <amount>
+               usage: /<command> [player] [amount]
+               permission: Fundamentals.Pay
 
 
 permissions:
       Fundamentals.Balance:
                description: Check your cash balance.
-               default: true
+               default: op
       Fundamentals.Pay:
                description: Can pay money to other players.
-               default: true
+               default: op
       Fundamentals.Economy.Loan:
                description: Allow a player to have a negative balance.
                default: op

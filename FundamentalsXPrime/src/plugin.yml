@@ -10,6 +10,7 @@ commands:
       Hat:
                description: Set the item in your hand as your hat.
                usage: /<command>
+               permission: Fundamentals.Hat
 
 permissions:
       Fundamentals.Hat:

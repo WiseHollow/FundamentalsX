@@ -2,7 +2,7 @@ package com.wisehollow.fundamentals.commands;
 
 import com.wisehollow.fundamentals.Language;
 import com.wisehollow.fundamentals.MaterialIndex;
-import com.wisehollow.fundamentals.PlayerUtil;
+import com.wisehollow.fundamentals.utils.PlayerUtil;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

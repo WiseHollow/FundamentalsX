@@ -11,3 +11,9 @@ commands:
       Mute:
           description: Prevents a player from talking publicly.
           usage: /<command> <Player>
+          permission: Fundamentals.Mute
+
+permissions:
+      Fundamentals.Mute:
+               description: Prevent a player from speaking publicly.
+               default: op

@@ -21,4 +21,5 @@ public class Language {
     public static final String ConfigurationsReloaded = PREFIX + "Configuration files have been reloaded.";
     public static final String CannotSetAsHat = PREFIX + "You cannot set that as a hat.";
     public static final String SetHat = PREFIX + "You've equipped a new hat!";
+    public static final String PluginVersion = PREFIX + "Fundamentals plugin version: ";
 }

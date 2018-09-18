@@ -73,6 +73,14 @@ public class Main extends JavaPlugin {
     }
 
     private void registerCommands() {
+        CommandTime commandTime = new CommandTime();
+        CommandGameMode commandGameMode = new CommandGameMode();
+        CommandWho commandWho = new CommandWho();
+        CommandSpawnEntity commandSpawnEntity = new CommandSpawnEntity();
+        CommandTPS commandTPS = new CommandTPS();
+        CommandWeather commandWeather = new CommandWeather();
+        CommandFundamentals commandFundamentals = new CommandFundamentals();
+
         this.getCommand("SetSpawn").setExecutor(new CommandSetSpawn());
         this.getCommand("Spawn").setExecutor(new CommandSpawn());
         this.getCommand("Back").setExecutor(new CommandBack());
@@ -85,28 +93,30 @@ public class Main extends JavaPlugin {
         this.getCommand("Vanish").setExecutor(new CommandVanish());
         this.getCommand("Msg").setExecutor(new CommandMessage());
         this.getCommand("R").setExecutor(new CommandReply());
-        this.getCommand("Time").setExecutor(new CommandTime());
+        this.getCommand("Time").setExecutor(commandTime);
+        this.getCommand("Time").setTabCompleter(commandTime);
         this.getCommand("Day").setExecutor(new CommandDay());
         this.getCommand("Night").setExecutor(new CommandNight());
-        this.getCommand("Weather").setExecutor(new CommandWeather());
+        this.getCommand("Weather").setExecutor(commandWeather);
+        this.getCommand("Weather").setTabCompleter(commandWeather);
         this.getCommand("Heal").setExecutor(new CommandHeal());
         this.getCommand("Kill").setExecutor(new CommandKill());
         this.getCommand("Feed").setExecutor(new CommandFeed());
         this.getCommand("CLS").setExecutor(new CommandClearChat());
-        CommandGameMode cg = new CommandGameMode();
-        this.getCommand("GameMode").setExecutor(cg);
-        this.getCommand("GM").setExecutor(cg);
-        CommandWho cw = new CommandWho();
-        this.getCommand("Who").setExecutor(cw);
-        this.getCommand("List").setExecutor(cw);
+        this.getCommand("GameMode").setExecutor(commandGameMode);
+        this.getCommand("GameMode").setTabCompleter(commandGameMode);
+        this.getCommand("GM").setExecutor(commandGameMode);
+        this.getCommand("GM").setTabCompleter(commandGameMode);
+        this.getCommand("Who").setExecutor(commandWho);
+        this.getCommand("List").setExecutor(commandWho);
         this.getCommand("AFK").setExecutor(new CommandAFK());
-        CommandSpawnEntity se = new CommandSpawnEntity();
-        this.getCommand("SpawnEntity").setExecutor(se);
-        this.getCommand("SpawnMob").setExecutor(se);
+        this.getCommand("SpawnEntity").setExecutor(commandSpawnEntity);
+        this.getCommand("SpawnEntity").setTabCompleter(commandSpawnEntity);
+        this.getCommand("SpawnMob").setExecutor(commandSpawnEntity);
+        this.getCommand("SpawnMob").setTabCompleter(commandSpawnEntity);
         this.getCommand("Butcher").setExecutor(new CommandButcher());
-        CommandTPS tps = new CommandTPS();
-        this.getCommand("TPS").setExecutor(tps);
-        this.getCommand("Lag").setExecutor(tps);
+        this.getCommand("TPS").setExecutor(commandTPS);
+        this.getCommand("Lag").setExecutor(commandTPS);
         this.getCommand("Give").setExecutor(new CommandGive());
         this.getCommand("Kick").setExecutor(new CommandKick());
         this.getCommand("SocialSpy").setExecutor(new CommandSocialSpy());
@@ -142,7 +152,8 @@ public class Main extends JavaPlugin {
         this.getCommand("DelHome").setExecutor(new CommandDelHome());
         this.getCommand("Workbench").setExecutor(new CommandWorkbench());
         this.getCommand("Sudo").setExecutor(new CommandSudo());
-        this.getCommand("Fundamentals").setExecutor(new CommandFundamentals());
+        this.getCommand("Fundamentals").setExecutor(commandFundamentals);
+        this.getCommand("Fundamentals").setTabCompleter(commandFundamentals);
     }
 
     public void setupMetrics() {

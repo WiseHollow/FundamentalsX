@@ -6,12 +6,7 @@ api-version: 1.13
 
 depend: [ FundamentalsX ]
 
-commands:
-      FCG:
-               description: Admin commands for fundamentalsantigrief.
-               usage: /<command>
-
 permissions:
       Fundamentals.AntiGrief.Bypass:
-               description: Bypass checks by CounterGrief
+               description: Bypass all checks.
                default: op

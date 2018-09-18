@@ -1,15 +1,21 @@
 package com.wisehollow.fundamentals.commands;
 
 import com.wisehollow.fundamentals.Language;
+import com.wisehollow.fundamentals.Main;
 import com.wisehollow.fundamentals.Settings;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by John on 10/13/2016.
  */
-public class CommandFundamentals implements CommandExecutor {
+public class CommandFundamentals implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.isOp()) {
@@ -25,9 +31,17 @@ public class CommandFundamentals implements CommandExecutor {
             Settings.loadMotd();
             sender.sendMessage(Language.ConfigurationsReloaded);
             return true;
+        } else if (args[0].equalsIgnoreCase("version")) {
+            sender.sendMessage(Language.PluginVersion + Main.getPlugin().getDescription().getVersion());
+            return true;
         }
 
-
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
+        String[] tabs = new String[] { "version", "reload" };
+        return Arrays.stream(tabs).collect(Collectors.toList());
     }
 }
