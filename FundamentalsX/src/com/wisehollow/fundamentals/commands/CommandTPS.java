@@ -34,7 +34,7 @@ public class CommandTPS implements CommandExecutor {
         long freeMemory = (long) (runtime.freeMemory() * mult * mult);
 
         sender.sendMessage(Language.PREFIX + ChatColor.BOLD + "--- Server Statistics ---");
-        sender.sendMessage(Language.PREFIX + "Current TPS: " + round(tps, 2) + " (" + round(100.00d - lag, 2) + "%)");
+        sender.sendMessage(Language.PREFIX + "Current TPS: " + ChatColor.RESET + round(tps, 2) + " (" + round(100.00d - lag, 2) + "%)");
         sender.sendMessage(Language.PREFIX + "Maximum Memory: " + ChatColor.RESET + maxMemory + "MB");
         sender.sendMessage(Language.PREFIX + "Allocated Memory: " + ChatColor.RESET + allocatedMemory + "MB");
         sender.sendMessage(Language.PREFIX + "Free Memory: " + ChatColor.RESET + freeMemory + "MB");
