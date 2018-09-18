@@ -33,7 +33,7 @@ public class Settings {
     public static String QuitMessage = "%p has left the game.";
     public static boolean AllowUnsafeEnchantments = false;
     public static String StarterKit = "None";
-    public static String ShutdownMessage = "Server will restart in %m minutes";
+    public static String ShutdownMessage = "Server will shutdown in %m minutes";
     public static Boolean AllowMetrics = true;
     public static int DefaultSetHomeAmount = 1;
     public static int SpawnMobLimit = 10;

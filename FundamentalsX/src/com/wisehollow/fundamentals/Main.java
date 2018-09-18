@@ -136,6 +136,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Smite").setExecutor(new CommandSmite());
         this.getCommand("Sun").setExecutor(new CommandSun());
         this.getCommand("InvSee").setExecutor(new CommandInvSee());
+        this.getCommand("Enderchest").setExecutor(new CommandEnderchest());
         this.getCommand("Ban").setExecutor(new CommandBan());
         this.getCommand("Unban").setExecutor(new CommandUnban());
         this.getCommand("Burn").setExecutor(new CommandBurn());
