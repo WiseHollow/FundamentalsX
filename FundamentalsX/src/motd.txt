@@ -1,0 +1,4 @@
+&6Welcome, &c%p&6!
+&6Players currently online: &c%c
+&6Type &c/help &6for a list of commands.
+&6Type &c/list &6to see who is online.

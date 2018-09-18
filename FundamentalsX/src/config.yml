@@ -1,0 +1,157 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                    Fundamentals                      | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Seconds before teleport
+Teleport_Delay: 3
+# Minutes until considered away from keyboard.
+Afk_Delay: 5
+# If enabled, color codes starting with '&' will convert automatically.
+Sign_Colors: true
+# If a location has been set for First Join (/setspawn fs) then make sure to have this set to true.
+First_Join: true
+# Colors are prefixed with '&' and '%p' refers to the player name.
+Join_Message: '&e%p has joined the game!'
+# Colors are prefixed with '&' and '%p' refers to the player name.
+Quit_Message: '&e%p has left the game!'
+# Setting this to 'true' would allow '/enchant' to create enchant levels above normal.
+Allow_Unsafe_Enchantments: false
+# What kit should be given to new players. Set 'None' to not give any.
+Starter_Kit: 'None'
+# When using '/stop 10' to stop the server in 10 minutes, what should we broadcast on the server.
+Scheduled_Shutdown_Message: 'Server will restart in %m minute(s).'
+# Spawn Limiter for /spawnmob command
+Spawn_Mob_Limit: 10
+# Allow EssentialsX to report back data about your server.
+Allow_Metrics: true
+
+############################################################
+# +------------------------------------------------------+ #
+# |                 FundamentalsSafety                   | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Stops players from being hurt by fire.
+Prevent_Fire_Damage: false
+# Stops players from being hurt by lava.
+Prevent_Lava_Damage: false
+
+############################################################
+# +------------------------------------------------------+ #
+# |                  FundamentalsKits                    | #
+# +------------------------------------------------------+ #
+############################################################
+
+# delay is measured in seconds
+# Spaces between words will be converted from "_"
+# In the lore, you may use "%n" to express a new line.
+# Colors are allowed as long as their code comes after a '&'
+# Enchantments and their level should be separated by a '%'
+
+Kits:
+    StarterKit:
+        delay: 25
+        items:
+            - STONE_PICKAXE 1 Starter_Pickaxe &eThis_item&f_is_received%nfrom_your_starter_kit.
+            - STONE_SHOVEL 1 Start_Shovel &eThis_item&f_is_received%nfrom_your_starter_kit.
+            - STONE_AXE 1 Starter_Axe &eThis_item&f_is_received%nfrom_your_starter_kit.
+            - STONE_SWORD 1 Starter_Sword &eThis_item&f_is_received%nfrom_your_starter_kit. sharpness%1
+
+############################################################
+# +------------------------------------------------------+ #
+# |                  FundamentalsHome                    | #
+# +------------------------------------------------------+ #
+############################################################
+
+#
+# Players are allowed to have the default amount of set-homes. If you wish for a player to be able to make more,
+# make sure they have the appropriate permission.
+# Example: Fundamentals.Homes.VIP by default gives the player 5 default sethomes.
+#
+
+Default_SetHomes: 1
+Home_Permissions:
+    - VIP 5
+
+############################################################
+# +------------------------------------------------------+ #
+# |                 FundamentalsEconomy                  | #
+# +------------------------------------------------------+ #
+############################################################
+
+# The starting balance new players have in their wallet.
+Starting_Balance: 20
+# When using '/money' or '/bal', what symbol should be used as a prefix to the shown balance?
+Currency_Symbol: '$'
+# What is the singular word when referring to your currency?
+Currency_Singular: 'credit'
+# What is the plural word when referring to your currency?
+Currency_Plural: 'credits'
+# What is the maximum amount of money a player can have? Do not put more than 10000000000000.
+Max_Balance: 10000000000000
+# What is the minimum amount of money a player can have? Player must have permission of
+Min_Balance: -10000
+# What is the minimal to be paid with '/pay' ?
+Min_Pay_Amount: 0.01
+
+############################################################
+# +------------------------------------------------------+ #
+# |                   FundamentalsChat                   | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Replace certain expressions with emojis.
+Emoji_Chat: false
+# Play a sound and text notification for a player when someone uses @TheirUsername.
+Player_Mention: true
+# Prefixes with hoverable text. This will overwrite the default chat format and only show prefixes defined below.
+Use_Affixes: false
+# When a player has the prefix defined below; hovering over it will display the message next to it.
+# This is great for compressing those messy chat messages and keeping things more organized.
+Affixes:
+  '&a● &r': '&aOwner'
+  '&c● &r': '&cAdministrator'
+  '&5● &r': '&5Moderator'
+  '&9● &r': '&9Builder'
+  '&e● &r': '&eSupporter'
+
+############################################################
+# +------------------------------------------------------+ #
+# |                FundamentalsAntiGrief                 | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Stop fire moving from block to block.
+Prevent_FireSpread: true
+# Remove damage to entities from explosions.
+Prevent_Explosive_BlockDamage: true
+# Remove explosions completely.
+Prevent_Entity_Explosion: true
+# Stop Endermen from picking blocks and placing them down.
+Prevent_Enderman_Grief: true
+# Stop players from creating fires.
+Prevent_Fire_Creation: false
+
+############################################################
+# +------------------------------------------------------+ #
+# |                  FundamentalsCombat                  | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Re-enables spam-clicking for pvp/pve.
+Enable_Legacy_Combat: false
+# Will kill a player if they quit soon after involving themselves in combat.
+Prevent_CombatLogging: false
+# Should players have a chance to drop their own head when they are killed by a player.
+Players_Drop_Head: false
+# What should be the chance to drop their head (0.01-1.00)
+Players_Drop_Head_Chance: 0.2
+
+############################################################
+# +------------------------------------------------------+ #
+# |                  FundamentalsPrime                   | #
+# +------------------------------------------------------+ #
+############################################################
+

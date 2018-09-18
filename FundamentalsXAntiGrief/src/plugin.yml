@@ -1,0 +1,17 @@
+name: FundamentalsXAntiGrief
+version: 1.3.0
+author: wisehollow
+main: com.wisehollow.fundamentalsantigrief.Main
+api-version: 1.13
+
+depend: [ FundamentalsX ]
+
+commands:
+      FCG:
+               description: Admin commands for fundamentalsantigrief.
+               usage: /<command>
+
+permissions:
+      Fundamentals.AntiGrief.Bypass:
+               description: Bypass checks by CounterGrief
+               default: op

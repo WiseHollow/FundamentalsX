@@ -1,0 +1,12 @@
+name: FundamentalsXCombat
+version: 1.3.0
+author: wisehollow
+main: com.wisehollow.fundamentalscombat.Main
+api-version: 1.13
+
+depend: [ FundamentalsX ]
+
+permissions:
+      Fundamentals.HeadDrop:
+               description: When you kill a player, there will be a chance of a head to drop.
+               default: false

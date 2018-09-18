@@ -1,0 +1,17 @@
+name: FundamentalsXPrime
+version: 1.3.0
+author: wisehollow
+main: com.wisehollow.fundamentalsprime.Main
+api-version: 1.13
+
+depend: [ FundamentalsX ]
+
+commands:
+      Hat:
+               description: Set the item in your hand as your hat.
+               usage: /<command>
+
+permissions:
+      Fundamentals.Hat:
+               description: Set the item in your hand as your hat.
+               default: op
