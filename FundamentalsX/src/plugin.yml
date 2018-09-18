@@ -263,6 +263,10 @@ commands:
                description: Pull up a virtual workbench.
                usage: /<command>
                permission: Fundamentals.Workbench
+      Enderchest:
+               description: Pull up a virtual enderchest.
+               usage: /<command> [player]
+               permission: Fundamentals.Enderchest
       Sudo:
                description: Force a player to run a command.
                usage: /<command> [player] [command]
@@ -276,6 +280,7 @@ permissions:
                default: op
                children:
                      Fundamentals.Moderator.*: true
+                     Fundamentals.Enderchest.Other.Edit: true
                      Fundamentals.Kill: true
                      Fundamentals.Burn: true
                      Fundamentals.Smite: true
@@ -303,6 +308,7 @@ permissions:
                      Fundamentals.Kits.*: true
                      Fundamentals.Enchant: true
                      Fundamentals.Workbench: true
+                     Fundamentals.Enderchest: true
                      Fundamentals.TPToggle: true
                      Fundamentals.Time.Change: true
                      Fundamentals.Sudo: true
@@ -323,6 +329,7 @@ permissions:
                      Fundamentals.Time: true
                      Fundamentals.Weather: true
                      Fundamentals.InvSee: true
+                     Fundamentals.Enderchest.Other: true
                      Fundamentals.Nametag: true
                      Fundamentals.Mute: true
                      Fundamentals.SetWarp: true
@@ -549,6 +556,15 @@ permissions:
                default: op
       Fundamentals.DelHome:
                description: Delete a sethome of choice.
+               default: op
+      Fundamentals.Enderchest:
+               description: Pull up a virtual enderchest.
+               default: op
+      Fundamentals.Enderchest.Other:
+               description: Pull up a virtual enderchest for a different player.
+               default: op
+      Fundamentals.Enderchest.Other.Edit:
+               description: Edit other players enderchest.
                default: op
       Fundamentals.Workbench:
                description: Pull up a virtual workbench.
