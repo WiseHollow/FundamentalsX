@@ -22,7 +22,7 @@ public class CommandEnderchest implements CommandExecutor {
             return true;
         }
 
-        Player target = null;
+        Player target;
 
         if (args.length > 0 && !sender.hasPermission("Fundamentals.Enderchest.Other")) {
             sender.sendMessage(Language.DoesNotHavePermission);

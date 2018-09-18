@@ -21,7 +21,7 @@ Allow_Unsafe_Enchantments: false
 # What kit should be given to new players. Set 'None' to not give any.
 Starter_Kit: 'None'
 # When using '/stop 10' to stop the server in 10 minutes, what should we broadcast on the server.
-Scheduled_Shutdown_Message: 'Server will restart in %m minute(s).'
+Scheduled_Shutdown_Message: 'Server will shutdown in %m minute(s).'
 # Spawn Limiter for /spawnmob command
 Spawn_Mob_Limit: 10
 # Allow EssentialsX to report back data about your server.

@@ -20,7 +20,7 @@ public class EnderchestSeeTask implements CustomTask, Listener {
     public EnderchestSeeTask(Player viewer, Player target) {
         this.viewer = viewer;
         this.target = target;
-        this.editable = viewer.equals(target) || viewer.hasPermission("FundamentalsX.Enderchest.Other.Edit");
+        this.editable = viewer.equals(target) || viewer.hasPermission("Fundamentals.Enderchest.Other.Edit");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class EnderchestSeeTask implements CustomTask, Listener {
     @EventHandler
     public void preventClick(InventoryClickEvent event) {
         if (!event.isCancelled()) {
-            if (!editable && !event.getWhoClicked().equals(viewer))
+            if (!editable)
                 event.setCancelled(true);
         }
     }
@@ -52,7 +52,7 @@ public class EnderchestSeeTask implements CustomTask, Listener {
     @EventHandler
     public void preventDrag(InventoryDragEvent event) {
         if (!event.isCancelled()) {
-            if (!editable && !event.getWhoClicked().equals(viewer))
+            if (!editable)
                 event.setCancelled(true);
         }
     }
