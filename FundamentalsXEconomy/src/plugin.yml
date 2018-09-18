@@ -11,15 +11,19 @@ commands:
       Econ:
                description: Manage other players wallet.
                usage: /<command> [set|give|take] [player] [amount]
+               permission: Fundamentals.Econ
       Balance:
                description: Check how much money a player has.
                usage: /<command> [player]
+               permission: Fundamentals.Balance
       Bal:
                description: Check how much money a player has.
                usage: /<command> [player]
+               permission: Fundamentals.Balance
       Pay:
                description: Can pay money to other players.
                usage: /<command> [player] [amount]
+               permission: Fundamentals.Pay
 
 
 permissions:
@@ -35,9 +39,3 @@ permissions:
       Fundamentals.Econ:
                description: Manage other players wallet.
                default: op
-      FundamentalsEconomy.Player:
-               description: Gives access to all Player commands.
-               default: op
-               children:
-                     Fundamentals.Balance: true
-                     Fundamentals.Pay: true

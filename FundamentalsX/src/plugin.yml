@@ -343,6 +343,7 @@ permissions:
                      Fundamentals.AFK: true
                      Fundamentals.Back: true
                      Fundamentals.Balance: true
+                     Fundamentals.Pay: true
                      Fundamentals.Message: true
                      Fundamentals.TPA: true
                      Fundamentals.TPAccept: true
@@ -521,9 +522,6 @@ permissions:
                default: op
       Fundamentals.Stop:
                description: Ability to shutdown the server.
-               default: op
-      Fundamentals.Mute:
-               description: Prevent a player from speaking publicly.
                default: op
       Fundamentals.Weather:
                description: Change the current weather condition.
