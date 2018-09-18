@@ -40,8 +40,10 @@ public class CommandButcher implements CommandExecutor {
         boolean finalAll = all;
         player.getWorld().getLivingEntities().forEach(livingEntity -> {
             if (livingEntity instanceof Monster || finalAll || (finalEntityType != null && livingEntity.getType() == finalEntityType)) {
-                livingEntity.remove();
-                kill.getAndIncrement();
+                if (!(livingEntity instanceof Player)) {
+                    livingEntity.remove();
+                    kill.getAndIncrement();
+                }
             }
         });
         player.sendMessage(Language.PREFIX + "Killed " + kill.get() + " entities.");

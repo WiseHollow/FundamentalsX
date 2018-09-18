@@ -1,6 +1,7 @@
 package com.wisehollow.fundamentals.commands;
 
 import com.wisehollow.fundamentals.Language;
+import com.wisehollow.fundamentals.Main;
 import com.wisehollow.fundamentals.Settings;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -25,8 +26,10 @@ public class CommandFundamentals implements CommandExecutor {
             Settings.loadMotd();
             sender.sendMessage(Language.ConfigurationsReloaded);
             return true;
+        } else if (args[0].equalsIgnoreCase("version")) {
+            sender.sendMessage(Language.PluginVersion + Main.getPlugin().getDescription().getVersion());
+            return true;
         }
-
 
         return false;
     }
