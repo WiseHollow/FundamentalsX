@@ -25,7 +25,7 @@ public class CommandSetHome implements CommandExecutor {
             return true;
         }
 
-        PlayerData pd = PlayerData.GetPlayerData(player);
+        PlayerData pd = PlayerData.getPlayerData(player);
 
         int amount = pd.getHomes().size();
         if (!Settings.HasPermissionForHomeAmount(player, amount + 1)) {

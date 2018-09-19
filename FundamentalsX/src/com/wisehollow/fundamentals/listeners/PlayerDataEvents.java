@@ -13,7 +13,7 @@ public class PlayerDataEvents implements Listener {
 
     @EventHandler
     public void InitializePlayerDataOnJoin(PlayerJoinEvent event) {
-        if (PlayerData.GetPlayerData(event.getPlayer()) == null) {
+        if (PlayerData.getPlayerData(event.getPlayer()) == null) {
             PlayerData.LoadPlayerData(event.getPlayer());
         }
     }

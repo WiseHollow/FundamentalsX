@@ -28,18 +28,24 @@ public class CommandHome implements CommandExecutor {
             return true;
         }
 
-        PlayerData pd = PlayerData.GetPlayerData(player);
+        PlayerData pd = PlayerData.getPlayerData(player);
+        String name;
 
-        if (args.length == 0) {
-            String homes = "";
+        if (pd.getHomes().size() == 0) {
+            player.sendMessage(Language.PREFIX_WARNING + "You do not have any homes yet.");
+            return true;
+        } else if (args.length == 0 && pd.getHomes().size() > 1) {
+            StringBuilder homes = new StringBuilder();
             for (String s : pd.getHomes().keySet()) {
-                homes += s + " ";
+                homes.append(s).append(" ");
             }
             player.sendMessage(Language.PREFIX + ChatColor.BOLD + "Homes: " + ChatColor.RESET + homes);
             return true;
+        } else if (args.length == 0 && pd.getHomes().size() == 1) {
+            name = pd.getHomes().keySet().stream().findFirst().get();
+        } else {
+            name = args[0];
         }
-
-        String name = args[0];
 
         Location target = pd.getHome(name);
 

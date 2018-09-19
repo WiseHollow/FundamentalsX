@@ -33,7 +33,7 @@ public class CommandTeleport implements CommandExecutor {
 
         if (args.length == 1) {
             Player target = PlayerUtil.GetPlayer(args[0]);
-            PlayerData targetData = PlayerData.GetPlayerData(target);
+            PlayerData targetData = PlayerData.getPlayerData(target);
 
             if (target == null || !target.isOnline()) {
                 player.sendMessage(Language.PlayerMustBeLoggedIn);
@@ -50,7 +50,7 @@ public class CommandTeleport implements CommandExecutor {
         } else if (args.length == 2 && sender.hasPermission("Fundamentals.TP.Other")) {
             Player source = PlayerUtil.GetPlayer(args[0]);
             Player target = PlayerUtil.GetPlayer(args[1]);
-            PlayerData targetData = PlayerData.GetPlayerData(target);
+            PlayerData targetData = PlayerData.getPlayerData(target);
 
             if (target == null || !target.isOnline()) {
                 player.sendMessage(Language.PlayerMustBeLoggedIn);

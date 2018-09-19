@@ -28,7 +28,7 @@ public class CommandDelHome implements CommandExecutor {
             return false;
 
         String name = args[0];
-        PlayerData pd = PlayerData.GetPlayerData(player);
+        PlayerData pd = PlayerData.getPlayerData(player);
 
         if (!pd.deleteHome(name)) {
             player.sendMessage(Language.PREFIX_WARNING + "Home does not exist!");

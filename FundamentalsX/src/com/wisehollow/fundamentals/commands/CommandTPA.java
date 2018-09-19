@@ -37,7 +37,7 @@ public class CommandTPA implements CommandExecutor {
         }
 
         Player target = PlayerUtil.GetPlayer(args[0]);
-        PlayerData targetData = PlayerData.GetPlayerData(target);
+        PlayerData targetData = PlayerData.getPlayerData(target);
 
         if (target == null || !target.isOnline()) {
             player.sendMessage(Language.PlayerMustBeLoggedIn);

@@ -22,14 +22,14 @@ public class PlayerData implements Listener {
     private static final String directory = "plugins" + File.separator + "FundamentalsX" + File.separator + "Player Data";
     private static List<PlayerData> data = new ArrayList<>();
 
-    public static PlayerData GetPlayerData(Player player) {
+    public static PlayerData getPlayerData(Player player) {
         for (PlayerData pd : data)
             if (pd.uuid.equalsIgnoreCase(player.getUniqueId().toString()))
                 return pd;
         return null;
     }
 
-    public static PlayerData GetPlayerData(String uuid) {
+    public static PlayerData getPlayerData(String uuid) {
         for (PlayerData pd : data)
             if (pd.uuid.equalsIgnoreCase(uuid))
                 return pd;
@@ -37,7 +37,7 @@ public class PlayerData implements Listener {
     }
 
     public static void UnloadPlayerData(Player player) {
-        data.remove(GetPlayerData(player));
+        data.remove(getPlayerData(player));
     }
 
     public static void UnloadPlayerData(PlayerData player) {
