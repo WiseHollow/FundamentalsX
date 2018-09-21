@@ -23,7 +23,7 @@ public class CommandTeleportToggle implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        PlayerData playerData = PlayerData.GetPlayerData(player);
+        PlayerData playerData = PlayerData.getPlayerData(player);
 
         if (playerData != null) {
             playerData.setTeleportDisabled(!playerData.hasTeleportDisabled());

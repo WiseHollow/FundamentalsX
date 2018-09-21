@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
  */
 public class Language {
     public static final String PREFIX = ChatColor.GOLD + "";
-    public static final String PREFIX_WARNING = ChatColor.DARK_RED + "[Warn] ";
+    public static final String PREFIX_WARNING = ChatColor.DARK_RED + "";
     public static final String DoesNotHavePermission = PREFIX_WARNING + "You do not have permission for this function.";
     public static final String YouMustBeLoggedIn = PREFIX_WARNING + "You must be logged in to do this.";
     public static final String PlayerMustBeLoggedIn = PREFIX_WARNING + "That player must be logged in for this.";
@@ -22,4 +22,9 @@ public class Language {
     public static final String CannotSetAsHat = PREFIX + "You cannot set that as a hat.";
     public static final String SetHat = PREFIX + "You've equipped a new hat!";
     public static final String PluginVersion = PREFIX + "Fundamentals plugin version: ";
+    public static final String PVPTimerEnabled = PREFIX_WARNING + "Anti-PVP Enabled! You are protected from PVP for %m minutes.";
+    public static final String PVPTimerHowToDisable = PREFIX + "Enable PVP anytime with '/pvp'.";
+    public static final String PVPTimerDisabled = PREFIX_WARNING + "Anti-PVP Disabled! You are no longer protected from PVP.";
+    public static final String CannotPVPWithPlayer = PREFIX_WARNING + "You cannot PVP with that player yet.";
+    public static final String PlayerDoesNotHavePVPTimer = PREFIX + "You do not have an active PVP Timer.";
 }

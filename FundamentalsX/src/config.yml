@@ -148,6 +148,10 @@ Prevent_CombatLogging: false
 Players_Drop_Head: false
 # What should be the chance to drop their head (0.01-1.00)
 Players_Drop_Head_Chance: 0.2
+# Whether new players should have a timer to protect them from pvp.
+Delayed_PVP_For_New_Players: false
+# The amount of minutes new players are protected from pvp.
+Delayed_PVP_Minutes: 15
 
 ############################################################
 # +------------------------------------------------------+ #

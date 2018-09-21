@@ -1,8 +1,10 @@
 package com.wisehollow.fundamentalscombat;
 
+import com.wisehollow.fundamentalscombat.commands.CommandPVP;
 import com.wisehollow.fundamentalscombat.events.CombatLoggingEvents;
 import com.wisehollow.fundamentalscombat.events.HeadDropEvents;
 import com.wisehollow.fundamentalscombat.events.LegacyCombatEvents;
+import com.wisehollow.fundamentalscombat.events.PVPTimerEvents;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,6 +25,7 @@ public class Main extends JavaPlugin {
         plugin = this;
         Settings.load();
         registerEvents();
+        getCommand("PVP").setExecutor(new CommandPVP());
         getLogger().info(plugin.getName() + " is now enabled!");
     }
 
@@ -32,6 +35,8 @@ public class Main extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new CombatLoggingEvents(), this);
         if (Settings.playersDropHead)
             getServer().getPluginManager().registerEvents(new HeadDropEvents(), this);
+        if (Settings.delayedPVPForNewPlayers)
+            getServer().getPluginManager().registerEvents(new PVPTimerEvents(), this);
     }
 
     @Override
