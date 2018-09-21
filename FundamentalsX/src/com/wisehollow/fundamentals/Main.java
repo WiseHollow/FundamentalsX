@@ -80,6 +80,7 @@ public class Main extends JavaPlugin {
         CommandTPS commandTPS = new CommandTPS();
         CommandWeather commandWeather = new CommandWeather();
         CommandFundamentals commandFundamentals = new CommandFundamentals();
+        CommandVanish commandVanish = new CommandVanish();
 
         this.getCommand("SetSpawn").setExecutor(new CommandSetSpawn());
         this.getCommand("Spawn").setExecutor(new CommandSpawn());
@@ -90,7 +91,8 @@ public class Main extends JavaPlugin {
         this.getCommand("TPAccept").setExecutor(new CommandTPAccept());
         this.getCommand("TPDeny").setExecutor(new CommandTPDeny());
         this.getCommand("TPToggle").setExecutor(new CommandTeleportToggle());
-        this.getCommand("Vanish").setExecutor(new CommandVanish());
+        this.getCommand("Vanish").setExecutor(commandVanish);
+        this.getCommand("V").setExecutor(commandVanish);
         this.getCommand("Msg").setExecutor(new CommandMessage());
         this.getCommand("R").setExecutor(new CommandReply());
         this.getCommand("Time").setExecutor(commandTime);

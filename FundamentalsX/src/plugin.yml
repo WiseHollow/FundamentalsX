@@ -38,6 +38,7 @@ commands:
       Vanish:
                description: Make yourself invisible to others.
                usage: /<command>
+               aliases: v
       Msg:
                description: Send a private message to a player.
                usage: /<command> [player] [message]
