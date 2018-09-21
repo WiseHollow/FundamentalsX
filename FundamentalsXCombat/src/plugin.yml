@@ -6,7 +6,15 @@ api-version: 1.13
 
 depend: [ FundamentalsX ]
 
+commands:
+      PVP:
+               description: Enable PVP if you have a pvp timer active.
+               usage: /<command>
+
 permissions:
       Fundamentals.HeadDrop:
                description: When you kill a player, there will be a chance of a head to drop.
                default: false
+      Fundamentals.EnablePvP:
+               description: New players can use this to enable pvp before the timer ends.
+               default: true

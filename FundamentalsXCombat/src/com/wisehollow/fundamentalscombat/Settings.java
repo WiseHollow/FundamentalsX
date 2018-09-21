@@ -2,6 +2,9 @@ package com.wisehollow.fundamentalscombat;
 
 public class Settings {
 
+    public static boolean delayedPVPForNewPlayers;
+    public static int delayedPVPMinutes;
+
     public static boolean enableLegacyCombat;
     public static boolean preventCombatLogging;
 
@@ -9,6 +12,8 @@ public class Settings {
     public static float playersDropHeadChance = 0.2f;
 
     public static void load() {
+        delayedPVPForNewPlayers = Main.getPlugin().getConfig().getBoolean("Delayed_PVP_For_New_Players");
+        delayedPVPMinutes = Main.getPlugin().getConfig().getInt("Delayed_PVP_Minutes");
         enableLegacyCombat = Main.getPlugin().getConfig().getBoolean("Enable_Legacy_Combat");
         preventCombatLogging = Main.getPlugin().getConfig().getBoolean("Prevent_CombatLogging");
         playersDropHead = Main.getPlugin().getConfig().getBoolean("Players_Drop_Head");
