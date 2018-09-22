@@ -14,13 +14,13 @@ public class CommandSpeed implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Speed")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -30,7 +30,7 @@ public class CommandSpeed implements CommandExecutor {
         if (args.length > 1) {
             player = PlayerUtil.GetPlayer(args[1]);
             if (player == null || !player.isOnline()) {
-                sender.sendMessage(Language.PlayerMustBeLoggedIn);
+                sender.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
         }
@@ -42,21 +42,24 @@ public class CommandSpeed implements CommandExecutor {
             return false;
         }
 
-        if (speed > 1 || speed <= 0) {
-            sender.sendMessage(Language.PREFIX_WARNING + "Speed must be a number between 1-10");
+        if (speed > 10 || speed < 1) {
+            sender.sendMessage(Language.getInstance().invalidSpeed);
             return true;
         }
 
+        //TODO: What???
+        String speedQuote = Integer.toString((int) (speed * 10));
+
         if (player.isFlying()) {
             player.setFlySpeed(speed);
-            sender.sendMessage(Language.PREFIX + "Fly speed set to: " + (int) (speed * 10));
+            sender.sendMessage(Language.getInstance().flySpeedSet.replace("%s", speedQuote));
             if (!sender.equals(player))
-                player.sendMessage(Language.PREFIX + "Fly speed set to: " + (int) (speed * 10));
+                player.sendMessage(Language.getInstance().flySpeedSet.replace("%s", speedQuote));
         } else {
             player.setWalkSpeed(speed);
-            sender.sendMessage(Language.PREFIX + "Walk speed set to: " + (int) (speed * 10));
+            sender.sendMessage(Language.getInstance().walkSpeedSet.replace("%s", speedQuote));
             if (!sender.equals(player))
-                player.sendMessage(Language.PREFIX + "Walk speed set to: " + (int) (speed * 10));
+                player.sendMessage(Language.getInstance().walkSpeedSet.replace("%s", speedQuote));
         }
 
         return true;

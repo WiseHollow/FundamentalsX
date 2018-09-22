@@ -13,12 +13,12 @@ public class CommandTeleportToggle implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         if (!sender.hasPermission("Fundamentals.TPToggle")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -27,7 +27,9 @@ public class CommandTeleportToggle implements CommandExecutor {
 
         if (playerData != null) {
             playerData.setTeleportDisabled(!playerData.hasTeleportDisabled());
-            sender.sendMessage(Language.TeleportHasBeenToggled + (playerData.hasTeleportDisabled() ? "off." : "on."));
+            String status = (playerData.hasTeleportDisabled() ? "off." : "on.");
+            sender.sendMessage(Language.getInstance().teleportToggled
+                    .replace("%s", status));
         }
 
         return true;

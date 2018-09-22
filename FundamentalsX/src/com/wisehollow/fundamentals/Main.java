@@ -36,12 +36,14 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+        saveDefaultConfig();
+
         getLogger().info("Registering Economy: " + setupEconomy());
         getLogger().info("Registering Chat: " + setupChat());
 
-        saveDefaultConfig();
 
         Settings.load();
+        Settings.loadLanguage();
         Settings.loadMotd();
 
         setupMetrics();
@@ -68,6 +70,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void saveDefaultConfig() {
+        loadLanguageFromJar();
         loadConfigFromJar();
         loadMotdFromJar();
     }
@@ -231,8 +234,8 @@ public class Main extends JavaPlugin {
     }
 
     private void loadConfigFromJar() {
-        File file = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "config.yml");
-        File dir = new File("plugins" + File.separator + "FundamentalsX");
+        File file = new File("plugins" + File.separator + getName() + File.separator + "config.yml");
+        File dir = new File("plugins" + File.separator + getName());
         if (!dir.isDirectory())
             dir.mkdirs();
 
@@ -242,13 +245,24 @@ public class Main extends JavaPlugin {
     }
 
     private void loadMotdFromJar() {
-        File file = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "motd.txt");
-        File dir = new File("plugins" + File.separator + "FundamentalsX");
+        File file = new File("plugins" + File.separator + getName() + File.separator + "motd.txt");
+        File dir = new File("plugins" + File.separator + getName());
         if (!dir.isDirectory())
             dir.mkdirs();
 
         if (!file.exists()) {
             exportInternalFile("motd.txt", file);
+        }
+    }
+
+    private void loadLanguageFromJar() {
+        File file = new File("plugins" + File.separator + getName() + File.separator + "language.yml");
+        File dir = new File("plugins" + File.separator + getName());
+        if (!dir.isDirectory())
+            dir.mkdirs();
+
+        if (!file.exists()) {
+            exportInternalFile("language.yml", file);
         }
     }
 

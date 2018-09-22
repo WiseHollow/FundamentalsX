@@ -23,13 +23,13 @@ public class CommandSpawnEntity implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.SpawnEntity")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -41,9 +41,10 @@ public class CommandSpawnEntity implements CommandExecutor, TabCompleter {
             try {
                 amount = Integer.parseInt(args[1]);
             } catch (NumberFormatException exception) {
-                sender.sendMessage(Language.PREFIX + "'" + amount + "' is not an number.");
+                sender.sendMessage(Language.getInstance().mustBeANumber);
             }
         }
+        amount = (amount > Settings.SpawnMobLimit ? Settings.SpawnMobLimit : amount);
 
         EntityType type;
         boolean tamed = false;
@@ -51,7 +52,7 @@ public class CommandSpawnEntity implements CommandExecutor, TabCompleter {
         try {
             type = EntityType.valueOf(typeWithArg[0].toUpperCase());
         } catch (Exception exception) {
-            sender.sendMessage(Language.PREFIX_WARNING + "Invalid entity type.");
+            sender.sendMessage(Language.getInstance().invalidEntityType);
             return true;
         }
 
@@ -61,7 +62,7 @@ public class CommandSpawnEntity implements CommandExecutor, TabCompleter {
 
         Set<Material> s = null;
         Location target = player.getTargetBlock(s, 100).getLocation().clone().add(0.5, 1, 0.5);
-        for (int i = 0; i < (amount > Settings.SpawnMobLimit ? Settings.SpawnMobLimit : amount); i++) {
+        for (int i = 0; i < amount; i++) {
             LivingEntity spawnedEntity = (LivingEntity) target.getWorld().spawnEntity(target, type);
             if (tamed && spawnedEntity instanceof Tameable) {
                 Tameable tameable = (Tameable) spawnedEntity;
@@ -72,7 +73,9 @@ public class CommandSpawnEntity implements CommandExecutor, TabCompleter {
                 }
             }
         }
-        sender.sendMessage(Language.PREFIX + amount + " " + type.name() + " spawned at location.");
+        sender.sendMessage(Language.getInstance().spawnEntities
+                .replace("%a", Integer.toString(amount))
+                .replace("%t", type.name()));
 
         return true;
     }

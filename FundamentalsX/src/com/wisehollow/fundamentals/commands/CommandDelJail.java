@@ -14,25 +14,25 @@ public class CommandDelJail implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Jail.Manage")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
-        if (args.length != 1)
+        if (args.length != 1) {
             return false;
-        if (!Settings.jails.containsKey(args[0])) {
-            player.sendMessage(Language.PREFIX_WARNING + "That jail does not exist.");
+        } else if (!Settings.jails.containsKey(args[0])) {
+            player.sendMessage(Language.getInstance().jailDoesNotExist);
             return true;
         }
 
         Settings.jails.remove(args[0]);
-        player.sendMessage(Language.PREFIX + "Jail has been deleted!");
+        player.sendMessage(Language.getInstance().jailRemoved);
         Settings.Save();
 
         return true;

@@ -15,13 +15,13 @@ public class CommandKit implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Kit")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -38,7 +38,7 @@ public class CommandKit implements CommandExecutor {
         String name = args[0];
         Kit kit = Kit.GetKit(name);
         if (kit == null) {
-            player.sendMessage(Language.PREFIX_WARNING + "That kit does not exist!");
+            player.sendMessage(Language.getInstance().kitDoesNotExist);
             return true;
         }
 
@@ -48,9 +48,11 @@ public class CommandKit implements CommandExecutor {
             task.run();
         } else {
             if (task.getSecondsLeft() > 60)
-                player.sendMessage(Language.PREFIX_WARNING + "Try using the kit again in another " + task.getSecondsLeft() / 60 + " minutes.");
+                player.sendMessage(Language.getInstance().kitDelayMinutes
+                        .replace("%t", Integer.toString(task.getSecondsLeft() / 60)));
             else
-                player.sendMessage(Language.PREFIX_WARNING + "Try using the kit again in another " + task.getSecondsLeft() + " seconds.");
+                player.sendMessage(Language.getInstance().kitDelaySeconds
+                        .replace("%t", Integer.toString(task.getSecondsLeft())));
             return true;
         }
 

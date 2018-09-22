@@ -17,13 +17,13 @@ public class CommandTeleport implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.TP")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -36,10 +36,10 @@ public class CommandTeleport implements CommandExecutor {
             PlayerData targetData = PlayerData.getPlayerData(target);
 
             if (target == null || !target.isOnline()) {
-                player.sendMessage(Language.PlayerMustBeLoggedIn);
+                player.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             } else if (targetData != null && targetData.hasTeleportDisabled()) {
-                player.sendMessage(Language.PREFIX + Language.HasTeleportDisabled);
+                player.sendMessage(Language.getInstance().cannotTeleportToPlayer);
                 return true;
             }
 
@@ -53,13 +53,13 @@ public class CommandTeleport implements CommandExecutor {
             PlayerData targetData = PlayerData.getPlayerData(target);
 
             if (target == null || !target.isOnline()) {
-                player.sendMessage(Language.PlayerMustBeLoggedIn);
+                player.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             } else if (source == null || !source.isOnline()) {
-                player.sendMessage(Language.PREFIX + Language.PlayerMustBeLoggedIn);
+                player.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             } else if (targetData != null && targetData.hasTeleportDisabled()) {
-                player.sendMessage(Language.PREFIX + Language.HasTeleportDisabled);
+                player.sendMessage(Language.getInstance().cannotTeleportToPlayer);
                 return true;
             }
 

@@ -22,13 +22,13 @@ public class CommandTPA implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.TPA")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -40,16 +40,16 @@ public class CommandTPA implements CommandExecutor {
         PlayerData targetData = PlayerData.getPlayerData(target);
 
         if (target == null || !target.isOnline()) {
-            player.sendMessage(Language.PlayerMustBeLoggedIn);
+            player.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         } else if (targetData != null && targetData.hasTeleportDisabled()) {
-            player.sendMessage(Language.PREFIX + Language.HasTeleportDisabled);
+            player.sendMessage(Language.getInstance().cannotTeleportToPlayer);
             return true;
         }
 
         tpaHash.put(player, target);
-        player.sendMessage(Language.PREFIX + "Teleport request sent!");
-        target.sendMessage(Language.PREFIX + player.getName() + " is requesting to teleport to you, </tpAccept or /tpDeny>.");
+        player.sendMessage(Language.getInstance().teleportRequestSent);
+        target.sendMessage(Language.getInstance().teleportRequestReceived);
 
         tpaTaskIDs.put(player, Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () ->
         {

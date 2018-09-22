@@ -14,13 +14,13 @@ public class CommandDelHome implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.DelHome")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -31,11 +31,11 @@ public class CommandDelHome implements CommandExecutor {
         PlayerData pd = PlayerData.getPlayerData(player);
 
         if (!pd.deleteHome(name)) {
-            player.sendMessage(Language.PREFIX_WARNING + "Home does not exist!");
+            player.sendMessage(Language.getInstance().homeDoesNotExist);
             return true;
         }
 
-        player.sendMessage(Language.PREFIX + "Home has been removed!");
+        player.sendMessage(Language.getInstance().homeRemoved);
         return true;
     }
 }

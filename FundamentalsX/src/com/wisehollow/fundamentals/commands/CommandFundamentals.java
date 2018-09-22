@@ -19,7 +19,7 @@ public class CommandFundamentals implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.isOp()) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -29,10 +29,10 @@ public class CommandFundamentals implements CommandExecutor, TabCompleter {
         if (args[0].equalsIgnoreCase("reload")) {
             Settings.load();
             Settings.loadMotd();
-            sender.sendMessage(Language.ConfigurationsReloaded);
+            sender.sendMessage(Language.getInstance().configurationReloaded);
             return true;
         } else if (args[0].equalsIgnoreCase("version")) {
-            sender.sendMessage(Language.PluginVersion + Main.getPlugin().getDescription().getVersion());
+            sender.sendMessage(Language.getInstance().pluginVersion.replace("%v", Main.getPlugin().getDescription().getVersion()));
             return true;
         }
 

@@ -13,19 +13,19 @@ public class CommandEnderchest implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         if (!sender.hasPermission("Fundamentals.Enderchest")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         Player target;
 
         if (args.length > 0 && !sender.hasPermission("Fundamentals.Enderchest.Other")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         } else if (args.length > 0) {
             target = Bukkit.getPlayer(args[0]);
@@ -33,12 +33,12 @@ public class CommandEnderchest implements CommandExecutor {
             target = (Player) sender;
 
         if (target == null) {
-            sender.sendMessage(Language.PlayerMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
         if (!sender.equals(target))
-            sender.sendMessage(Language.PREFIX + "Viewing " + target.getName() + "'s enderchest.");
+            sender.sendMessage(Language.getInstance().viewingEnderchest.replace("%p", target.getName()));
         EnderchestSeeTask task = new EnderchestSeeTask((Player) sender, target);
         task.run();
         return true;

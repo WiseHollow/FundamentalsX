@@ -76,6 +76,10 @@ public class Settings {
         }
     }
 
+    public static void loadLanguage() {
+        Language.getInstance();
+    }
+
     public static void load() {
         TeleportDelay = config.getInt("Teleport_Delay");
         AFKDelay = config.getInt("Afk_Delay");

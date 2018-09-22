@@ -18,13 +18,13 @@ public class CommandHome implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Home")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -32,14 +32,14 @@ public class CommandHome implements CommandExecutor {
         String name;
 
         if (pd.getHomes().size() == 0) {
-            player.sendMessage(Language.PREFIX_WARNING + "You do not have any homes yet.");
+            player.sendMessage(Language.getInstance().noHomes);
             return true;
         } else if (args.length == 0 && pd.getHomes().size() > 1) {
             StringBuilder homes = new StringBuilder();
             for (String s : pd.getHomes().keySet()) {
                 homes.append(s).append(" ");
             }
-            player.sendMessage(Language.PREFIX + ChatColor.BOLD + "Homes: " + ChatColor.RESET + homes);
+            player.sendMessage(Language.getInstance().homeList + ChatColor.RESET + homes);
             return true;
         } else if (args.length == 0 && pd.getHomes().size() == 1) {
             name = pd.getHomes().keySet().stream().findFirst().get();
@@ -50,7 +50,7 @@ public class CommandHome implements CommandExecutor {
         Location target = pd.getHome(name);
 
         if (target == null) {
-            player.sendMessage(Language.PREFIX_WARNING + "Home does not exist!");
+            player.sendMessage(Language.getInstance().homeDoesNotExist);
             return true;
         }
 

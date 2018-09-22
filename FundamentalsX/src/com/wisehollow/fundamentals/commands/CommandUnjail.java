@@ -15,7 +15,7 @@ public class CommandUnjail implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Jail")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -24,13 +24,13 @@ public class CommandUnjail implements CommandExecutor {
 
         Player player = PlayerUtil.GetPlayer(args[0]);
         if (player == null || !player.isOnline()) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
         JailTask task = JailTask.GetTask(player);
         if (task == null) {
-            sender.sendMessage(Language.PREFIX_WARNING + "That player is not jailed.");
+            sender.sendMessage(Language.getInstance().notJailed);
             return true;
         }
 

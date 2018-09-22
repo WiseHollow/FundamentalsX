@@ -19,7 +19,7 @@ public class CommandTime implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Time")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -28,7 +28,7 @@ public class CommandTime implements CommandExecutor, TabCompleter {
         if (!(sender instanceof Player)) {
             //TODO: Handle as server console.
 
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         } else {
             world = ((Player) sender).getWorld();
@@ -36,7 +36,7 @@ public class CommandTime implements CommandExecutor, TabCompleter {
 
         if (args.length == 0) {
             long time = world.getTime();
-            sender.sendMessage(Language.PREFIX + "The current time is: " + time + " ticks.");
+            sender.sendMessage(Language.getInstance().timeCurrent.replace("%t", Long.toString(time)));
 
             //int hours = 6 + (int) (world.getTime() / 1000);
             return true;
@@ -44,10 +44,10 @@ public class CommandTime implements CommandExecutor, TabCompleter {
 
         if (args[0].equalsIgnoreCase("Day")) {
             world.setTime(1000);
-            sender.sendMessage(Language.PREFIX + "Time set to 7:00am.");
+            sender.sendMessage(Language.getInstance().timeSet.replace("%t", "7:00am"));
         } else if (args[0].equalsIgnoreCase("Night")) {
             world.setTime(13000);
-            sender.sendMessage(Language.PREFIX + "Time set to 7:00pm.");
+            sender.sendMessage(Language.getInstance().timeSet.replace("%t", "7:00pm"));
         } else {
             return false;
         }

@@ -14,13 +14,13 @@ public class CommandDelWarp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.SetWarp")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -30,13 +30,13 @@ public class CommandDelWarp implements CommandExecutor {
         String name = args[0].toLowerCase();
 
         if (!Settings.warps.containsKey(name)) {
-            player.sendMessage(Language.PREFIX_WARNING + "Warp does not exist!");
+            player.sendMessage(Language.getInstance().warpDoesNotExist);
             return true;
         }
 
         Settings.warps.remove(name);
 
-        player.sendMessage(Language.PREFIX + "Warp has been removed!");
+        player.sendMessage(Language.getInstance().warpRemoved);
         Settings.Save();
         return true;
     }

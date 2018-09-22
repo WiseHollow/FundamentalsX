@@ -13,16 +13,17 @@ import org.bukkit.entity.Player;
 public class CommandClearChat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
+        if (!sender.hasPermission("Fundamentals.ClearChat")) {
+            sender.sendMessage(Language.getInstance().unauthorized);
+            return true;
+        }
+
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
-        if (!sender.hasPermission("Fundamentals.ClearChat")) {
-            player.sendMessage(Language.DoesNotHavePermission);
-            return true;
-        }
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             for (int i = 0; i < 100; i++)

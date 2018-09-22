@@ -20,7 +20,7 @@ public class CommandTPS implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.TPS")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -32,26 +32,30 @@ public class CommandTPS implements CommandExecutor {
         long maxMemory = (long) (runtime.maxMemory() * mult * mult);
         long allocatedMemory = (long) (runtime.totalMemory() * mult * mult);
         long freeMemory = (long) (runtime.freeMemory() * mult * mult);
+        double percentTPS = round(100.00d - lag, 2);
+        tps = round(tps, 2);
 
-        sender.sendMessage(Language.PREFIX + ChatColor.BOLD + "--- Server Statistics ---");
-        sender.sendMessage(Language.PREFIX + "Current TPS: " + ChatColor.RESET + round(tps, 2) + " (" + round(100.00d - lag, 2) + "%)");
-        sender.sendMessage(Language.PREFIX + "Maximum Memory: " + ChatColor.RESET + maxMemory + "MB");
-        sender.sendMessage(Language.PREFIX + "Allocated Memory: " + ChatColor.RESET + allocatedMemory + "MB");
-        sender.sendMessage(Language.PREFIX + "Free Memory: " + ChatColor.RESET + freeMemory + "MB");
+        sender.sendMessage(Language.getInstance().serverStatistics);
+        sender.sendMessage(Language.getInstance().currentTPS
+                .replace("%a", Double.toString(tps))
+                .replace("%p", Double.toString(percentTPS)));
+        sender.sendMessage(Language.getInstance().maximumMemory.replace("%m", Long.toString(maxMemory)));
+        sender.sendMessage(Language.getInstance().allocatedMemory.replace("%m", Long.toString(allocatedMemory)));
+        sender.sendMessage(Language.getInstance().freeMemory.replace("%m", Long.toString(freeMemory)));
 
         if (sender instanceof Player) {
             for (World w : Bukkit.getWorlds()) {
-                TextComponent message = new TextComponent(Language.PREFIX + "" + ChatColor.BOLD + "    > " + w.getName() + ChatColor.RESET);
-                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.ITALIC + "Entities: " + ChatColor.RESET + w.getEntities().size() +
-                        "\n" + ChatColor.ITALIC + "Living Entities: " + ChatColor.RESET + w.getLivingEntities().size() +
-                        "\n" + ChatColor.ITALIC + "Chunks: " + ChatColor.RESET + w.getLoadedChunks().length).create()));
+                TextComponent message = new TextComponent(Language.getInstance().prefixInfo + "" + ChatColor.BOLD + "    > " + w.getName() + ChatColor.RESET);
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.ITALIC + Language.getInstance().entityList + ChatColor.RESET + w.getEntities().size() +
+                        "\n" + ChatColor.ITALIC + Language.getInstance().livingEntityList + ChatColor.RESET + w.getLivingEntities().size() +
+                        "\n" + ChatColor.ITALIC + Language.getInstance().chunkList + ChatColor.RESET + w.getLoadedChunks().length).create()));
                 ((Player) sender).spigot().sendMessage(message);
             }
         } else {
             for (World w : Bukkit.getWorlds()) {
-                sender.sendMessage(Language.PREFIX + "" + ChatColor.BOLD + w.getName() + ChatColor.RESET);
-                sender.sendMessage("    " + ChatColor.ITALIC + "Entities: " + ChatColor.RESET + w.getEntities().size());
-                sender.sendMessage("    " + ChatColor.ITALIC + "Chunks: " + ChatColor.RESET + w.getLoadedChunks().length);
+                sender.sendMessage(Language.getInstance().prefixInfo + ChatColor.BOLD + w.getName() + ChatColor.RESET);
+                sender.sendMessage("    " + ChatColor.ITALIC + Language.getInstance().entityList + ChatColor.RESET + w.getEntities().size());
+                sender.sendMessage("    " + ChatColor.ITALIC + Language.getInstance().chunkList + ChatColor.RESET + w.getLoadedChunks().length);
             }
         }
 

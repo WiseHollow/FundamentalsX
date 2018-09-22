@@ -16,13 +16,13 @@ public class CommandTeleportPosition implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.TPPOS")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -36,7 +36,7 @@ public class CommandTeleportPosition implements CommandExecutor {
             try {
                 positions[i] = Integer.valueOf(args[i]);
             } catch (Exception ex) {
-                player.sendMessage(Language.PREFIX_WARNING + "Invalid position to teleport to.");
+                player.sendMessage(Language.getInstance().invalidCoordinates);
                 return true;
             }
         }

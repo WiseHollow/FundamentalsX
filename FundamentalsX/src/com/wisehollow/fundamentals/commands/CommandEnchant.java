@@ -19,25 +19,25 @@ public class CommandEnchant implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Enchant")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (player.getInventory().getItemInMainHand() == null) {
-            player.sendMessage(Language.PREFIX_WARNING + "You must have an item in your hand. ");
+            player.sendMessage(Language.getInstance().itemNotInHand);
             return true;
         }
 
         if (args.length == 0) {
             StringBuilder stringBuilder = new StringBuilder();
             Arrays.asList(Enchantment.values()).forEach(enchantment -> stringBuilder.append(enchantment.getKey().getKey()).append(" "));
-            player.sendMessage(Language.PREFIX + stringBuilder.toString());
+            player.sendMessage(Language.getInstance().prefixInfo + stringBuilder.toString());
             return true;
         }
 
@@ -48,19 +48,19 @@ public class CommandEnchant implements CommandExecutor {
             try {
                 level = Integer.valueOf(args[1]);
             } catch (NumberFormatException exception) {
-                player.sendMessage(Language.PREFIX_WARNING + "Invalid number given!");
+                player.sendMessage(Language.getInstance().mustBeANumber);
                 return true;
             }
         }
 
         if (enchantment == null) {
-            player.sendMessage(Language.PREFIX_WARNING + "Invalid enchantment type!");
+            player.sendMessage(Language.getInstance().invalidEnchantment);
             return true;
         }
 
         if (!Settings.AllowUnsafeEnchantments) {
             if (level > enchantment.getMaxLevel()) {
-                player.sendMessage(Language.PREFIX_WARNING + "The max level for that enchantment is: " + enchantment.getMaxLevel());
+                player.sendMessage(Language.getInstance().maxLevelEnchantment.replace("%l", Integer.toString(enchantment.getMaxLevel())));
                 return true;
             } else {
                 player.getInventory().getItemInMainHand().addEnchantment(enchantment, level);
@@ -69,7 +69,9 @@ public class CommandEnchant implements CommandExecutor {
             player.getInventory().getItemInMainHand().addUnsafeEnchantment(enchantment, level);
         }
 
-        player.sendMessage(Language.PREFIX + "Enchantment: " + enchantment.getKey().getKey() + " added at level " + level);
+        player.sendMessage(Language.getInstance().enchantmentAdded
+                .replace("%e", enchantment.getKey().getKey())
+                .replace("%l", Integer.toString(level)));
         return true;
     }
 }

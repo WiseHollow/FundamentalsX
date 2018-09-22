@@ -17,7 +17,7 @@ public class CommandJail implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Jail")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -26,14 +26,14 @@ public class CommandJail implements CommandExecutor {
 
         Player target = PlayerUtil.GetPlayer(args[0]);
         if (target == null || !target.isOnline()) {
-            sender.sendMessage(Language.PlayerMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
         Location jail;
         if (Settings.jails.containsKey(args[1]))
             jail = Settings.jails.get(args[1]);
         else {
-            sender.sendMessage(Language.PREFIX_WARNING + "That jail does not exist!");
+            sender.sendMessage(Language.getInstance().jailDoesNotExist);
             return true;
         }
 
@@ -45,7 +45,7 @@ public class CommandJail implements CommandExecutor {
             try {
                 seconds = Integer.valueOf(time.split(String.valueOf(c))[0]);
             } catch (Exception ex) {
-                sender.sendMessage(Language.PREFIX_WARNING + "Invalid formatting. (Time: 50m, 15s, 1h)");
+                sender.sendMessage(Language.getInstance().invalidTimeFormatting);
                 return true;
             }
 
@@ -56,16 +56,16 @@ public class CommandJail implements CommandExecutor {
             else if (c == 'd')
                 seconds *= 60 * 60 * 24;
             else {
-                sender.sendMessage(Language.PREFIX_WARNING + "Invalid formatting. (Format: 50m, 15s, 1h)");
+                sender.sendMessage(Language.getInstance().invalidTimeFormatting);
                 return true;
             }
         }
 
         JailTask task = new JailTask(target, jail, seconds);
         if (!task.run())
-            sender.sendMessage(Language.PREFIX_WARNING + "You cannot jail that player!");
+            sender.sendMessage(Language.getInstance().jailCannotSend);
         else
-            sender.sendMessage(Language.PREFIX_WARNING + "You have jailed: " + target.getName());
+            sender.sendMessage(Language.getInstance().jailSend.replace("%p", target.getName()));
 
         return true;
     }

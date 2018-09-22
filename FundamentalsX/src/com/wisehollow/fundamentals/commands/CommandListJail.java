@@ -14,7 +14,7 @@ public class CommandListJail implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Jail")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -23,7 +23,7 @@ public class CommandListJail implements CommandExecutor {
             jails += s + " ";
         }
 
-        sender.sendMessage(Language.PREFIX + "Jails: " + jails);
+        sender.sendMessage(Language.getInstance().jailList + jails);
         return true;
     }
 }
