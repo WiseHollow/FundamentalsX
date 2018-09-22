@@ -80,7 +80,9 @@ public class Language {
     public String teleporting, teleportingWarmUp, teleportingCancelled;
     public String inventoryFullFromKit, receivingKit;
     public String socialSpyEnabled, socialSpyDisabled;
-
+    public String balanceSelf, balancePlayer;
+    public String mutePlayer, muted, unmuted;
+    public String mentioned;
 
 
     public String playerInfo, health, food, walkSpeed, flySpeed, gameMode, location, godMode, afk, jail, vanish, lastLoggedIn;
@@ -228,8 +230,12 @@ public class Language {
         receivingKit = parse(config.getString("Receiving kit"));
         socialSpyEnabled = parse(config.getString("Social spy enabled"));
         socialSpyDisabled = parse(config.getString("Social spy disabled"));
-
-
+        balanceSelf = parse(config.getString("Balance of self"));
+        balancePlayer = parse(config.getString("Balance of player"));
+        mutePlayer = parse(config.getString("Mute player"));
+        muted = parse(config.getString("Muted"));
+        unmuted = parse(config.getString("Unmuted"));
+        mentioned = parse(config.getString("Mentioned"));
 
         // Who-is
         playerInfo = parse(config.getString("Player info"));

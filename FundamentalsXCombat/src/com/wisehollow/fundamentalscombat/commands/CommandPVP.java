@@ -11,18 +11,18 @@ public class CommandPVP implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         } else if (!sender.hasPermission("Fundamentals.EnablePvP")) {
-            sender.hasPermission(Language.DoesNotHavePermission);
+            sender.hasPermission(Language.getInstance().unauthorized);
             return true;
         }
 
         boolean result = PVPTimer.disableTimer((Player) sender);
         if (result) {
-            sender.sendMessage(Language.PVPTimerDisabled);
+            sender.sendMessage(Language.getInstance().pvpTimerDisabled);
         } else {
-            sender.sendMessage(Language.PlayerDoesNotHavePVPTimer);
+            sender.sendMessage(Language.getInstance().pvpTimerNone);
         }
 
         return true;

@@ -107,7 +107,7 @@ public class ChatEvents implements Listener {
                 Player target = Bukkit.getPlayer(s.replaceAll("@", ""));
                 if (target != null && !mentioned.contains(target)) {
                     mentioned.add(target);
-                    target.sendMessage(Language.PREFIX + "You were mentioned by: " + ChatColor.RESET + event.getPlayer().getName());
+                    target.sendMessage(Language.getInstance().mentioned.replace("%p", event.getPlayer().getName()));
                     target.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 10, 1);
                 }
             }

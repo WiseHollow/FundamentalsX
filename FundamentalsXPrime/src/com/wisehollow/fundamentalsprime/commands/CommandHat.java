@@ -12,19 +12,19 @@ public class CommandHat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] strings) {
         if (!sender.hasPermission("Fundamentals.Hat")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.PlayerMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (player.getInventory().getItemInMainHand() == null
                 || player.getInventory().getItemInMainHand().getType() == Material.AIR) {
-            sender.sendMessage(Language.CannotSetAsHat);
+            sender.sendMessage(Language.getInstance().hatSetError);
             return true;
         }
 
@@ -38,7 +38,7 @@ public class CommandHat implements CommandExecutor {
         }
 
         player.getInventory().setHelmet(inHand);
-        player.sendMessage(Language.SetHat);
+        player.sendMessage(Language.getInstance().hatSet);
 
         return true;
     }

@@ -130,6 +130,12 @@ Inventory full from kit: "%iInventory full, item(s) dropped."
 Receiving kit: "%iReceiving items from Kit: %k"
 Social spy enabled: "%iSocial-spy enabled."
 Social spy disabled: "%iSocial-spy disabled."
+Balance of self: "%iYour balance: %b"
+Balance of player: "%i%p's balance: %b"
+Mute player: "%i%p is now muted."
+Muted: "%wYou are muted and cannot speak."
+Unmuted: "%wYou are now unmuted and can speak again."
+Mentioned: "%iYou were mentioned by &l%p&r&6."
 
 
 # Player Statistics
