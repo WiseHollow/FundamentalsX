@@ -103,7 +103,7 @@ public class Language {
         return YamlConfiguration.loadConfiguration(file);
     }
 
-    private void loadFromFile() {
+    public void loadFromFile() {
         YamlConfiguration config = getLanguageConfiguration();
 
         prefixInfo = ChatColor.translateAlternateColorCodes('&', config.getString("Prefix-Info"));

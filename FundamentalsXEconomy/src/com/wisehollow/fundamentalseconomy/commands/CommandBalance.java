@@ -35,7 +35,7 @@ public class CommandBalance implements CommandExecutor {
                     .replace("%b", Double.toString(Main.getPlugin().getEconomy().getBalance(target))));
         } else {
             sender.sendMessage(Language.getInstance().balanceSelf
-                    .replace("%p", Double.toString(Main.getPlugin().getEconomy().getBalance(player))));
+                    .replace("%b", Double.toString(Main.getPlugin().getEconomy().getBalance(player))));
         }
 
         return true;

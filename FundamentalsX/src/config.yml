@@ -4,6 +4,8 @@
 # +------------------------------------------------------+ #
 ############################################################
 
+# Plugin language [Options: en(English), zh(Chinese-simplified].
+Language: 'en'
 # Seconds before teleport
 Teleport_Delay: 3
 # Minutes until considered away from keyboard.
@@ -24,7 +26,7 @@ Starter_Kit: 'None'
 Scheduled_Shutdown_Message: 'Server will shutdown in %m minute(s).'
 # Spawn Limiter for /spawnmob command
 Spawn_Mob_Limit: 10
-# Allow EssentialsX to report back data about your server.
+# Allow FundamentalsX to report back data about your server.
 Allow_Metrics: true
 
 ############################################################
@@ -144,7 +146,7 @@ Prevent_Fire_Creation: false
 Enable_Legacy_Combat: false
 # Will kill a player if they quit soon after involving themselves in combat.
 Prevent_CombatLogging: false
-# Should players have a chance to drop their own head when they are killed by a player.
+# Should players have a chance to drop their own head when they are killed by a player (Requires permission).
 Players_Drop_Head: false
 # What should be the chance to drop their head (0.01-1.00)
 Players_Drop_Head_Chance: 0.2

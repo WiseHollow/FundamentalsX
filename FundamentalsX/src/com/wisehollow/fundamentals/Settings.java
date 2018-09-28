@@ -21,6 +21,7 @@ import java.util.List;
 public class Settings {
 
     private static FileConfiguration config = Main.getPlugin().getConfig();
+    public static String languageAbbreviation = "en";
     public static String motd = "";
     public static int TeleportDelay = 0; // In seconds
     public static Location Spawn = Bukkit.getServer().getWorlds().get(0).getSpawnLocation();
@@ -81,6 +82,7 @@ public class Settings {
     }
 
     public static void load() {
+        languageAbbreviation = config.getString("Language");
         TeleportDelay = config.getInt("Teleport_Delay");
         AFKDelay = config.getInt("Afk_Delay");
         SignColor = config.getBoolean("Sign_Colors");

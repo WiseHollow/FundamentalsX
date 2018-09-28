@@ -70,8 +70,8 @@ public class Main extends JavaPlugin {
 
     @Override
     public void saveDefaultConfig() {
-        loadLanguageFromJar();
         loadConfigFromJar();
+        loadLanguageFromJar(false);
         loadMotdFromJar();
     }
 
@@ -182,9 +182,8 @@ public class Main extends JavaPlugin {
 
     @Override
     public FileConfiguration getConfig() {
-        File file = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "config.yml");
-        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-        return config;
+        File file = new File("plugins" + File.separator + getName() + File.separator + "config.yml");
+        return YamlConfiguration.loadConfiguration(file);
     }
 
     private boolean setupChat() {
@@ -255,14 +254,16 @@ public class Main extends JavaPlugin {
         }
     }
 
-    private void loadLanguageFromJar() {
+    public void loadLanguageFromJar(boolean overwrite) {
+        String languageAbbreviation = getConfig().getString("Language");
+
         File file = new File("plugins" + File.separator + getName() + File.separator + "language.yml");
         File dir = new File("plugins" + File.separator + getName());
         if (!dir.isDirectory())
             dir.mkdirs();
 
-        if (!file.exists()) {
-            exportInternalFile("language.yml", file);
+        if (!file.exists() || overwrite) {
+            exportInternalFile("language-" + languageAbbreviation + ".yml", file);
         }
     }
 

@@ -8,7 +8,7 @@
 #
 # FAQ:
 # Can we customize prefixes? Yes, prefixes can be changed to have words and colors. By default, they are only colors.
-# What other languages are supported? For now, only English. When there are more languages, there will be a section in the configuration that will let you change it.
+# What other languages are supported? Check the config.yml for a list of supported languages.
 # Can I help with translations? Yes you definitely can. Translate from the English version into any official language and speak with me on SpigotMC about it.
 #
 ##############################################################################

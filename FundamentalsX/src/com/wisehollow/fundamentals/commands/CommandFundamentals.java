@@ -34,6 +34,11 @@ public class CommandFundamentals implements CommandExecutor, TabCompleter {
         } else if (args[0].equalsIgnoreCase("version")) {
             sender.sendMessage(Language.getInstance().pluginVersion.replace("%v", Main.getPlugin().getDescription().getVersion()));
             return true;
+        } else if (args[0].equalsIgnoreCase("resetLanguage")) {
+            Main.getPlugin().loadLanguageFromJar(true);
+            Language.getInstance().loadFromFile();
+            sender.sendMessage(Language.getInstance().configurationReloaded);
+            return true;
         }
 
         return false;
@@ -41,7 +46,7 @@ public class CommandFundamentals implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        String[] tabs = new String[] { "version", "reload" };
+        String[] tabs = new String[] { "version", "reload", "resetlanguage" };
         return Arrays.stream(tabs).collect(Collectors.toList());
     }
 }
