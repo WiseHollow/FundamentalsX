@@ -55,7 +55,7 @@ public class CommandBurn implements CommandExecutor {
             sender.sendMessage(Language.getInstance().burnAll.replace("%s", Integer.toString(seconds)));
         else
             sender.sendMessage(Language.getInstance()
-                    .burnPlayer.replace("%s", Integer.toString(seconds).replace("%p", target.getName())));
+                    .burnPlayer.replace("%s", Integer.toString(seconds)).replace("%p", target.getName()));
 
         return true;
     }
