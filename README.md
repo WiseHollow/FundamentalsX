@@ -2,7 +2,7 @@
 
 ![](https://www.spigotmc.org/attachments/fundamentals-png.178239/)
 
-Fundamentals is a plugin that provides its users with a variety of useful commands and features.
+FundamentalsX is a plugin that provides its users with a variety of useful commands and features.
 
 **Some of the features include:**
 1. Emoji Chat
