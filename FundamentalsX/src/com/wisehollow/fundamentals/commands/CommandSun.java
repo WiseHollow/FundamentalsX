@@ -14,7 +14,7 @@ public class CommandSun implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Weather")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -23,7 +23,7 @@ public class CommandSun implements CommandExecutor {
         if (!(sender instanceof Player)) {
             //TODO: Handle as server console.
 
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         } else {
             world = ((Player) sender).getWorld();
@@ -32,7 +32,7 @@ public class CommandSun implements CommandExecutor {
         world.setStorm(false);
         world.setThundering(false);
         world.setWeatherDuration(24000 * 3);
-        sender.sendMessage(Language.PREFIX + "Weather set to sunny.");
+        sender.sendMessage(Language.getInstance().weatherSetSun);
 
         return true;
     }

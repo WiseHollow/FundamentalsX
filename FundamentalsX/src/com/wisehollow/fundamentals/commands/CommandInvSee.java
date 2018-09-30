@@ -15,11 +15,11 @@ public class CommandInvSee implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
         if (!sender.hasPermission("Fundamentals.InvSee")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -28,11 +28,11 @@ public class CommandInvSee implements CommandExecutor {
 
         Player target = PlayerUtil.GetPlayer(args[0]);
         if (target == null || !target.isOnline()) {
-            sender.sendMessage(Language.PlayerMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
-        sender.sendMessage(Language.PREFIX + "Viewing " + target.getName() + "'s inventory.");
+        sender.sendMessage(Language.getInstance().viewingInventory.replace("%p", target.getName()));
         InventorySeeTask task = new InventorySeeTask((Player) sender, target);
         task.run();
 

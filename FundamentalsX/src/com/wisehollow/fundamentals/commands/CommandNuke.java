@@ -18,13 +18,13 @@ public class CommandNuke implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Nuke")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -34,22 +34,22 @@ public class CommandNuke implements CommandExecutor {
 
         Player target = PlayerUtil.GetPlayer(args[0]);
         if (target == null || !target.isOnline()) {
-            player.sendMessage(Language.PlayerMustBeLoggedIn);
+            player.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
         if (target.getGameMode() != GameMode.ADVENTURE && target.getGameMode() != GameMode.SURVIVAL) {
-            player.sendMessage(Language.PREFIX_WARNING + "The player must be in survival mode, or adventure mode.");
+            player.sendMessage(Language.getInstance().playerMustBeInGameMode);
             return true;
         }
 
         if (GodTask.GetTask(target) != null) {
-            player.sendMessage(Language.PREFIX_WARNING + "The target player cannot be in God Mode.");
+            player.sendMessage(Language.getInstance().playerCannotBeInGodMode);
             return true;
         }
 
         if (VanishTask.GetTask(target) != null) {
-            player.sendMessage(Language.PREFIX_WARNING + "The target player cannot be vanished.");
+            player.sendMessage(Language.getInstance().playerCannotBeVanished);
             return true;
         }
 
@@ -57,10 +57,10 @@ public class CommandNuke implements CommandExecutor {
         if (task == null) {
             task = new NukeTask(target);
             task.run();
-            player.sendMessage(Language.PREFIX_WARNING + "You've started bombarding " + target.getName() + ".");
+            player.sendMessage(Language.getInstance().nukeTaskStart.replace("%p", target.getName()));
         } else {
             task.disable();
-            player.sendMessage(Language.PREFIX_WARNING + "You've stopped bombarding " + target.getName() + ".");
+            player.sendMessage(Language.getInstance().nukeTaskStop.replace("%p", target.getName()));
         }
 
         return true;

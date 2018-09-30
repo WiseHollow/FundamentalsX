@@ -63,12 +63,14 @@ public class JailTask implements CustomTask, Listener {
         jailTasks.add(this);
         Bukkit.getServer().getPluginManager().registerEvents(this, Main.getPlugin());
         if (seconds <= 0) {
-            player.sendMessage(Language.PREFIX + "You have been jailed!");
+            player.sendMessage(Language.getInstance().youAreJailed);
             return true;
         } else if (seconds < 60)
-            player.sendMessage(Language.PREFIX + "You have been jailed for " + seconds + " seconds!");
+            player.sendMessage(Language.getInstance().youAreJailedForSeconds
+                    .replace("%s", Integer.toString(seconds)));
         else
-            player.sendMessage(Language.PREFIX + "You have been jailed for " + seconds / 60 + " minutes!");
+            player.sendMessage(Language.getInstance().youAreJailedForMinutes
+                    .replace("%m", Integer.toString(seconds / 60)));
         player.teleport(location);
         taskID = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> disable(), 20L * seconds);
         return true;
@@ -89,7 +91,7 @@ public class JailTask implements CustomTask, Listener {
         EntityDamageByEntityEvent.getHandlerList().unregister(this);
         if (player != null && player.isOnline()) {
             player.teleport(oldLocation);
-            player.sendMessage(Language.PREFIX + "You have been released from jail!");
+            player.sendMessage(Language.getInstance().youAreReleasedFromJail);
         }
     }
 

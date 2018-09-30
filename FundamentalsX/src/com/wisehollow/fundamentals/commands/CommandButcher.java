@@ -14,16 +14,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CommandButcher implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
+        if (!sender.hasPermission("Fundamentals.Butcher")) {
+            sender.sendMessage(Language.getInstance().unauthorized);
+            return true;
+        }
+
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
-        if (!sender.hasPermission("Fundamentals.Butcher")) {
-            player.sendMessage(Language.DoesNotHavePermission);
-            return true;
-        }
 
         boolean all = false;
         EntityType entityType = null;
@@ -46,8 +47,8 @@ public class CommandButcher implements CommandExecutor {
                 }
             }
         });
-        player.sendMessage(Language.PREFIX + "Killed " + kill.get() + " entities.");
 
+        player.sendMessage(Language.getInstance().killedEntities.replace("%e", Integer.toString(kill.get())));
         return true;
     }
 }

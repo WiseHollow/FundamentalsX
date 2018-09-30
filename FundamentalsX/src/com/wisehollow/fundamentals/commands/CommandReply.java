@@ -18,7 +18,7 @@ public class CommandReply implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Message")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -27,7 +27,7 @@ public class CommandReply implements CommandExecutor {
 
         CommandSender target = senderAndReceivers.get(sender);
         if (target == null) {
-            sender.sendMessage(Language.PREFIX + "There is nobody to reply to.");
+            sender.sendMessage(Language.getInstance().nobodyReply);
             return true;
         }
 

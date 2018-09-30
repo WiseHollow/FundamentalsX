@@ -16,7 +16,7 @@ public class CommandMessage implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Message")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -25,24 +25,13 @@ public class CommandMessage implements CommandExecutor {
 
         Player target = PlayerUtil.GetPlayer(args[0]);
         if (target == null || !target.isOnline()) {
-            sender.sendMessage(Language.PREFIX + "That player is not online.");
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
         String msg = "";
         for (int i = 1; i < args.length; i++)
             msg += args[i] + " ";
-
-        //String sPrefix = "";
-        //if (sender instanceof Player)
-        //    sPrefix = PlayerUtil.GetPlayerPrefix((Player) sender);
-        //String rPrefix = PlayerUtil.GetPlayerPrefix(target);
-
-        //sender.sendMessage(sPrefix + sender.getName() + " -> " + ChatColor.BOLD + rPrefix + target.getName() + ChatColor.RESET + " | " + msg);
-        //target.sendMessage(ChatColor.BOLD + sPrefix + sender.getName() + ChatColor.RESET + " -> " + rPrefix + target.getName() + " | " + msg);
-
-        //sender.sendMessage(" -> " + ChatColor.BOLD + rPrefix + target.getName() + ChatColor.RESET + " | " + msg);
-        //target.sendMessage(ChatColor.BOLD + sPrefix + sender.getName() + ChatColor.RESET + " -> " + rPrefix + target.getName() + " | " + msg);
 
         SendPrivateMessageEvent pm = new SendPrivateMessageEvent(sender, target, msg);
         Bukkit.getPluginManager().callEvent(pm);

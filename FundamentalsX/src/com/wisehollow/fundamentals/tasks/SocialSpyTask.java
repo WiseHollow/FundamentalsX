@@ -34,7 +34,7 @@ public class SocialSpyTask implements CustomTask, Listener {
 
     @Override
     public boolean run() {
-        player.sendMessage(Language.PREFIX + "Social Spy enabled.");
+        player.sendMessage(Language.getInstance().socialSpyEnabled);
         Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
         socialSpyTaskList.add(this);
         return true;
@@ -42,7 +42,7 @@ public class SocialSpyTask implements CustomTask, Listener {
 
     @Override
     public void disable() {
-        player.sendMessage(Language.PREFIX + "Social Spy disabled.");
+        player.sendMessage(Language.getInstance().socialSpyDisabled);
         SendPrivateMessageEvent.getHandlerList().unregister(this);
         PlayerQuitEvent.getHandlerList().unregister(this);
         socialSpyTaskList.remove(this);

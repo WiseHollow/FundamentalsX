@@ -14,7 +14,7 @@ public class CommandUnban implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Kick")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -30,13 +30,12 @@ public class CommandUnban implements CommandExecutor {
         //- source: The player's name who banned. Not really important. (Could also be 'console' or something like that)
 
         if (!Bukkit.getBanList(BanList.Type.NAME).isBanned(args[0])) {
-            sender.sendMessage(Language.PREFIX_WARNING + "That player is not banned yet.");
+            sender.sendMessage(Language.getInstance().notBanned);
             return true;
         }
 
         Bukkit.getBanList(BanList.Type.NAME).pardon(args[0]);
-        sender.sendMessage(Language.PREFIX + "You have unbanned " + args[0] + ".");
-
+        sender.sendMessage(Language.getInstance().unbanned.replace("%p", args[0]));
         return true;
     }
 }

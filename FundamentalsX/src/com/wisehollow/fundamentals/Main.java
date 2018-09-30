@@ -36,12 +36,14 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+        saveDefaultConfig();
+
         getLogger().info("Registering Economy: " + setupEconomy());
         getLogger().info("Registering Chat: " + setupChat());
 
-        saveDefaultConfig();
 
         Settings.load();
+        Settings.loadLanguage();
         Settings.loadMotd();
 
         setupMetrics();
@@ -69,6 +71,7 @@ public class Main extends JavaPlugin {
     @Override
     public void saveDefaultConfig() {
         loadConfigFromJar();
+        loadLanguageFromJar(false);
         loadMotdFromJar();
     }
 
@@ -159,7 +162,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Fundamentals").setTabCompleter(commandFundamentals);
     }
 
-    public void setupMetrics() {
+    private void setupMetrics() {
         if (Settings.AllowMetrics) {
             new MetricsLite(this);
         }
@@ -179,9 +182,8 @@ public class Main extends JavaPlugin {
 
     @Override
     public FileConfiguration getConfig() {
-        File file = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "config.yml");
-        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-        return config;
+        File file = new File("plugins" + File.separator + getName() + File.separator + "config.yml");
+        return YamlConfiguration.loadConfiguration(file);
     }
 
     private boolean setupChat() {
@@ -231,8 +233,8 @@ public class Main extends JavaPlugin {
     }
 
     private void loadConfigFromJar() {
-        File file = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "config.yml");
-        File dir = new File("plugins" + File.separator + "FundamentalsX");
+        File file = new File("plugins" + File.separator + getName() + File.separator + "config.yml");
+        File dir = new File("plugins" + File.separator + getName());
         if (!dir.isDirectory())
             dir.mkdirs();
 
@@ -242,13 +244,26 @@ public class Main extends JavaPlugin {
     }
 
     private void loadMotdFromJar() {
-        File file = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "motd.txt");
-        File dir = new File("plugins" + File.separator + "FundamentalsX");
+        File file = new File("plugins" + File.separator + getName() + File.separator + "motd.txt");
+        File dir = new File("plugins" + File.separator + getName());
         if (!dir.isDirectory())
             dir.mkdirs();
 
         if (!file.exists()) {
             exportInternalFile("motd.txt", file);
+        }
+    }
+
+    public void loadLanguageFromJar(boolean overwrite) {
+        String languageAbbreviation = getConfig().getString("Language");
+
+        File file = new File("plugins" + File.separator + getName() + File.separator + "language.yml");
+        File dir = new File("plugins" + File.separator + getName());
+        if (!dir.isDirectory())
+            dir.mkdirs();
+
+        if (!file.exists() || overwrite) {
+            exportInternalFile("language-" + languageAbbreviation + ".yml", file);
         }
     }
 

@@ -17,18 +17,18 @@ public class CommandTPDeny implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.TPDeny")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (!CommandTPA.tpaHash.containsValue(player)) {
-            player.sendMessage(Language.PREFIX + "No pending teleport requests.");
+            player.sendMessage(Language.getInstance().teleportRequestNone);
             return true;
         }
 
@@ -42,9 +42,8 @@ public class CommandTPDeny implements CommandExecutor {
 
         for (Player p : requested) {
             Bukkit.getServer().getScheduler().cancelTask(CommandTPA.tpaTaskIDs.get(p));
-            CommandTPA.tpaHash.containsKey(p);
             CommandTPA.tpaTaskIDs.remove(p);
-            p.sendMessage(Language.PREFIX + "Teleport request denied.");
+            p.sendMessage(Language.getInstance().teleportRequestDeny);
         }
 
         return true;

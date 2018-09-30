@@ -14,29 +14,28 @@ public class CommandKill implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Kill")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (args.length > 0) {
             Player target = PlayerUtil.GetPlayer(args[0]);
             if (target == null || !target.isOnline()) {
-                player.sendMessage(Language.PlayerMustBeLoggedIn);
+                player.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
 
             target.setHealth(0);
-            player.sendMessage(Language.PREFIX_WARNING + "You have killed " + target.getName() + ".");
-        } else {
-            return false;
+            player.sendMessage(Language.getInstance().killPlayer.replace("%p", target.getName()));
+            return true;
         }
 
-        return true;
+        return false;
     }
 }

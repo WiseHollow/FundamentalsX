@@ -16,27 +16,27 @@ public class CommandHeal implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Heal")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (args.length > 0 && sender.hasPermission("Fundamentals.Heal.Other")) {
             player = PlayerUtil.GetPlayer(args[0]);
             if (player == null || !player.isOnline()) {
-                sender.sendMessage(Language.PlayerMustBeLoggedIn);
+                sender.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
 
-            sender.sendMessage(Language.PREFIX + "You have healed " + player.getName() + ".");
-            player.sendMessage(Language.PREFIX + "You have been healed.");
+            sender.sendMessage(Language.getInstance().healedPlayer.replace("%p", player.getName()));
+            player.sendMessage(Language.getInstance().healed);
         } else {
-            sender.sendMessage(Language.PREFIX + "You have been healed.");
+            sender.sendMessage(Language.getInstance().healed);
         }
 
         player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());

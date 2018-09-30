@@ -71,7 +71,7 @@ public class PlayerEvents implements Listener {
                 {
                     event.getPlayer().setAllowFlight(true);
                     event.getPlayer().setFlying(true);
-                    event.getPlayer().sendMessage(Language.PREFIX + "Flight enabled!");
+                    event.getPlayer().sendMessage(Language.getInstance().flightEnabled);
                 }, 1L);
             }
         }

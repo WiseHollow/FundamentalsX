@@ -15,20 +15,20 @@ public class CommandGod implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.God")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (args.length > 0 && sender.hasPermission("Fundamentals.God.Other")) {
             player = PlayerUtil.GetPlayer(args[0]);
             if (player == null || !player.isOnline()) {
-                sender.sendMessage(Language.PlayerMustBeLoggedIn);
+                sender.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
         }
@@ -36,15 +36,15 @@ public class CommandGod implements CommandExecutor {
         GodTask task = GodTask.GetTask(player);
 
         if (task == null) {
-            player.sendMessage(Language.PREFIX + "God-mode enabled!");
+            player.sendMessage(Language.getInstance().godModeEnabled);
             if (!sender.equals(player))
-                sender.sendMessage(Language.PREFIX + "You enabled God Mode for: " + player.getName());
+                sender.sendMessage(Language.getInstance().godModeEnabledFor.replace("%p", player.getName()));
             task = new GodTask(player);
             task.run();
         } else {
-            player.sendMessage(Language.PREFIX + "God-mode disabled!");
+            player.sendMessage(Language.getInstance().godModeDisabled);
             if (!sender.equals(player))
-                sender.sendMessage(Language.PREFIX + "You disabled God Mode for: " + player.getName());
+                sender.sendMessage(Language.getInstance().godModeDisabledFor.replace("%p", player.getName()));
             task.disable();
         }
 

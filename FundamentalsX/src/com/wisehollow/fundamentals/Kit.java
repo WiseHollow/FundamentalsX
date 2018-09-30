@@ -66,7 +66,7 @@ public class Kit {
     }
 
     public void give(Player player) {
-        player.sendMessage(Language.PREFIX + "Receiving items from Kit: " + name);
+        player.sendMessage(Language.getInstance().receivingKit.replace("%k", name));
         boolean full = false;
 
         for (ItemStack item : items) {
@@ -79,7 +79,7 @@ public class Kit {
         }
 
         if (full)
-            player.sendMessage(Language.PREFIX + "Inventory full, item(s) dropped. ");
+            player.sendMessage(Language.getInstance().inventoryFullFromKit);
     }
 
     public String getPermissionNode() {

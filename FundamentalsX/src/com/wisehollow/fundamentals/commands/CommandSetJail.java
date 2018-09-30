@@ -14,22 +14,22 @@ public class CommandSetJail implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Jail.Manage")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (args.length != 1)
             return false;
         if (Settings.jails.containsKey(args[0]))
-            player.sendMessage(Language.PREFIX + "Jail has been updated!");
+            player.sendMessage(Language.getInstance().jailUpdated);
         else
-            player.sendMessage(Language.PREFIX + "Jail has been created!");
+            player.sendMessage(Language.getInstance().jailCreated);
         Settings.jails.put(args[0], player.getLocation().clone());
         Settings.Save();
 

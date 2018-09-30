@@ -18,14 +18,14 @@ public class CommandSmite implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Smite")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (!(sender instanceof Player) && args.length != 0) {
             //TODO: Handle as server console.
 
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
@@ -37,10 +37,10 @@ public class CommandSmite implements CommandExecutor {
         } else if (args.length > 0) {
             Player p = PlayerUtil.GetPlayer(args[0]);
             if (p == null || !p.isOnline()) {
-                sender.sendMessage(Language.PlayerMustBeLoggedIn);
+                sender.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
-            p.sendMessage(Language.PREFIX + "Thou have been smitten.");
+            p.sendMessage(Language.getInstance().smite);
             target = p.getLocation();
         } else {
             return true;

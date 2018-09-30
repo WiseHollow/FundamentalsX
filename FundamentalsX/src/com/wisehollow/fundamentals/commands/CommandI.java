@@ -16,13 +16,13 @@ public class CommandI implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
         Player player = (Player) sender;
 
         if (!sender.hasPermission("Fundamentals.I")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -33,7 +33,7 @@ public class CommandI implements CommandExecutor {
         String[] materialData = args[0].toUpperCase().split(":");
         Material given = MaterialIndex.getMaterial(materialData[0]);
         if (given == null) {
-            sender.sendMessage(Language.PREFIX_WARNING + "Invalid material given.");
+            sender.sendMessage(Language.getInstance().materialInvalid);
             return true;
         }
         int amount = 64;
@@ -41,13 +41,15 @@ public class CommandI implements CommandExecutor {
             try {
                 amount = Integer.valueOf(args[1]);
             } catch (Exception ex) {
-                sender.sendMessage(Language.PREFIX_WARNING + "Invalid amount to give.");
+                sender.sendMessage(Language.getInstance().mustBeANumber);
                 return true;
             }
         }
 
         player.getInventory().addItem(new ItemStack(given, amount));
-        player.sendMessage(Language.PREFIX + "You were given x" + amount + " of " + given.name());
+        player.sendMessage(Language.getInstance().receivedItemStack
+                .replace("%a", Integer.toString(amount))
+                .replace("%m", given.name()));
 
         return true;
     }

@@ -14,7 +14,7 @@ public class CommandSudo implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Sudo")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -23,7 +23,7 @@ public class CommandSudo implements CommandExecutor {
 
         Player target = PlayerUtil.GetPlayer(args[0]);
         if (target == null || !target.isOnline()) {
-            sender.sendMessage(Language.PlayerMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
@@ -33,7 +33,9 @@ public class CommandSudo implements CommandExecutor {
         }
 
         target.performCommand(c);
-        sender.sendMessage(Language.PREFIX + "You have run the command \'/" + c + "\' for player " + target.getName() + ".");
+        sender.sendMessage(Language.getInstance().sudoPlayer
+                .replace("%c", c)
+                .replace("%p", target.getName()));
         return true;
     }
 }
