@@ -39,14 +39,14 @@ public class PVPTimer implements Listener {
     }
 
     public boolean start() {
-        if (!started) {
+        if (!started && player != null) {
             started = true;
 
             register();
             scheduleCancel();
             timers.put(player.getUniqueId(), this);
-            if (player != null && player.isOnline()) {
-                player.sendMessage(Language.PVPTimerEnabled.replace("%m", Integer.toString(Settings.delayedPVPMinutes)));
+            if (player.isOnline()) {
+                player.sendMessage(Language.getInstance().pvpTimerEnabled.replace("%m", Integer.toString(Settings.delayedPVPMinutes)));
             }
 
             return true;
@@ -64,7 +64,7 @@ public class PVPTimer implements Listener {
                 bukkitTask.cancel();
             }
             if (player != null && player.isOnline()) {
-                player.sendMessage(Language.PVPTimerDisabled);
+                player.sendMessage(Language.getInstance().pvpTimerDisabled);
             }
 
             return true;
@@ -103,7 +103,7 @@ public class PVPTimer implements Listener {
 
             if (cancel) {
                 event.setCancelled(true);
-                damager.sendMessage(Language.CannotPVPWithPlayer);
+                damager.sendMessage(Language.getInstance().cannotPVPWithPlayer);
             }
         }
     }

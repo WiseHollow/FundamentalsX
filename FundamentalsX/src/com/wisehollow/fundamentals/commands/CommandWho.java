@@ -21,7 +21,7 @@ public class CommandWho implements CommandExecutor {
                 .collect(Collectors.toList());
     }
 
-    private String GetOnlinePlayers() {
+    private String getOnlinePlayersString() {
         StringBuilder list = new StringBuilder();
 
         getOnlinePlayers()
@@ -33,13 +33,14 @@ public class CommandWho implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Who")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
-        String onlinePlayers = GetOnlinePlayers();
-
-        sender.sendMessage(Language.PREFIX + "Online players (" + getOnlinePlayers().size() + "): " + GetOnlinePlayers());
+        String onlinePlayers = getOnlinePlayersString();
+        sender.sendMessage(Language.getInstance().onlinePlayers
+                .replace("%a", Integer.toString(getOnlinePlayers().size()))
+                .replace("%p", onlinePlayers));
         return true;
     }
 }

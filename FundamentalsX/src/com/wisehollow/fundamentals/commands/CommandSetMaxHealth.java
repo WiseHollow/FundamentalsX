@@ -15,13 +15,13 @@ public class CommandSetMaxHealth implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.SetMaxHealth")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -38,14 +38,16 @@ public class CommandSetMaxHealth implements CommandExecutor {
         if (args.length > 1 && sender.hasPermission("Fundamentals.SetMaxHealth.Other")) {
             player = PlayerUtil.GetPlayer(args[1]);
             if (player == null || !player.isOnline()) {
-                sender.sendMessage(Language.PlayerMustBeLoggedIn);
+                sender.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
 
-            sender.sendMessage(Language.PREFIX + "You set " + player.getName() + "'s maximum health to: " + health);
-            player.sendMessage(Language.PREFIX + "Your health has been set to: " + health);
+            sender.sendMessage(Language.getInstance().maxHealthOfPlayerSet
+                    .replace("%p", player.getName())
+                    .replace("%m", Double.toString(health)));
+            player.sendMessage(Language.getInstance().maxHealthSet.replace("%m", Double.toString(health)));
         } else {
-            sender.sendMessage(Language.PREFIX + "Your health has been set to: " + health);
+            sender.sendMessage(Language.getInstance().maxHealthSet.replace("%m", Double.toString(health)));
         }
 
         player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);

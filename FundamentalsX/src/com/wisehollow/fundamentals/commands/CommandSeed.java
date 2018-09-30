@@ -13,18 +13,18 @@ public class CommandSeed implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Seed")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         long seed = player.getWorld().getSeed();
-        player.sendMessage(Language.PREFIX + "World seed: " + seed);
+        player.sendMessage(Language.getInstance().worldSeed.replace("%s", Long.toString(seed)));
 
         return true;
     }

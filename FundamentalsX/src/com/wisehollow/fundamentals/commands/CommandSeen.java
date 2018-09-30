@@ -10,15 +10,16 @@ public class CommandSeen implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
         if (!sender.hasPermission("Fundamentals.Seen")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
+
         if (args.length == 1) {
             sendTargetPlayerInformation(sender, args[0]);
             return true;
         }
+
         return false;
     }
 

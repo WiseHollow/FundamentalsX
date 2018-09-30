@@ -43,7 +43,8 @@ public class AFKTask implements CustomTask, Listener {
     @Override
     public boolean run() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.sendMessage(Language.PREFIX + PlayerUtil.GetPlayerPrefix(player) + player.getName() + ChatColor.RESET + " is now AFK.");
+            p.sendMessage(Language.getInstance().isNowAFK
+                    .replace("%p", PlayerUtil.GetPlayerPrefix(player) + player.getName()));
         }
 
         taskList.add(this);
@@ -54,7 +55,8 @@ public class AFKTask implements CustomTask, Listener {
     @Override
     public void disable() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.sendMessage(Language.PREFIX + PlayerUtil.GetPlayerPrefix(player) + player.getName() + ChatColor.RESET + " is no longer AFK.");
+            p.sendMessage(Language.getInstance().isNoLongerAFK
+                    .replace("%p", PlayerUtil.GetPlayerPrefix(player) + player.getName()));
         }
 
         taskList.remove(this);

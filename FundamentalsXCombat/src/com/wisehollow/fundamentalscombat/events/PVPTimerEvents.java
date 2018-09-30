@@ -13,7 +13,7 @@ public class PVPTimerEvents implements Listener {
     public void enableOnFirstJoin(PlayerJoinEvent event) {
         if (!event.getPlayer().hasPlayedBefore()) {
             new PVPTimer(event.getPlayer(), Settings.delayedPVPMinutes).start();
-            event.getPlayer().sendMessage(Language.PVPTimerHowToDisable);
+            event.getPlayer().sendMessage(Language.getInstance().pvpTimerHowTo);
         }
     }
 

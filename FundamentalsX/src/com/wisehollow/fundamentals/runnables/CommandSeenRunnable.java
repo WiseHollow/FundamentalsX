@@ -49,9 +49,9 @@ public class CommandSeenRunnable implements Runnable {
 
     private void sendDetails(PlayerData playerData, long lastPlayed) {
         final Location targetLocation = playerData.getLastLocation();
-        commandSender.sendMessage(Language.PREFIX + "Player information: " + ChatColor.RESET + playerData.getName());
-        commandSender.sendMessage(Language.PREFIX + "Last logged in: " + ChatColor.RESET + convertTime(lastPlayed));
-        commandSender.sendMessage(Language.PREFIX + "Location: " + ChatColor.RESET
+        commandSender.sendMessage(Language.getInstance().playerInfo + playerData.getName());
+        commandSender.sendMessage(Language.getInstance().lastLoggedIn + convertTime(lastPlayed));
+        commandSender.sendMessage(Language.getInstance().location
                 + targetLocation.getWorld().getName() + "   " + targetLocation.getBlockX()
                 + " " + targetLocation.getBlockY() + " " + targetLocation.getBlockZ());
     }

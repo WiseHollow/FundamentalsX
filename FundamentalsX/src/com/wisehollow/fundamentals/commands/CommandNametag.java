@@ -16,13 +16,13 @@ public class CommandNametag implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Nametag")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -37,6 +37,9 @@ public class CommandNametag implements CommandExecutor {
         nameTag.setItemMeta(meta);
 
         player.getInventory().addItem(nameTag);
+        player.sendMessage(Language.getInstance().receivedItemStack
+                .replace("%a", "1")
+                .replace("%m", nameTag.getType().name()));
 
         return true;
     }

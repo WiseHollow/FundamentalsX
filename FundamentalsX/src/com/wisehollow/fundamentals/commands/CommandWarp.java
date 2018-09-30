@@ -17,13 +17,13 @@ public class CommandWarp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Warp")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -33,13 +33,13 @@ public class CommandWarp implements CommandExecutor {
                 if (player.hasPermission("Fundamentals.Warps." + s))
                     warps += s + " ";
             }
-            player.sendMessage(Language.PREFIX + ChatColor.BOLD + "Warps: " + ChatColor.RESET + warps);
+            player.sendMessage(Language.getInstance().warpList + warps);
             return true;
         }
 
         String name = args[0].toLowerCase();
         if (!Settings.warps.containsKey(name)) {
-            player.sendMessage(Language.PREFIX_WARNING + "Warp does not exist!");
+            player.sendMessage(Language.getInstance().warpDoesNotExist);
             return true;
         }
 

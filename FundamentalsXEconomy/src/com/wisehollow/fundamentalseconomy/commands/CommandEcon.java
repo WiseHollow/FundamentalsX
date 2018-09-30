@@ -18,14 +18,14 @@ public class CommandEcon implements CommandExecutor
     {
         if (!(sender instanceof Player))
         {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Econ"))
         {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -43,14 +43,14 @@ public class CommandEcon implements CommandExecutor
             Double amount;
 
             if (target == null) {
-                player.sendMessage(Language.PlayerMustBeLoggedIn);
+                player.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
 
             try {
                 amount = Double.parseDouble(args[2]);
             } catch (NumberFormatException exception) {
-                player.sendMessage(Language.MustBeANumber);
+                player.sendMessage(Language.getInstance().mustBeANumber);
                 return true;
             }
 
@@ -61,7 +61,7 @@ public class CommandEcon implements CommandExecutor
                     EconomyResponse depositResponse = Main.getPlugin().getEconomy().depositPlayer(target, amount);
                     if (depositResponse.errorMessage != null) {
                         Main.getPlugin().getEconomy().depositPlayer(player, amount);
-                        player.sendMessage(Language.PREFIX_WARNING + depositResponse.errorMessage);
+                        player.sendMessage(Language.getInstance().prefixWarning + depositResponse.errorMessage);
                         return true;
                     } else
                         afterBalance = depositResponse.balance;
@@ -69,7 +69,7 @@ public class CommandEcon implements CommandExecutor
                 case TAKE:
                     EconomyResponse withdrawResponse = Main.getPlugin().getEconomy().withdrawPlayer(target, amount);
                     if (withdrawResponse.errorMessage != null) {
-                        player.sendMessage(Language.PREFIX_WARNING + withdrawResponse.errorMessage);
+                        player.sendMessage(Language.getInstance().prefixWarning + withdrawResponse.errorMessage);
                         return true;
                     } else
                         afterBalance = withdrawResponse.balance;
@@ -81,26 +81,26 @@ public class CommandEcon implements CommandExecutor
                         if (amount > 0) {
                             setResponse = Main.getPlugin().getEconomy().depositPlayer(target, amount);
                             if (setResponse.errorMessage != null) {
-                                player.sendMessage(Language.PREFIX_WARNING + setResponse.errorMessage);
+                                player.sendMessage(Language.getInstance().prefixWarning + setResponse.errorMessage);
                                 return true;
                             } else
                                 afterBalance = setResponse.balance;
                         } else if (amount < 0) {
                             setResponse = Main.getPlugin().getEconomy().withdrawPlayer(target, -amount);
                             if (setResponse.errorMessage != null) {
-                                player.sendMessage(Language.PREFIX_WARNING + setResponse.errorMessage);
+                                player.sendMessage(Language.getInstance().prefixWarning + setResponse.errorMessage);
                                 return true;
                             } else
                                 afterBalance = setResponse.balance;
                         }
                     } else {
-                        player.sendMessage(Language.PREFIX_WARNING + setResponse.errorMessage);
+                        player.sendMessage(Language.getInstance().prefixWarning + setResponse.errorMessage);
                         return true;
                     }
                     break;
             }
 
-            String message = Language.MoneySetTo
+            String message = Language.getInstance().moneySet
                     .replace("%1", afterBalance + " " + (afterBalance == 1 ? Main.getPlugin().getEconomy().currencyNameSingular() : Main.getPlugin().getEconomy().currencyNamePlural()));
             player.sendMessage(message);
 

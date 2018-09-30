@@ -14,33 +14,33 @@ public class CommandFly implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Fly")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (args.length > 0 && sender.hasPermission("Fundamentals.Fly.Other")) {
             player = PlayerUtil.GetPlayer(args[0]);
             if (player == null || !player.isOnline()) {
-                sender.sendMessage(Language.PlayerMustBeLoggedIn);
+                sender.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
         }
 
         player.setAllowFlight(!player.getAllowFlight());
         if (player.getAllowFlight()) {
-            player.sendMessage(Language.PREFIX + "Flight enabled!");
+            player.sendMessage(Language.getInstance().flightEnabled);
             if (!sender.equals(player))
-                sender.sendMessage(Language.PREFIX + "You enabled flight for: " + player.getName());
+                sender.sendMessage(Language.getInstance().flightEnabledFor.replace("%p", player.getName()));
         } else {
-            player.sendMessage(Language.PREFIX + "Flight disabled!");
+            player.sendMessage(Language.getInstance().flightDisabled);
             if (!sender.equals(player))
-                sender.sendMessage(Language.PREFIX + "You disabled flight for: " + player.getName());
+                sender.sendMessage(Language.getInstance().flightDisabledFor.replace("%p", player.getName()));
         }
 
 

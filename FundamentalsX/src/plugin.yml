@@ -114,6 +114,9 @@ commands:
       Unban:
                description: Unban a player from the server.
                usage: /<command> [player]
+      Hat:
+               description: Set the item in your hand as your hat.
+               usage: /<command>
       SocialSpy:
                description: Listen to all private messages on the server.
                usage: /<command>
@@ -328,6 +331,9 @@ permissions:
                default: op
       Fundamentals.Feed.Other:
                description: Fill a players food bar.
+               default: op
+      Fundamentals.Hat:
+               description: Set the item in your hand as your hat.
                default: op
       Fundamentals.Heal:
                description: Heal and feed a player to full health.

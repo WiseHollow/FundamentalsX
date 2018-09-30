@@ -15,13 +15,13 @@ public class CommandSetHome implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.SetHome")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -29,14 +29,14 @@ public class CommandSetHome implements CommandExecutor {
 
         int amount = pd.getHomes().size();
         if (!Settings.HasPermissionForHomeAmount(player, amount + 1)) {
-            player.sendMessage(Language.PREFIX_WARNING + "You do not have permission for more homes.");
+            player.sendMessage(Language.getInstance().homesMaxed);
             return true;
         }
 
         String name = args.length > 0 ? args[0] : "home";
         pd.setHome(name);
 
-        player.sendMessage(Language.PREFIX + "Your position is now accessable with '/home " + name + "'!");
+        player.sendMessage(Language.getInstance().homeSet.replace("%h", name));
         return true;
     }
 }

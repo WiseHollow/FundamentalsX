@@ -19,7 +19,7 @@ public class CommandWeather implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Weather")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -28,7 +28,7 @@ public class CommandWeather implements CommandExecutor, TabCompleter {
         if (!(sender instanceof Player)) {
             //TODO: Handle as server console.
 
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         } else {
             world = ((Player) sender).getWorld();
@@ -42,7 +42,7 @@ public class CommandWeather implements CommandExecutor, TabCompleter {
                     weather += "/Storming";
             } else
                 weather = "Sunny";
-            sender.sendMessage(Language.PREFIX + "It is currently " + weather + " (Opt: Sun/Rain/Storm).");
+            sender.sendMessage(Language.getInstance().weatherCurrent.replace("%t", weather));
             return true;
         }
 
@@ -50,19 +50,19 @@ public class CommandWeather implements CommandExecutor, TabCompleter {
             world.setStorm(false);
             world.setThundering(false);
             world.setWeatherDuration(24000 * 3);
-            sender.sendMessage(Language.PREFIX + "Weather set to sunny.");
+            sender.sendMessage(Language.getInstance().weatherSetSun);
         } else if (args[0].equalsIgnoreCase("Rain")) {
             world.setStorm(true);
             world.setThundering(false);
             world.setWeatherDuration(24000 * 3);
             world.setThunderDuration(24000 * 3);
-            sender.sendMessage(Language.PREFIX + "Weather set to rain.");
+            sender.sendMessage(Language.getInstance().weatherSetRain);
         } else if (args[0].equalsIgnoreCase("Storm")) {
             world.setStorm(true);
             world.setThundering(true);
             world.setWeatherDuration(24000 * 3);
             world.setThunderDuration(24000 * 3);
-            sender.sendMessage(Language.PREFIX + "Weather set to storm.");
+            sender.sendMessage(Language.getInstance().weatherSetStorm);
         } else {
             return false;
         }

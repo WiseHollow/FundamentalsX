@@ -1,8 +1,8 @@
 package com.wisehollow.fundamentalschat.commands;
 
-import com.wisehollow.fundamentals.PlayerUtil;
+import com.wisehollow.fundamentals.Language;
+import com.wisehollow.fundamentals.utils.PlayerUtil;
 import com.wisehollow.fundamentalschat.tasks.MuteTask;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,7 +17,7 @@ public class CommandMute implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
         if (!sender.hasPermission("Fundamentals.Mute")) {
-            sender.sendMessage(ChatColor.DARK_RED + "You do not have permission for this.");
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -29,10 +29,10 @@ public class CommandMute implements CommandExecutor {
             } else {
                 Player target = PlayerUtil.GetPlayer(args[0]);
                 if (target == null) {
-                    sender.sendMessage(ChatColor.DARK_RED + "That player is not online.");
+                    sender.sendMessage(Language.getInstance().targetNotOnline);
                 } else {
                     MuteTask.insertTask(target);
-                    sender.sendMessage(ChatColor.DARK_RED + target.getName() + " is now muted.");
+                    sender.sendMessage(Language.getInstance().mutePlayer.replace("%p", target.getName()));
                 }
             }
 

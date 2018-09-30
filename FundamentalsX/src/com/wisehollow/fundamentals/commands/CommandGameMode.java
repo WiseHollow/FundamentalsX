@@ -20,13 +20,13 @@ public class CommandGameMode implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.GameMode")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -36,7 +36,7 @@ public class CommandGameMode implements CommandExecutor, TabCompleter {
         if (args.length > 1 && sender.hasPermission("Fundamentals.GameMode.Other")) {
             player = PlayerUtil.GetPlayer(args[1]);
             if (player == null || !player.isOnline()) {
-                sender.sendMessage(Language.PlayerMustBeLoggedIn);
+                sender.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
             }
         }
@@ -54,11 +54,13 @@ public class CommandGameMode implements CommandExecutor, TabCompleter {
 
         if (mode != null) {
             player.setGameMode(mode);
-            player.sendMessage(Language.PREFIX + "GameMode set to: " + mode.name());
+            player.sendMessage(Language.getInstance().gameModeSet.replace("%g", mode.name()));
             if (args.length > 1)
-                sender.sendMessage(Language.PREFIX + "GameMode of " + player.getName() + " set to: " + mode.name());
+                sender.sendMessage(Language.getInstance().gameModeOfPlayerSet
+                        .replace("%p", player.getName())
+                        .replace("%g", mode.name()));
         } else {
-            player.sendMessage(Language.PREFIX + "Illegal GameMode given: " + gm);
+            player.sendMessage(Language.getInstance().gameModeInvalid);
         }
 
         return true;

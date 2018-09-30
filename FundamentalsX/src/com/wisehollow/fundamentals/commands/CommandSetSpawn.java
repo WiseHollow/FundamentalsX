@@ -14,13 +14,13 @@ public class CommandSetSpawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.SetSpawn")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -28,13 +28,13 @@ public class CommandSetSpawn implements CommandExecutor {
             Settings.SpawnFirstJoin = player.getLocation().clone();
             Settings.Save();
 
-            player.sendMessage(Language.PREFIX + "First-join spawn location has been set!");
+            player.sendMessage(Language.getInstance().firstJoinSet);
         }
 
         Settings.Spawn = player.getLocation().clone();
         Settings.Save();
 
-        player.sendMessage(Language.PREFIX + "Spawn location has been set!");
+        player.sendMessage(Language.getInstance().spawnSet);
         return true;
     }
 }

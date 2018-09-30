@@ -15,18 +15,18 @@ public class CommandBack implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Back")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (!TeleportTask.PreviousLocation.containsKey(player)) {
-            player.sendMessage(Language.PREFIX_WARNING + "No previous location recorded. ");
+            player.sendMessage(Language.getInstance().noPreviousLocation);
             return true;
         }
 

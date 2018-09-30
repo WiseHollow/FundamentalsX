@@ -17,7 +17,7 @@ public class CommandBan implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Kick")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -26,7 +26,7 @@ public class CommandBan implements CommandExecutor {
 
         Player target = PlayerUtil.GetPlayer(args[0]);
         if (target == null || !target.isOnline()) {
-            sender.sendMessage(Language.PlayerMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
@@ -47,7 +47,7 @@ public class CommandBan implements CommandExecutor {
         Bukkit.getBanList(BanList.Type.NAME).addBan(target.getName(), reason, null, sender.getName());
         target.kickPlayer(reason);
 
-        sender.sendMessage(Language.PREFIX + "You have banned " + target.getName() + " for reason: " + reason);
+        sender.sendMessage(Language.getInstance().banPlayer.replace("%p", target.getName()).replace("%r", reason));
 
         return true;
     }

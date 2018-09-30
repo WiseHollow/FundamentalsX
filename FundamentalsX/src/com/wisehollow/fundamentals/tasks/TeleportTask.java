@@ -18,7 +18,7 @@ public class TeleportTask implements CustomTask, Listener {
     public static HashMap<Entity, Location> PreviousLocation = new HashMap<>(); //TODO: Make listen to teleport event and update on ANY teleport on server.
 
     private static void teleport(Entity entity, Location target) {
-        entity.sendMessage(Language.PREFIX + "Teleporting...");
+        entity.sendMessage(Language.getInstance().teleporting);
         entity.teleport(target);
     }
 
@@ -44,7 +44,8 @@ public class TeleportTask implements CustomTask, Listener {
 
         initialLocation = entity.getLocation().clone();
         Main.getPlugin().getServer().getPluginManager().registerEvents(this, Main.getPlugin());
-        entity.sendMessage(Language.PREFIX + "Teleport in " + seconds + " seconds... Do not move.");
+        entity.sendMessage(Language.getInstance().teleportingWarmUp
+                .replace("%s", Integer.toString(seconds)));
         taskID = Main.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () ->
         {
             disable();
@@ -69,7 +70,7 @@ public class TeleportTask implements CustomTask, Listener {
         if (distance > 2) {
             Main.getPlugin().getServer().getScheduler().cancelTask(taskID);
             PlayerMoveEvent.getHandlerList().unregister(this);
-            entity.sendMessage(Language.PREFIX + "Teleport cancelled.");
+            entity.sendMessage(Language.getInstance().teleportingCancelled);
         }
     }
 }

@@ -14,7 +14,7 @@ public class CommandDay implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Time")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -22,16 +22,14 @@ public class CommandDay implements CommandExecutor {
 
         if (!(sender instanceof Player)) {
             //TODO: Handle as server console.
-
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         } else {
             world = ((Player) sender).getWorld();
         }
 
         world.setTime(1000);
-        sender.sendMessage(Language.PREFIX + "Time set to 7:00am.");
-
+        sender.sendMessage(Language.getInstance().timeSet.replace("%t", "7:00am"));
         return true;
     }
 }

@@ -1,5 +1,6 @@
 package com.wisehollow.fundamentalschat.tasks;
 
+import com.wisehollow.fundamentals.Language;
 import com.wisehollow.fundamentals.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -52,14 +53,14 @@ public class MuteTask implements Listener {
 
     public void Run() {
         if (player.isOnline())
-            ((Player) player).sendMessage(ChatColor.DARK_RED + "You have been muted!");
+            ((Player) player).sendMessage(Language.getInstance().muted);
         tasks.add(this);
         Bukkit.getPluginManager().registerEvents(this, Main.getPlugin());
     }
 
     public void Disable() {
         if (player.isOnline())
-            ((Player) player).sendMessage(ChatColor.DARK_RED + "You have been unmuted!");
+            ((Player) player).sendMessage(Language.getInstance().unmuted);
         tasks.remove(this);
         unregisterAll();
     }
@@ -74,7 +75,7 @@ public class MuteTask implements Listener {
     public void preventChat(AsyncPlayerChatEvent event) {
         if (event.getPlayer().getUniqueId().equals(uuid)) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.DARK_RED + "You are muted!");
+            event.getPlayer().sendMessage(Language.getInstance().muted);
         }
     }
 

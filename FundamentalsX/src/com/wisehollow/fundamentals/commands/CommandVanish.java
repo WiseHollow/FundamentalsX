@@ -14,24 +14,24 @@ public class CommandVanish implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Vanish")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         VanishTask task = VanishTask.GetTask(player);
 
         if (task == null) {
-            player.sendMessage(Language.PREFIX + "You are now vanished!");
+            player.sendMessage(Language.getInstance().vanished);
             task = new VanishTask(player);
             task.run();
         } else {
-            player.sendMessage(Language.PREFIX + "You are no longer vanished!");
+            player.sendMessage(Language.getInstance().noLongerVanished);
             task.disable();
         }
 

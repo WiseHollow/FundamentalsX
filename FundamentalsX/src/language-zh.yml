@@ -1,0 +1,188 @@
+############################################################
+# +------------------------------------------------------+ #
+# |         FundamentalsX Language Configuration         | #
+# +------------------------------------------------------+ #
+############################################################
+
+##############################################################################
+#
+# FAQ:
+# Can we customize prefixes? Yes, prefixes can be changed to have words and colors. By default, they are only colors.
+# What other languages are supported? For now, only English. When there are more languages, there will be a section in the configuration that will let you change it.
+# Can I help with translations? Yes you definitely can. Translate from the English version into any official language and speak with me on SpigotMC about it.
+#
+##############################################################################
+
+##########################
+# Reference symbol = '%i'
+##########################
+Prefix-Info: "&6"
+
+##########################
+# Reference symbol = '%w'
+##########################
+Prefix-Warning: "&4"
+
+##########################
+# Standard messages
+##########################
+Balance of player: "%i%p的银行款项: %b"
+Balance of self: "%i你的银行款项: %b"
+Ban player: "%i你禁止了 %p 由于这个原因, '%r'。"
+Burn all: "%i你燃烧了所有的玩家 %s 秒。"
+Burn player: "%i你燃烧了 %p %s 秒。"
+Cannot PVP with player: "%w你不能在此刻和那个玩家PVP。"
+Cannot send money to self: "%w你不能自己给自己钱。"
+Cannot teleport to player: "%w那个玩家的瞬移功能已被关掉。"
+Enchantment added: "%i施魔法能力 %e 增加到级别 %l。"
+Fed player: "%i你喂食了 %p。"
+Fed: "%i你的胃口需要已经被满足。"
+First join set: "%i初始加入重生点位置已经被设定！"
+Flight disabled for: "%i你取消了%p的飞行功能。"
+Flight disabled: "%i飞行功能已被取消！"
+Flight enabled for: "%i你开启了%p的飞行功能。"
+Flight enabled: "%i飞行功能已被开启！"
+Fly speed set: "%i飞行速度已经被设定为%秒。"
+GameMode invalid: "%w无效的游戏模式已经被详细说明。"
+GameMode of player set: "%i%p的游戏模式已经被更新为%g。"
+GameMode set: "%i你的游戏模式已经被更新为%g!"
+GodMode disabled for: "%i你取消了%p的神模式。"
+GodMode disabled: "%i神模式已经被取消。"
+GodMode enabled for: "%i你开启了%p的神模式。"
+GodMode enabled: "%i神模式已经被开启！"
+Hat set error: "%w你不能把这个设置为你的帽子。"
+Hat set: "%i你已经装备了一个新的帽子！"
+Healed player: "%i你痊愈了%p。"
+Healed: "%i你已经被痊愈了。"
+Home does not exist: "%w那个家不存在。"
+Home list: "%i家: &r"
+Home removed: "%i那个家已经被移除了。"
+Home set: "%i你的位置现在可以通过'/home %h'得到了！"
+Homes maxed: "%w你没有权限得到更多的家。"
+Invalid coordinates: "%w被提供的是无效的坐标。"
+Invalid enchantment: "%w无效的施魔法种类。"
+Invalid entity type: "%w你输入了无效的实体种类。"
+Invalid speed: "%w速度必须在数字1-10之间。"
+Invalid time formatting: "%w无效的时间格式(例子: 50秒, 15秒, 或者1个小时)。"
+Inventory full from kit: "%i存活清单已满, 物品(们) 已被减少。"
+Is no longer AFK: "%i%p已经不再是不活动状态了。"
+Is now AFK: "%i%p现在是不活动状态。"
+Item not in hand: "%w你必须有一个物件在你的手中。"
+Jail cannot send: "%w你不能监禁那个玩家。"
+Jail created: "%i监狱已经被创建。"
+Jail does not exist: "%w那个监狱不存在。"
+Jail list: "%i监狱： &r"
+Jail removed: "%i监狱已经被移除。"
+Jail send: "%i你监禁了 %p。"
+Jail updated: "%i监狱已经被更新。"
+Kick all: "%i你踢走了所有的玩家因为, '%r'。"
+Kick player: "%i你踢走了 %p 因为, '%r'。"
+Kill player: "%i你杀死了 %p。"
+Killed entities: "%i杀死了 %e 实体。"
+Kit delay minutes: "%w尝试再次使用这个装备在 %t 分钟后。"
+Kit delay seconds: "%w尝试再次使用这个装备在 %t 秒钟后。"
+Kit does not exist: "%w那个装备不存在。"
+Material invalid: "%w无效的指定的材料。"
+Max health of player set: "%i你设置了 %p的最高健康值为 %m"
+Max health set: "%i你的最高健康值已经被设为 %m。"
+Max level enchantment: "%w那个魔法的最高级别是%l。"
+Mentioned: "%i你被&l%p&r&6提及到。"
+Money received: "%i你收到了 %1 从 %2。"
+Money sent: "%i你将 %1 给了 %2。"
+Money set: "%i你的银行款项被设为了 %1。"
+Must be a number: "%w你输入的价值不是数字。"
+Mute player: "%i%p 已经被静音。"
+Muted: "%w你已经被静音所以不能发音。"
+No homes: "%i你没有设定任何家。"
+No longer vanished: "%i你已经不是消失状态了！"
+No previous location: "%i没有先前的位置被记录。"
+Nobody reply: "%i没有任何人可以被回复。"
+Not banned: "%w那个玩家还没有被禁止。"
+Not jailed: "%w那个玩家没有被监禁。"
+Not logged in: "%w你必须登录才能做这件事。"
+Nuke task start: "%i你开始了炮轰 %p。"
+Nuke task stop: "%i你停止了炮轰 %p。"
+Online players: "%i在线玩家 (%a): %p"
+PVP timer disabled: "%i反-PVP 已经被取消! 你已经不再被保护不受PVP伤害了。"
+PVP timer enabled: "%i反-PVP 已经被开启! 你被保护不受PVP伤害 %m 分钟。"
+PVP timer how-to: "%i开启 PVP 在任何时候用 '/pvp'。"
+PVP timer none: "%w你没有一个活跃的 PVP 计时器。"
+Player cannot be in GodMode: "%w目标不能用神模式。"
+Player cannot be vanished: "%w目标不能被消失。"
+Player must be in GameMode: "%w目标必须在生存或者冒险模式。"
+Plugin version: "%i基础X 版本是 %v。"
+Received ItemStack: "%i你收到了 x%a 从 %m 中。"
+Receiving kit: "%i从装备中收到了物品： %k"
+Shutdown task already started: "%w一个停工任务已经开始了。"
+Smite: "%w你被折磨了。"
+Social spy disabled: "%i社会间谍被取消了。"
+Social spy enabled: "%i社会间谍被开启了。"
+Spawn entities: "%i%a %t 在目标位置重生。"
+Spawn set: "%i重生点位置已经被设定!"
+Sudo player: "%i你执行了命令 '/%c' 为 %p."
+Target not online: "%w目标玩家必须是登录状态。"
+Teleport request accept: "%i瞬移请求已经被接受!"
+Teleport request deny: "%i瞬移请求被拒绝!"
+Teleport request none: "%i目前没有待定的瞬移请求。"
+Teleport request received: "%i%p 正在请求瞬移到你的位置, </tpaccept or /tpdeny>。"
+Teleport request sent: "%i瞬移请求已经发送!"
+Teleport toggled: "%i瞬移到你的位置已经被切换 %s。"
+Teleporting cancelled: "%i瞬移已经被取消。"
+Teleporting warm up: "%i瞬移在 %s 秒后完成... 请不要移动。"
+Teleporting: "%i瞬移中..."
+Time current: "%i现在的时间是 %t 滴答。"
+Time set: "%i时间被设为 %t。"
+Unauthorized: "%w你没有权限做这个事。"
+Unbanned: "%i你取消了禁止 %p。"
+Unmuted: "%w你已经不再被静音中并且可以继续讲话了。"
+Vanished: "%i你现在消失了!"
+Viewing enderchest: "%i查看 %p的終界箱。"
+Viewing inventory: "%i查看 %p的库存。"
+Walk speed set: "%i行走速度被设为 %s."
+Warp does not exist: "%w那个传送点不存在。"
+Warp list: "%i传送点: &r"
+Warp removed: "%i传送点已经被删除"
+Warp set: "%i传送点已经被设置!"
+Weather current: "%i目前是 %t 在这个世界。"
+Weather set rain: "%i天气被设置为下雨天。"
+Weather set storm: "%i天气被设置为暴风雨。"
+Weather set sun: "%i天气被设置为晴天。"
+World seed: "%i这个世界的种子是 %s。"
+You are jailed for minutes: "&w你被监禁了 %m 分钟。"
+You are jailed for seconds: "&w你被监禁了 %s 秒。"
+You are jailed: "%w你被监禁了!"
+You are released from jail: "&i你从监狱中被释放了!"
+
+##########################
+# Player Statistics
+##########################
+AFK: "&6AFK: &r"
+Fly speed: "&6飞行速度: &r"
+Food: "&6食物: &r"
+GameMode: "&6游戏模式: &r"
+God mode: "&6神模式: &r"
+Health: "&6健康: &r"
+Jail: "&6监制了的: &r"
+Last logged in: "&6上次登录时: &r"
+Location: "&6位置: &r"
+Player info: "&6玩家信息: &r"
+Vanish: "&6消失了的: &r"
+Walk speed: "&6行走速度: &r"
+
+##########################
+# Server Statistics
+##########################
+Allocated memory: "&6分配的存储空间： &r%m mb"
+Chunk list: "大块的量: "
+Current TPS: "&6目前的 TPS: &r%a (%p%)"
+Entity list: "实体: "
+Free memory: "&6闲置内存: &r%m mb"
+Living entity list: "活着的实体: "
+Maximum memory: "&6最高的存储空间: &r%m mb"
+Server statistics: "&6&l--- 服务器统计 ---"
+
+##########################
+# File IO
+##########################
+Configuration reloaded: "%i配置文件已经被重新上传。"
+File copied: "复制了 %f 到插件目录。"

@@ -19,7 +19,7 @@ public class CommandKick implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Kick")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -32,7 +32,7 @@ public class CommandKick implements CommandExecutor {
         if (args[0].equalsIgnoreCase("all")) {
             targets.addAll(Bukkit.getOnlinePlayers());
         } else if (target == null || !target.isOnline()) {
-            sender.sendMessage(Language.PlayerMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         }
 
@@ -53,9 +53,11 @@ public class CommandKick implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("all"))
-            sender.sendMessage(Language.PREFIX + "You have kicked all players for reason: " + reason);
-        else if (sender != null)
-            sender.sendMessage(Language.PREFIX + "You have kicked " + target.getName() + " for reason: " + reason);
+            sender.sendMessage(Language.getInstance().kickAll.replace("%r", reason));
+        else if (target != null)
+            sender.sendMessage(Language.getInstance().kickPlayer
+                    .replace("%p", target.getName())
+                    .replace("%r", reason));
 
         return true;
     }

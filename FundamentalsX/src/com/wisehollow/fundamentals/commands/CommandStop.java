@@ -14,7 +14,7 @@ public class CommandStop implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!sender.hasPermission("Fundamentals.Stop")) {
-            sender.sendMessage(Language.DoesNotHavePermission);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -33,13 +33,13 @@ public class CommandStop implements CommandExecutor {
             try {
                 minutes = Integer.valueOf(args[0]);
             } catch (Exception ex) {
-                sender.sendMessage(Language.PREFIX_WARNING + ex.getMessage());
+                sender.sendMessage(Language.getInstance().prefixWarning + ex.getMessage());
                 return true;
             }
 
             StopTask task = new StopTask(minutes);
             if (!task.run()) {
-                sender.sendMessage(Language.PREFIX_WARNING + "There is already a shutdown task started.");
+                sender.sendMessage(Language.getInstance().shutdownTaskAlreadyStarted);
             }
         }
 

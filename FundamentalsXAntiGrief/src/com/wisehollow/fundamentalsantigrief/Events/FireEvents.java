@@ -41,13 +41,10 @@ public class FireEvents implements Listener {
 
     @EventHandler
     public void PreventFireCreation(BlockIgniteEvent event) {
-        if (event.isCancelled() || event.getCause() != BlockIgniteEvent.IgniteCause.FLINT_AND_STEEL || !Settings.PreventFireCreation)
-            return;
-
         if (event.getIgnitingEntity().hasPermission("Fundamentals.AntiGrief.Bypass"))
             return;
-
-
+        if (event.isCancelled() || event.getCause() != BlockIgniteEvent.IgniteCause.FLINT_AND_STEEL || !Settings.PreventFireCreation)
+            return;
         event.setCancelled(true);
     }
 }

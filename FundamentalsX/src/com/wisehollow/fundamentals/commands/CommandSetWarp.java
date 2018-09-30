@@ -14,13 +14,13 @@ public class CommandSetWarp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String cmd, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Language.YouMustBeLoggedIn);
+            sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;
         }
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.SetWarp")) {
-            player.sendMessage(Language.DoesNotHavePermission);
+            player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
@@ -30,7 +30,7 @@ public class CommandSetWarp implements CommandExecutor {
         String name = args[0].toLowerCase();
         Settings.warps.put(name, player.getLocation());
 
-        player.sendMessage(Language.PREFIX + "Warp has been set!");
+        player.sendMessage(Language.getInstance().warpSet);
         Settings.Save();
         return true;
     }
