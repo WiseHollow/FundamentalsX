@@ -1,4 +1,4 @@
-package com.wisehollow.fundamentalsprime.commands;
+package com.wisehollow.fundamentals.commands;
 
 import com.wisehollow.fundamentals.Language;
 import org.bukkit.Material;

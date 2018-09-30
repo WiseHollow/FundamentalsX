@@ -162,7 +162,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Fundamentals").setTabCompleter(commandFundamentals);
     }
 
-    public void setupMetrics() {
+    private void setupMetrics() {
         if (Settings.AllowMetrics) {
             new MetricsLite(this);
         }
