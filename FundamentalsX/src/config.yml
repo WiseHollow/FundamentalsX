@@ -154,10 +154,3 @@ Players_Drop_Head_Chance: 0.2
 Delayed_PVP_For_New_Players: false
 # The amount of minutes new players are protected from pvp.
 Delayed_PVP_Minutes: 15
-
-############################################################
-# +------------------------------------------------------+ #
-# |                  FundamentalsXPrime                  | #
-# +------------------------------------------------------+ #
-############################################################
-

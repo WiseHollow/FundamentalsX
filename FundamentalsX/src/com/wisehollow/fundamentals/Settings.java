@@ -72,9 +72,9 @@ public class Settings {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                return;
             }
         }
+
     }
 
     public static void loadLanguage() {
