@@ -168,7 +168,7 @@ public class Settings {
                             if (args.length > 4) {
                                 for (int i = 4; i < args.length; i++) {
                                     String[] eElement = args[i].split("%");
-                                    Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(eElement[0].toLowerCase()));
+                                    Enchantment enchantment = Enchantment.getByName(eElement[0].toUpperCase());
                                     int level = Integer.valueOf(eElement[1]);
                                     enchantments.put(enchantment, level);
                                 }

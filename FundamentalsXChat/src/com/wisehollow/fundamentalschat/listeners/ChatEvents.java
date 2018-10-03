@@ -108,7 +108,7 @@ public class ChatEvents implements Listener {
                 if (target != null && !mentioned.contains(target)) {
                     mentioned.add(target);
                     target.sendMessage(Language.getInstance().mentioned.replace("%p", event.getPlayer().getName()));
-                    target.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 10, 1);
+                    target.playSound(target.getLocation(), Sound.BLOCK_NOTE_HARP, 10, 1);
                 }
             }
         }

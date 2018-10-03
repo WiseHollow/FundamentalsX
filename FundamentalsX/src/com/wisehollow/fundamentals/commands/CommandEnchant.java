@@ -36,12 +36,12 @@ public class CommandEnchant implements CommandExecutor {
 
         if (args.length == 0) {
             StringBuilder stringBuilder = new StringBuilder();
-            Arrays.asList(Enchantment.values()).forEach(enchantment -> stringBuilder.append(enchantment.getKey().getKey()).append(" "));
+            Arrays.asList(Enchantment.values()).forEach(enchantment -> stringBuilder.append(enchantment.getName()).append(" "));
             player.sendMessage(Language.getInstance().prefixInfo + stringBuilder.toString());
             return true;
         }
 
-        Enchantment enchantment = EnchantmentWrapper.getByKey(NamespacedKey.minecraft(args[0].toLowerCase()));
+        Enchantment enchantment = EnchantmentWrapper.getByName(args[0].toLowerCase());
 
         int level = 1;
         if (args.length > 1) {
@@ -70,7 +70,7 @@ public class CommandEnchant implements CommandExecutor {
         }
 
         player.sendMessage(Language.getInstance().enchantmentAdded
-                .replace("%e", enchantment.getKey().getKey())
+                .replace("%e", enchantment.getName())
                 .replace("%l", Integer.toString(level)));
         return true;
     }

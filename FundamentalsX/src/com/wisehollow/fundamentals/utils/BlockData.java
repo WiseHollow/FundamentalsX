@@ -7,15 +7,15 @@ import org.bukkit.block.Block;
  * Created by John on 10/16/2016.
  */
 public class BlockData {
-    private org.bukkit.block.data.BlockData data;
+    private byte data;
     private Material material;
 
     public BlockData(Block block) {
         material = block.getType();
-        data = block.getBlockData();
+        data = block.getData();
     }
 
-    public org.bukkit.block.data.BlockData getData() {
+    public byte getData() {
         return data;
     }
 

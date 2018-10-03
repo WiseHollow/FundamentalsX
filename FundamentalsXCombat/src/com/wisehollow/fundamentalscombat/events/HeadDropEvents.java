@@ -24,7 +24,7 @@ public class HeadDropEvents implements Listener {
     }
 
     private void dropHead(final Player killed) {
-        ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD, 1);
+        ItemStack playerHead = new ItemStack(Material.SKULL_ITEM, 1);
         SkullMeta skullMeta = (SkullMeta) playerHead.getItemMeta();
         skullMeta.setOwningPlayer(killed);
         skullMeta.setDisplayName(killed.getName() + "'s head");
