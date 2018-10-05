@@ -10,7 +10,7 @@ depend: [ FundamentalsX, Vault ]
 commands:
       Econ:
                description: Manage other players wallet.
-               usage: /<command> [set|give|take] [player] [amount]
+               usage: /<command> [set|give|take|prune] [player] [amount]
       Balance:
                description: Check how much money a player has.
                usage: /<command> [player]
