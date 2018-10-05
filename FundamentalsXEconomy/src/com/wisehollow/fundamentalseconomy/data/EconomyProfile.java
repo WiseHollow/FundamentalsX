@@ -67,11 +67,14 @@ public class EconomyProfile {
         this.balance = Settings.startingBalance;
     }
 
-    private EconomyProfile(OfflinePlayer player, double balance) {
+    public EconomyProfile(OfflinePlayer player, double balance) {
         this.player = player;
         this.balance = balance;
     }
 
+    public String getPlayerName() {
+        return player.getName();
+    }
     public double getBalance() {
         return balance;
     }
