@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by John on 10/20/2016.
@@ -26,7 +27,7 @@ public class PlayerData implements Listener {
         for (PlayerData pd : data)
             if (pd.uuid.equalsIgnoreCase(player.getUniqueId().toString()))
                 return pd;
-        return null;
+        return LoadPlayerData(player).orElse(null);
     }
 
     public static PlayerData getPlayerData(String uuid) {
@@ -110,6 +111,8 @@ public class PlayerData implements Listener {
     private Location lastLocation;
     private Boolean teleportDisabled;
 
+    private Optional<TeleportationRequest> teleportationRequest;
+
     public PlayerData(OfflinePlayer player) {
         this.uuid = player.getUniqueId().toString();
         this.name = player.getName();
@@ -118,6 +121,8 @@ public class PlayerData implements Listener {
         if (player.isOnline()) {
             this.lastLocation = ((Player) player).getLocation();
         }
+
+        this.teleportationRequest = Optional.empty();
     }
 
     public String getName() {
@@ -130,6 +135,18 @@ public class PlayerData implements Listener {
 
     public Location getLastLocation() {
         return lastLocation;
+    }
+
+    public Optional<TeleportationRequest> getTeleportationRequest() {
+        return teleportationRequest;
+    }
+
+    public void setTeleportationRequest(TeleportationRequest teleportationRequest) {
+        this.teleportationRequest = Optional.of(teleportationRequest);
+    }
+
+    public void clearTeleportationRequest() {
+        this.teleportationRequest = Optional.empty();
     }
 
     public boolean setHome(String name) {
