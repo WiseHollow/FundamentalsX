@@ -70,6 +70,6 @@ public class BalanceTopTask extends Thread {
 
     private void report() {
         commandSender.sendMessage(Language.getInstance().prefixInfo + " --- FundamentalsX Economy --- ");
-        balTop.forEach(economyProfile -> commandSender.sendMessage(economyProfile.getPlayerName() + " - " + economyProfile.getBalance()));
+        balTop.forEach(economyProfile -> commandSender.sendMessage(Language.getInstance().prefixInfo + economyProfile.getPlayerName() + " - " + economyProfile.getBalance()));
     }
 }

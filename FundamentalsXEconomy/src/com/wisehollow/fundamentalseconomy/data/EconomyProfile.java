@@ -45,6 +45,7 @@ public class EconomyProfile {
             profile = new EconomyProfile(player, balance);
         } else {
             profile = new EconomyProfile(player);
+            profile.save();
         }
 
         economyProfileHashMap.put(player.getUniqueId(), profile);
