@@ -23,23 +23,27 @@ public class CommandWarp implements CommandExecutor {
 
         Player player = (Player) sender;
         if (!sender.hasPermission("Fundamentals.Warp")) {
-            player.sendMessage(Language.getInstance().unauthorized);
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
         if (args.length == 0) {
             String warps = "";
             for (String s : Settings.warps.keySet()) {
-                if (player.hasPermission("Fundamentals.Warps." + s))
+                if (sender.hasPermission("Fundamentals.Warps." + s))
                     warps += s + " ";
             }
-            player.sendMessage(Language.getInstance().warpList + warps);
+            sender.sendMessage(Language.getInstance().warpList + warps);
             return true;
         }
 
         String name = args[0].toLowerCase();
+
         if (!Settings.warps.containsKey(name)) {
-            player.sendMessage(Language.getInstance().warpDoesNotExist);
+            sender.sendMessage(Language.getInstance().warpDoesNotExist);
+            return true;
+        } else if (!sender.isOp() && !sender.hasPermission("Fundamentals.Warps." + name)) {
+            sender.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 

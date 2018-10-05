@@ -1,6 +1,8 @@
 package com.wisehollow.fundamentals.commands;
 
 import com.wisehollow.fundamentals.Language;
+import com.wisehollow.fundamentals.userdata.PlayerData;
+import com.wisehollow.fundamentals.userdata.TeleportationRequest;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,30 +24,19 @@ public class CommandTPDeny implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+        final PlayerData playerData = PlayerData.getPlayerData(player);
         if (!sender.hasPermission("Fundamentals.TPDeny")) {
             player.sendMessage(Language.getInstance().unauthorized);
             return true;
         }
 
-        if (!CommandTPA.tpaHash.containsValue(player)) {
+        if (!playerData.getTeleportationRequest().isPresent()) {
             player.sendMessage(Language.getInstance().teleportRequestNone);
             return true;
         }
 
-        List<Player> requested = new ArrayList<>();
-
-        for (Player p : CommandTPA.tpaHash.keySet()) {
-            if (CommandTPA.tpaHash.get(p).equals(player)) {
-                requested.add(p);
-            }
-        }
-
-        for (Player p : requested) {
-            Bukkit.getServer().getScheduler().cancelTask(CommandTPA.tpaTaskIDs.get(p));
-            CommandTPA.tpaTaskIDs.remove(p);
-            p.sendMessage(Language.getInstance().teleportRequestDeny);
-        }
-
+        TeleportationRequest request = playerData.getTeleportationRequest().get();
+        request.deny();
         return true;
     }
 }

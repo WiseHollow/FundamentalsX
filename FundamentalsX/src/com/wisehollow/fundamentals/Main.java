@@ -5,10 +5,12 @@ import com.wisehollow.fundamentals.userdata.MetricsLite;
 import com.wisehollow.fundamentals.listeners.*;
 import com.wisehollow.fundamentals.tasks.JailTask;
 import com.wisehollow.fundamentals.tasks.LagTask;
+import com.wisehollow.fundamentals.userdata.PlayerData;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -55,6 +57,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SignColorEvents(), this);
         getServer().getPluginManager().registerEvents(new DamageEvents(), this);
 
+        registerAlreadyLoggedInPlayers();
         PlayerEvents.Refresh();
 
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new LagTask(), 100L, 1L);
@@ -73,6 +76,14 @@ public class Main extends JavaPlugin {
         loadConfigFromJar();
         loadLanguageFromJar(false);
         loadMotdFromJar();
+    }
+
+    private void registerAlreadyLoggedInPlayers() {
+        for (Player player : getServer().getOnlinePlayers()) {
+            if (PlayerData.getPlayerData(player) == null) {
+                PlayerData.LoadPlayerData(player);
+            }
+        }
     }
 
     private void registerCommands() {
