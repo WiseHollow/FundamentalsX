@@ -1,6 +1,7 @@
 package com.wisehollow.fundamentalseconomy;
 
 import com.wisehollow.fundamentalseconomy.commands.CommandBalance;
+import com.wisehollow.fundamentalseconomy.commands.CommandBalanceTop;
 import com.wisehollow.fundamentalseconomy.commands.CommandEcon;
 import com.wisehollow.fundamentalseconomy.commands.CommandPay;
 import com.wisehollow.fundamentalseconomy.events.EconomyEvents;
@@ -63,6 +64,7 @@ public class Main extends JavaPlugin {
         CommandBalance commandBalance = new CommandBalance();
         getCommand("bal").setExecutor(commandBalance);
         getCommand("balance").setExecutor(commandBalance);
+        getCommand("baltop").setExecutor(new CommandBalanceTop());
         getCommand("pay").setExecutor(new CommandPay());
         getCommand("econ").setExecutor(new CommandEcon());
     }
