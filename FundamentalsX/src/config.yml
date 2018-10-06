@@ -4,7 +4,7 @@
 # +------------------------------------------------------+ #
 ############################################################
 
-# Plugin language [Options: en(English), zh(Chinese-simplified].
+# Plugin language [Options: en(English), zh(Chinese-simplified), sp(Spanish), fr(French)].
 Language: 'en'
 # Seconds before teleport
 Teleport_Delay: 3

@@ -42,24 +42,22 @@ public class CommandSpeed implements CommandExecutor {
             return false;
         }
 
-        if (speed > 10 || speed < 1) {
+        Integer speedQuote = ((int) (speed * 10));
+        if (speedQuote > 10 || speedQuote < 1) {
             sender.sendMessage(Language.getInstance().invalidSpeed);
             return true;
         }
 
-        //TODO: What???
-        String speedQuote = Integer.toString((int) (speed * 10));
-
         if (player.isFlying()) {
             player.setFlySpeed(speed);
-            sender.sendMessage(Language.getInstance().flySpeedSet.replace("%s", speedQuote));
+            sender.sendMessage(Language.getInstance().flySpeedSet.replace("%s", Integer.toString(speedQuote)));
             if (!sender.equals(player))
-                player.sendMessage(Language.getInstance().flySpeedSet.replace("%s", speedQuote));
+                player.sendMessage(Language.getInstance().flySpeedSet.replace("%s", Integer.toString(speedQuote)));
         } else {
             player.setWalkSpeed(speed);
-            sender.sendMessage(Language.getInstance().walkSpeedSet.replace("%s", speedQuote));
+            sender.sendMessage(Language.getInstance().walkSpeedSet.replace("%s", Integer.toString(speedQuote)));
             if (!sender.equals(player))
-                player.sendMessage(Language.getInstance().walkSpeedSet.replace("%s", speedQuote));
+                player.sendMessage(Language.getInstance().walkSpeedSet.replace("%s", Integer.toString(speedQuote)));
         }
 
         return true;
