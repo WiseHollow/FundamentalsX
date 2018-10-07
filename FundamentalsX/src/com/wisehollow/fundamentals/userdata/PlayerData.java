@@ -7,19 +7,15 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by John on 10/20/2016.
  */
-public class PlayerData implements Listener {
+public class PlayerData {
     private static final String directory = "plugins" + File.separator + "FundamentalsX" + File.separator + "Player Data";
     private static List<PlayerData> data = new ArrayList<>();
 
@@ -100,7 +96,6 @@ public class PlayerData implements Listener {
 
         }
 
-        Bukkit.getPluginManager().registerEvents(profile, Main.getPlugin());
         data.add(profile);
         return Optional.of(profile);
     }
@@ -135,6 +130,10 @@ public class PlayerData implements Listener {
 
     public Location getLastLocation() {
         return lastLocation;
+    }
+
+    public void setLastLocation(Location location) {
+        lastLocation = location;
     }
 
     public Optional<TeleportationRequest> getTeleportationRequest() {
@@ -207,12 +206,14 @@ public class PlayerData implements Listener {
             config.set("TeleportDisabled", teleportDisabled);
         }
 
-        config.set("LastPosition.Location.World", lastLocation.getWorld().getName());
-        config.set("LastPosition.Location.X", lastLocation.getBlockX());
-        config.set("LastPosition.Location.Y", lastLocation.getBlockY());
-        config.set("LastPosition.Location.Z", lastLocation.getBlockZ());
-        config.set("LastPosition.Location.Yaw", lastLocation.getYaw());
-        config.set("LastPosition.Location.Pitch", lastLocation.getPitch());
+        if (lastLocation != null) {
+            config.set("LastPosition.Location.World", lastLocation.getWorld().getName());
+            config.set("LastPosition.Location.X", lastLocation.getBlockX());
+            config.set("LastPosition.Location.Y", lastLocation.getBlockY());
+            config.set("LastPosition.Location.Z", lastLocation.getBlockZ());
+            config.set("LastPosition.Location.Yaw", lastLocation.getYaw());
+            config.set("LastPosition.Location.Pitch", lastLocation.getPitch());
+        }
 
         config.set("Homes", null);
         for (String key : homes.keySet()) {
@@ -235,12 +236,5 @@ public class PlayerData implements Listener {
 
     private void setHomes(HashMap<String, Location> homes) {
         this.homes = homes;
-    }
-
-    @EventHandler
-    public void SaveOnExit(PlayerQuitEvent event) {
-        save();
-        UnloadPlayerData(this);
-        event.getHandlers().unregister(this);
     }
 }

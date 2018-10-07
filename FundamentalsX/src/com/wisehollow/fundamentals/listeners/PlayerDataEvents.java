@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
 
 public class PlayerDataEvents implements Listener {
@@ -19,12 +20,12 @@ public class PlayerDataEvents implements Listener {
     }
 
     @EventHandler
-    public void InitializePlayerDataOnEnable(PluginEnableEvent event) {
-        if (event.getPlugin() != Main.getPlugin())
-            return;
-
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            PlayerData.LoadPlayerData(p);
+    public void unloadAndSaveOnQuit(PlayerQuitEvent event) {
+        PlayerData playerData = PlayerData.getPlayerData(event.getPlayer());
+        if (playerData != null) {
+            playerData.setLastLocation(event.getPlayer().getLocation().clone());
+            playerData.save();
+            PlayerData.UnloadPlayerData(playerData);
         }
     }
 
