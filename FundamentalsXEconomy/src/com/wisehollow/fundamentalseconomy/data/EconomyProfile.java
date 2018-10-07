@@ -45,6 +45,7 @@ public class EconomyProfile {
             profile = new EconomyProfile(player, balance);
         } else {
             profile = new EconomyProfile(player);
+            profile.save();
         }
 
         economyProfileHashMap.put(player.getUniqueId(), profile);
@@ -67,11 +68,14 @@ public class EconomyProfile {
         this.balance = Settings.startingBalance;
     }
 
-    private EconomyProfile(OfflinePlayer player, double balance) {
+    public EconomyProfile(OfflinePlayer player, double balance) {
         this.player = player;
         this.balance = balance;
     }
 
+    public String getPlayerName() {
+        return player.getName();
+    }
     public double getBalance() {
         return balance;
     }

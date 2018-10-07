@@ -1,0 +1,188 @@
+############################################################
+# +------------------------------------------------------+ #
+# |         FundamentalsX Language Configuration         | #
+# +------------------------------------------------------+ #
+############################################################
+
+##############################################################################
+#
+# FAQ:
+# Can we customize prefixes? Yes, prefixes can be changed to have words and colors. By default, they are only colors.
+# What other languages are supported? Check the config.yml for a list of supported languages.
+# Can I help with translations? Yes you definitely can. Translate from the English version into any official language and speak with me on SpigotMC about it.
+#
+##############################################################################
+
+##########################
+# Reference symbol = '%i'
+##########################
+Prefix-Info: "&6"
+
+##########################
+# Reference symbol = '%w'
+##########################
+Prefix-Warning: "&4"
+
+##########################
+# Standard messages
+##########################
+Balance of player: "%i%p's equilibrar: %b"
+Balance of self: "%itu equilibrar: %b"
+Ban player: "%ihas prohibido %p con razón, '%r'."
+Burn all: "%iHas quemado a todos los jugadores por %s segundos."
+Burn player: "%iHas quemado %p por %s segundos."
+Cannot PVP with player: "%wNo puedes PVP con ese jugador en este momento."
+Cannot send money to self: "%wNo puedes enviarte dinero a ti mismo."
+Cannot teleport to player: "%wEse jugador tiene su teletransportación deshabilitada."
+Enchantment added: "%iEncantamiento %e agregado a nivel %l."
+Fed player: "%iHas alimentado %p."
+Fed: "%iSu apetito se ha cumplido."
+First join set: "%i¡Se ha establecido la ubicación de spawn de primera unión!"
+Flight disabled for: "%iHas deshabilitado el vuelo por %p."
+Flight disabled: "%i¡Vuelo deshabilitado!"
+Flight enabled for: "%iHabilitado el vuelo para %p."
+Flight enabled: "%i¡Vuelo habilitado!"
+Fly speed set: "%iVelocidad de vuelo establecida en %s."
+GameMode invalid: "%wModo de juego no es válido especificado."
+GameMode of player set: "%i%p's Modo de juego ha sido actualizado a %g."
+GameMode set: "%iTu Modo de juego ha sido actualizado a %g!"
+GodMode disabled for: "%iHas desactivado el modo dios para %p."
+GodMode disabled: "%iEl modo de Dios estaba deshabilitado."
+GodMode enabled for: "%iHas habilitado el modo dios para %p."
+GodMode enabled: "%i¡El modo de Dios fue habilitado!"
+Hat set error: "%wNo puedes poner eso como tu sombrero."
+Hat set: "%i¡Has equipado un sombrero nuevo!"
+Healed player: "%iHas sanado %p."
+Healed: "%iHas sido sanado."
+Home does not exist: "%wEse hogar no existe."
+Home list: "%iCasas: &r"
+Home removed: "%iEse hogar ha sido eliminado."
+Home set: "%iAhora puedes acceder a tu posición con '/ casa %h'!"
+Homes maxed: "%wNo tienes permiso para más casas."
+Invalid coordinates: "%wCoordenadas inválidas dadas."
+Invalid enchantment: "%wTipo de encantamiento inválido."
+Invalid entity type: "%wIngresaste un tipo de entidad no válida."
+Invalid speed: "%wLa velocidad debe ser un número entre 1-10."
+Invalid time formatting: "%wFormato de tiempo no válido (por ej .: 50m, 15s o 1h)."
+Inventory full from kit: "%iInventario lleno, artículo (s) caído."
+Is no longer AFK: "%i%p ya no está afk."
+Is now AFK: "%i%p es ahora afk."
+Item not in hand: "%wDebes tener un objeto en tu mano."
+Jail cannot send: "%wNo puedes encarcelar a ese jugador."
+Jail created: "%iLa cárcel ha sido creada."
+Jail does not exist: "%wEsa cárcel no existe."
+Jail list: "%iCárceles: &r"
+Jail removed: "%iLa cárcel ha sido eliminada."
+Jail send: "%iHas encarcelado %p."
+Jail updated: "%iLa cárcel ha sido actualizada."
+Kick all: "%iHas pateado a todos los jugadores por la razón, '%r'."
+Kick player: "%iHas pateado %p con razón, '%r'."
+Kill player: "%iHas matado %p."
+Killed entities: "%iDelicado %e entidades."
+Kit delay minutes: "%wIntenta usar el Equipo nuevamente en %t minutos."
+Kit delay seconds: "%wIntenta usar el Equipo nuevamente en %t segundos."
+Kit does not exist: "%wEse Equipo no existe."
+Material invalid: "%wMaterial inválido especificado."
+Max health of player set: "%iEstableces la salud máxima de %p's para %m"
+Max health set: "%iTu salud máxima está configurada para %m"
+Max level enchantment: "%wEl nivel máximo para ese encantamiento es %l."
+Mentioned: "%iFuiste mencionado por &l%p&r&6."
+Money received: "%iUsted recibió %1 de %2."
+Money sent: "%iEnviaste %1 a %2."
+Money set: "%iSu saldo de caja se estableció en %1."
+Must be a number: "%wEl valor ingresado no es numérico."
+Mute player: "%i%p ahora está silenciado."
+Muted: "%wEstás en silencio y no puedes hablar."
+No homes: "%iNo tienes ningún conjunto de casas."
+No longer vanished: "%i¡Ya no estás desaparecido!"
+No previous location: "%iNo se registró ninguna ubicación previa."
+Nobody reply: "%iNo hay nadie a quien responder."
+Not banned: "%wEse jugador no está prohibido todavía."
+Not jailed: "%wEse jugador no está encarcelado."
+Not logged in: "%wDebe iniciar sesión para hacer eso."
+Nuke task start: "%iHas comenzado a bombardear %p."
+Nuke task stop: "%iHas dejado de bombardear %p."
+Online players: "%iJugadores en línea (%a): %p"
+PVP timer disabled: "%i¡Anti-PVP Discapacitado! Ya no estás protegido contra PVP."
+PVP timer enabled: "%i¡Anti-PVP Habilitado! Estás protegido de PVP por %m minutos."
+PVP timer how-to: "%iHabilitar PVP en cualquier momento con '/pvp'."
+PVP timer none: "%wNo tienes un temporizador PVP activo."
+Player cannot be in GodMode: "%wEl objetivo no puede estar en modo dios."
+Player cannot be vanished: "%wEl objetivo no puede desaparecer.."
+Player must be in GameMode: "%wEl objetivo debe estar en modo supervivencia o aventura.."
+Plugin version: "%iLa versión de FundamentosX es %v."
+Received ItemStack: "%iLe dieron x%a de %m."
+Receiving kit: "%iRecibiendo artículos del Equipo: %k"
+Shutdown task already started: "%wYa se ha iniciado una tarea de apagado."
+Smite: "%wHas sido herido."
+Social spy disabled: "%iEspía social desactivado."
+Social spy enabled: "%iEspia social habilitado."
+Spawn entities: "%i%a %t generado en la ubicación de destino"
+Spawn set: "%i¡Se ha establecido la ubicación de engendro!"
+Sudo player: "%iHas ejecutado el comando '/%c' por %p."
+Target not online: "%wEl jugador objetivo debe estar conectado."
+Teleport request accept: "%i¡Solicitud de teletransporte aceptado!"
+Teleport request deny: "%i¡Solicitud de teletransportación denegada!"
+Teleport request none: "%iNo hay solicitudes de teletransporte pendientes."
+Teleport request received: "%i%p está solicitando teletransportarse a usted, </tpaccept o /tpdeny>."
+Teleport request sent: "%i¡Solicitud de teletransporte enviado!"
+Teleport toggled: "%iSe ha cambiado la teletransportación a usted %s."
+Teleporting cancelled: "%iTeletransportarse cancelado."
+Teleporting warm up: "%iTeletransportarse en %s segundos ... no te muevas."
+Teleporting: "%iTeletransportarse ..."
+Time current: "%iLa hora actual es %t garrapatas."
+Time set: "%iel tiempo se fijó en %t."
+Unauthorized: "%wNo tienes permiso para hacer eso."
+Unbanned: "%iHas desatado %p."
+Unmuted: "%wAhora estás en silencio y puedes volver a hablar."
+Vanished: "%i¡Ahora estás desaparecido!"
+Viewing enderchest: "%iVisita %p's Ender pecho."
+Viewing inventory: "%iVisita %p's inventario."
+Walk speed set: "%iVelocidad de caminata establecida en %s."
+Warp does not exist: "%wEsa urdimbre no existe."
+Warp list: "%iDeformaciones: &r"
+Warp removed: "%iWarp ha sido eliminado"
+Warp set: "%i¡Warp se ha establecido!"
+Weather current: "%iActualmente es %t en este mundo."
+Weather set rain: "%iEl clima está listo para llover."
+Weather set storm: "%iEl clima está listo para la tormenta."
+Weather set sun: "%iEl clima se pone a soleado."
+World seed: "%iLa semilla de este mundo es %s."
+You are jailed for minutes: "&wHas sido encarcelado por %m minutos."
+You are jailed for seconds: "&wHas sido encarcelado por %s segundos."
+You are jailed: "%w¡Has sido encarcelado por!"
+You are released from jail: "&i¡Has sido liberado de la cárcel!"
+
+##########################
+# Player Statistics
+##########################
+AFK: "&6AFK: &r"
+Fly speed: "&6velocidad de vuelo: &r"
+Food: "&6Comida: &r"
+GameMode: "&6modo de juego: &r"
+God mode: "&6modo de Dios: &r"
+Health: "&6salud: &r"
+Jail: "&6encarcelado: &r"
+Last logged in: "&6Último inicio de sesión en: &r"
+Location: "&6Ubicación: &r"
+Player info: "&6Información del jugador: &r"
+Vanish: "&6Desaparecido: &r"
+Walk speed: "&6Velocidad de caminata: &r"
+
+##########################
+# Server Statistics
+##########################
+Allocated memory: "&6Memoria asignada: &r%m mb"
+Chunk list: "Trozos: "
+Current TPS: "&6TPS actual: &r%a (%p%)"
+Entity list: "Entidades: "
+Free memory: "&6Memoria libre: &r%m mb"
+Living entity list: "Entidades vivientes: "
+Maximum memory: "&6Memoria máxima: &r%m mb"
+Server statistics: "&6&l--- Estadísticas del servidor ---"
+
+##########################
+# File IO
+##########################
+Configuration reloaded: "%iLos archivos de configuración han sido recargados.."
+File copied: "Copiado %f al directorio de plugins."
