@@ -171,6 +171,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Sudo").setExecutor(new CommandSudo());
         this.getCommand("Fundamentals").setExecutor(commandFundamentals);
         this.getCommand("Fundamentals").setTabCompleter(commandFundamentals);
+        this.getCommand("Nick").setExecutor(new CommandNickname());
     }
 
     private void setupMetrics() {
