@@ -52,7 +52,7 @@ public class CommandNickname implements CommandExecutor {
     }
 
     private void setNickname(final Player player, final String nickname) {
-        player.setDisplayName(nickname);
+        player.setDisplayName("~" + nickname);
         player.sendMessage(Language.getInstance().nicknameChanged.replace("%n", nickname));
     }
 

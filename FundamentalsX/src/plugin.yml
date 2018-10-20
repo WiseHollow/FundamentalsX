@@ -8,519 +8,528 @@ softdepend: [ Vault, Multiverse-Core ]
 loadbefore: [ WorldEdit, FundamentalsXCounterGrief ]
 
 commands:
-      SetSpawn:
-               description: Set a location for the starting positions of all players.
-               usage: /<command>
-      Spawn:
-               description: Teleport yourself to the server's spawn location.
-               usage: /<command>
-      Back:
-               description: Teleport yourself a previous location.
-               usage: /<command>
-      TP:
-               description: Teleport yourself to the position of another.
-               usage: /<command> [player]
-      TPPOS:
-               description: Teleport yourself to specific coordinates.
-               usage: /<command> [x] [y] [z]
-      TPA:
-               description: Request teleport to another player.
-               usage: /<command> [player]
-      TPAccept:
-               description: Accept teleport request of another player.
-               usage: /<command>
-      TPDeny:
-               description: Deny teleport request of another player.
-               usage: /<command>
-      TPToggle:
-               description: Toggle the ability to get teleported to.
-               usage: /<command>
-      Vanish:
-               description: Make yourself invisible to others.
-               usage: /<command>
-               aliases: v
-      Msg:
-               description: Send a private message to a player.
-               usage: /<command> [player] [message]
-      R:
-               description: Reply to a previously received message.
-               usage: /<command> [message]
-      Time:
-               description: Gets and sets the time of day.
-               usage: /<command> [day|night]
-      Day:
-               description: Set the time to day.
-               usage: /<command>
-      Night:
-               description: Set the time to night.
-               usage: /<command>
-      Weather:
-               description: Gets and sets the weather.
-               usage: /<command> [sun|rain|storm]
-      Heal:
-               description: Heal a player to full health.
-               usage: /<command> [player]
-      Feed:
-               description: Feed a player to full appetite.
-               usage: /<command> [player]
-      Kill:
-               description: Set a player's health to 0.
-               usage: /<command> [player]
-      CLS:
-               description: Clears the chatlog for all players.
-               usage: /<command>
-      GameMode:
-               description: Set the GameMode of yourself or others.
-               usage: /<command> [Survival|Creative|Adventure|Spectator] [player]
-      GM:
-               description: Set the GameMode of yourself or others.
-               usage: /<command> [Survival|Creative|Adventure|Spectator] [player]
-      Who:
-               description: Gets a list of all players online.
-               usage: /<command>
-      List:
-               description: Gets a list of all players online.
-               usage: /<command>
-      AFK:
-               description: Tell everyone you are away from keyboard.
-               usage: /<command>
-      SpawnEntity:
-               description: Spawn a living entity at your target location.
-               usage: /<command> [entity]
-      SpawnMob:
-               description: Spawn a living entity at your target location.
-               usage: /<command> [entity]
-      Butcher:
-               description: Kill all hostile creatures in your world.
-               usage: /<command> [all|type]
-      TPS:
-               description: Calculate the current TPS of your server.
-               usage: /<command>
-      Lag:
-               description: Calculate the current TPS of your server.
-               usage: /<command>
-      Give:
-               description: Spawn an item for a player. Amount defaults to a stack of 64.
-               usage: /<command> [player] [material] [amount]
-      I:
-               description: Spawn an item for yourself. Amount defaults to a stack of 64.
-               usage: /<command> [material] [amount]
-      Kick:
-               description: Kick a player from the server.
-               usage: /<command> [player] [reason]
-      Ban:
-               description: ban a player from the server.
-               usage: /<command> [player] [reason]
-      Unban:
-               description: Unban a player from the server.
-               usage: /<command> [player]
-      Hat:
-               description: Set the item in your hand as your hat.
-               usage: /<command>
-      SocialSpy:
-               description: Listen to all private messages on the server.
-               usage: /<command>
-      God:
-               description: Prevent any damamge to yourself.
-               usage: /<command>
-      Seed:
-               description: Get the seed to the current world.
-               usage: /<command>
-      Fly:
-               description: Toggle fly for yourself, or someone else.
-               usage: /<command> [player]
-      Speed:
-               description: Adjust the speed of your walk and flight.
-               usage: /<command> [number]
-      SetMaxHealth:
-               description: Set the maximum health of a player.
-               usage: /<command> [maxhealth] [player]
-      SetJail:
-               description: Creates a jail at your location.
-               usage: /<command> [name]
-      DelJail:
-               description: Deletes a jail from name.
-               usage: /<command> [name]
-      Jail:
-               description: Send a player to jail.
-               usage: /<command> [player] [jail] [time]
-      UnJail:
-               description: Release a player from jail.
-               usage: /<command> [player]
-      ListJail:
-               description: List all the jails set on the server.
-               usage: /<command>
-      WhoIs:
-               description: Receive detailed information on a logged in player.
-               usage: /<command> [player]
-      Nuke:
-               description: Start bombarding target with creepers.
-               usage: /<command> [player]
-      Smite:
-               description: Smite a player or location with lightning.
-               usage: /<command> [player]
-      Sun:
-               description: Smite a player or location with lightning.
-               usage: /<command>
-      InvSee:
-               description: View a player inventory.
-               usage: /<command> [player]
-      Burn:
-               description: Burn a player for seconds.
-               usage: /<command> [player] [seconds]
-      Kit:
-               description: Spawn a kit into your inventory.
-               usage: /<command> [kit]
-      Enchant:
-               description: Enchant the item in your main hand.
-               usage: /<command> [enchantment] [level]
-      Nametag:
-               description: Receive a nametag of given name.
-               usage: /<command> [name]
-      Seen:
-               description: Get last-seen details of an offline player.
-               usage: /<command> [player]
-      Stop:
-               description: Stop the server now, or within specified minutes.
-               usage: /<command> [minutes]
-      Warp:
-               description: Warp to a saved location on the server.
-               usage: /<command> [name]
-      SetWarp:
-               description: Set your location as a saved warp.
-               usage: /<command> [name]
-      DelWarp:
-               description: Delete a warp location from the server.
-               usage: /<command> [name]
-      Home:
-               description: Teleport to a saved home location on the server.
-               usage: /<command> [name]
-      SetHome:
-               description: Set your location as a saved home.
-               usage: /<command> [name]
-      DelHome:
-               description: Delete a home location from the server.
-               usage: /<command> [name]
-      Workbench:
-               description: Pull up a virtual workbench.
-               usage: /<command>
-      Enderchest:
-               description: Pull up a virtual enderchest.
-               usage: /<command> [player]
-      Sudo:
-               description: Force a player to run a command.
-               usage: /<command> [player] [command]
-      Fundamentals:
-               description: Interface with the plugin.
-               usage: /<command> [reload|version|resetLanguage]
-      Nick:
-        description: Change the nickname of a player.
-        usage: /<command> [player|nickname] [nickname]
+  SetSpawn:
+    description: Set a location for the starting positions of all players.
+    usage: /<command>
+  Spawn:
+    description: Teleport yourself to the server's spawn location.
+    usage: /<command>
+  Back:
+    description: Teleport yourself a previous location.
+    usage: /<command>
+  TP:
+    description: Teleport yourself to the position of another.
+    usage: /<command> [player]
+  TPPOS:
+    description: Teleport yourself to specific coordinates.
+    usage: /<command> [x] [y] [z]
+  TPA:
+    description: Request teleport to another player.
+    usage: /<command> [player]
+  TPAccept:
+    description: Accept teleport request of another player.
+    usage: /<command>
+  TPDeny:
+    description: Deny teleport request of another player.
+    usage: /<command>
+  TPToggle:
+    description: Toggle the ability to get teleported to.
+    usage: /<command>
+  Vanish:
+    description: Make yourself invisible to others.
+    usage: /<command>
+    aliases: v
+  Msg:
+    description: Send a private message to a player.
+    usage: /<command> [player] [message]
+  R:
+    description: Reply to a previously received message.
+    usage: /<command> [message]
+  Time:
+    description: Gets and sets the time of day.
+    usage: /<command> [day|night]
+  Day:
+    description: Set the time to day.
+    usage: /<command>
+  Night:
+    description: Set the time to night.
+    usage: /<command>
+  Weather:
+    description: Gets and sets the weather.
+    usage: /<command> [sun|rain|storm]
+  Heal:
+    description: Heal a player to full health.
+    usage: /<command> [player]
+  Feed:
+    description: Feed a player to full appetite.
+    usage: /<command> [player]
+  Kill:
+    description: Set a player's health to 0.
+    usage: /<command> [player]
+  CLS:
+    description: Clears the chatlog for all players.
+    usage: /<command>
+  GameMode:
+    description: Set the GameMode of yourself or others.
+    usage: /<command> [Survival|Creative|Adventure|Spectator] [player]
+  GM:
+    description: Set the GameMode of yourself or others.
+    usage: /<command> [Survival|Creative|Adventure|Spectator] [player]
+  Who:
+    description: Gets a list of all players online.
+    usage: /<command>
+  List:
+    description: Gets a list of all players online.
+    usage: /<command>
+  AFK:
+    description: Tell everyone you are away from keyboard.
+    usage: /<command>
+  SpawnEntity:
+    description: Spawn a living entity at your target location.
+    usage: /<command> [entity]
+  SpawnMob:
+    description: Spawn a living entity at your target location.
+    usage: /<command> [entity]
+  Butcher:
+    description: Kill all hostile creatures in your world.
+    usage: /<command> [all|type]
+  TPS:
+    description: Calculate the current TPS of your server.
+    usage: /<command>
+  Lag:
+    description: Calculate the current TPS of your server.
+    usage: /<command>
+  Give:
+    description: Spawn an item for a player. Amount defaults to a stack of 64.
+    usage: /<command> [player] [material] [amount]
+  I:
+    description: Spawn an item for yourself. Amount defaults to a stack of 64.
+    usage: /<command> [material] [amount]
+  Kick:
+    description: Kick a player from the server.
+    usage: /<command> [player] [reason]
+  Ban:
+    description: ban a player from the server.
+    usage: /<command> [player] [reason]
+  Unban:
+    description: Unban a player from the server.
+    usage: /<command> [player]
+  Hat:
+    description: Set the item in your hand as your hat.
+    usage: /<command>
+  SocialSpy:
+    description: Listen to all private messages on the server.
+    usage: /<command>
+  God:
+    description: Prevent any damamge to yourself.
+    usage: /<command>
+  Seed:
+    description: Get the seed to the current world.
+    usage: /<command>
+  Fly:
+    description: Toggle fly for yourself, or someone else.
+    usage: /<command> [player]
+  Speed:
+    description: Adjust the speed of your walk and flight.
+    usage: /<command> [number]
+  SetMaxHealth:
+    description: Set the maximum health of a player.
+    usage: /<command> [maxhealth] [player]
+  SetJail:
+    description: Creates a jail at your location.
+    usage: /<command> [name]
+  DelJail:
+    description: Deletes a jail from name.
+    usage: /<command> [name]
+  Jail:
+    description: Send a player to jail.
+    usage: /<command> [player] [jail] [time]
+  UnJail:
+    description: Release a player from jail.
+    usage: /<command> [player]
+  ListJail:
+    description: List all the jails set on the server.
+    usage: /<command>
+  WhoIs:
+    description: Receive detailed information on a logged in player.
+    usage: /<command> [player]
+  Nuke:
+    description: Start bombarding target with creepers.
+    usage: /<command> [player]
+  Smite:
+    description: Smite a player or location with lightning.
+    usage: /<command> [player]
+  Sun:
+    description: Smite a player or location with lightning.
+    usage: /<command>
+  InvSee:
+    description: View a player inventory.
+    usage: /<command> [player]
+  Burn:
+    description: Burn a player for seconds.
+    usage: /<command> [player] [seconds]
+  Kit:
+    description: Spawn a kit into your inventory.
+    usage: /<command> [kit]
+  Enchant:
+    description: Enchant the item in your main hand.
+    usage: /<command> [enchantment] [level]
+  Nametag:
+    description: Receive a nametag of given name.
+    usage: /<command> [name]
+  Seen:
+    description: Get last-seen details of an offline player.
+    usage: /<command> [player]
+  Stop:
+    description: Stop the server now, or within specified minutes.
+    usage: /<command> [minutes]
+  Warp:
+    description: Warp to a saved location on the server.
+    usage: /<command> [name]
+  SetWarp:
+    description: Set your location as a saved warp.
+    usage: /<command> [name]
+  DelWarp:
+    description: Delete a warp location from the server.
+    usage: /<command> [name]
+  Home:
+    description: Teleport to a saved home location on the server.
+    usage: /<command> [name]
+  SetHome:
+    description: Set your location as a saved home.
+    usage: /<command> [name]
+  DelHome:
+    description: Delete a home location from the server.
+    usage: /<command> [name]
+  Workbench:
+    description: Pull up a virtual workbench.
+    usage: /<command>
+  Enderchest:
+    description: Pull up a virtual enderchest.
+    usage: /<command> [player]
+  Sudo:
+    description: Force a player to run a command.
+    usage: /<command> [player] [command]
+  Fundamentals:
+    description: Interface with the plugin.
+    usage: /<command> [reload|version|resetLanguage]
+  Nick:
+    description: Change the nickname of a player.
+    usage: /<command> [player|nickname] [nickname]
 permissions:
-      Fundamentals.Admin:
-               description: Gives access to all Admin commands.
-               default: op
-               children:
-                     Fundamentals.Moderator.*: true
-                     Fundamentals.Enderchest.Other.Edit: true
-                     Fundamentals.Kill: true
-                     Fundamentals.Burn: true
-                     Fundamentals.Smite: true
-                     Fundamentals.Nuke: true
-                     Fundamentals.GameMode: true
-                     Fundamentals.GameMode.Other: true
-                     Fundamentals.Fly: true
-                     Fundamentals.Fly.Other: true
-                     Fundamentals.Heal: true
-                     Fundamentals.Heal.Other: true
-                     Fundamentals.Feed: true
-                     Fundamentals.Feed.Other: true
-                     Fundamentals.ClearChat: true
-                     Fundamentals.Butcher: true
-                     Fundamentals.Give: true
-                     Fundamentals.God: true
-                     Fundamentals.God.Other: true
-                     Fundamentals.SpawnEntity: true
-                     Fundamentals.SocialSpy: true
-                     Fundamentals.Seed: true
-                     Fundamentals.Vanish: true
-                     Fundamentals.Vanish.Other: true
-                     Fundamentals.SetMaxHealth: true
-                     Fundamentals.SetMaxHealth.Other: true
-                     Fundamentals.Kits.*: true
-                     Fundamentals.Enchant: true
-                     Fundamentals.Workbench: true
-                     Fundamentals.Enderchest: true
-                     Fundamentals.TPToggle: true
-                     Fundamentals.Time.Change: true
-                     Fundamentals.Sudo: true
-      Fundamentals.Moderator:
-               description: Gives access to all Moderator commands.
-               default: op
-               children:
-                     Fundamentals.Player.*: true
-                     Fundamentals.Teleport: true
-                     Fundamentals.Teleport.Other: true
-                     Fundamentals.Jail: true
-                     Fundamentals.Seen: true
-                     Fundamentals.Who: true
-                     Fundamentals.WhoIs: true
-                     Fundamentals.Kick: true
-                     Fundamentals.Ban: true
-                     Fundamentals.Unban: true
-                     Fundamentals.Time: true
-                     Fundamentals.Weather: true
-                     Fundamentals.InvSee: true
-                     Fundamentals.Enderchest.Other: true
-                     Fundamentals.Nametag: true
-                     Fundamentals.Mute: true
-                     Fundamentals.SetWarp: true
-                     Fundamentals.DelWarp: true
-                     Fundamentals.Warp: true
-                     Fundamentals.Warps.*: true
-                     Fundamentals.Nickname.Other: true
-      Fundamentals.Poweruser:
-               description: Gives access to all Power-User commands.
-               default: op
-               children:
-                     Fundamentals.Player.*: true
-                     Fundamentals.Back.OnDeath: true
-      Fundamentals.Player:
-               description: Gives access to all Player commands.
-               default: op
-               children:
-                     Fundamentals.Spawn: true
-                     Fundamentals.AFK: true
-                     Fundamentals.Back: true
-                     Fundamentals.Balance: true
-                     Fundamentals.Pay: true
-                     Fundamentals.Message: true
-                     Fundamentals.TPA: true
-                     Fundamentals.TPAccept: true
-                     Fundamentals.TPDeny: true
-                     Fundamentals.Kit: true
-                     Fundamentals.Home: true
-                     Fundamentals.SetHome: true
-                     Fundamentals.DelHome: true
-      Fundamentals.AFK:
-               description: Allows Player to be marked away from keyboard.
-               default: op
-      Fundamentals.Back:
-               description: Teleport back to previous position.
-               default: op
-      Fundamentals.Back.OnDeath:
-               description: Teleport back to previous position.
-               default: op
-               children:
-                     Fundamentals.Back: true
-      Fundamentals.Butcher:
-               description: Kill all monsters and or animals
-               default: op
-      Fundamentals.ClearChat:
-               description: Clear Chat for all players
-               default: op
-      Fundamentals.Time:
-               description: Check or set the time of day.
-               default: op
-      Fundamentals.Jail:
-               description: Lock up a player in jail
-               default: op
-      Fundamentals.Jail.Manage:
-               description: Create, Delete, Update jail locations.
-               default: op
-               children:
-                     Fundamentals.Jail: true
-      Fundamentals.Feed:
-               description: Fill a players food bar.
-               default: op
-      Fundamentals.Feed.Other:
-               description: Fill a players food bar.
-               default: op
-      Fundamentals.Hat:
-               description: Set the item in your hand as your hat.
-               default: op
-      Fundamentals.Heal:
-               description: Heal and feed a player to full health.
-               default: op
-      Fundamentals.Heal.Other:
-               description: Heal and feed a player to full health.
-               default: op
-      Fundamentals.Fly:
-               description: Toggle your flying state.
-               default: op
-      Fundamentals.Fly.Other:
-               description: Toggle someone else's flying state.
-               default: op
-      Fundamentals.GameMode:
-               description: Change your GameMode.
-               default: op
-      Fundamentals.GameMode.Other:
-               description: Change a players GameMode.
-               default: op
-      Fundamentals.Give:
-               description: Spawn an item for a player.
-               default: op
-               children:
-                     Fundamentals.I: true
-      Fundamentals.I:
-               description: Spawn an item for a player.
-               default: op
-      Fundamentals.God:
-               description: Toggle GodMode for yourself.
-               default: op
-      Fundamentals.God.Other:
-               description: Toggle GodMode for someone else.
-               default: op
-      Fundamentals.InvSee:
-               description: View the inventory of another player.
-               default: op
-      Fundamentals.Kick:
-               description: Kick a player off the server.
-               default: op
-      Fundamentals.Kick.Exempt:
-               description: Mark a player as unkickable.
-               default: op
-      Fundamentals.Kill:
-               description: Set a players health to 0.
-               default: op
-      Fundamentals.Message:
-               description: Send or reply a message to someone.
-               default: op
-      Fundamentals.Nickname:
-               description: Assign yourself a nickname.
-               default: op
-      Fundamentals.Nickname.Other:
-               description: Assign someone else a nickname.
-               default: op
-      Fundamentals.Nuke:
-               description: Start spawning creepers above a player.
-               default: op
-      Fundamentals.Seed:
-               description: Display the world seed to yourself.
-               default: op
-      Fundamentals.SetMaxHealth:
-               description: Set a players maximum health points.
-               default: op
-      Fundamentals.SetMaxHealth.Other:
-               description: Set a players maximum health points.
-               default: op
-      Fundamentals.SetSpawn:
-               description: Set the server spawn-point to your location.
-               default: op
-      Fundamentals.Spawn:
-               description: Teleport to the server spawn-point.
-               default: true
-      Fundamentals.Smite:
-               description: Hit a player or location with a bolt of lightning.
-               default: op
-      Fundamentals.SocialSpy:
-               description: Recieve all private messages between others.
-               default: op
-      Fundamentals.SocialSpy.Exempt:
-               description: Protect your private messages from SocialSpy.
-               default: op
-      Fundamentals.SpawnEntity:
-               description: Spawn an entity where you are looking.
-               default: op
-      Fundamentals.Speed:
-               description: Set your fly and walk speed (1-10).
-               default: op
-      Fundamentals.Seen:
-               description: Get last-seen details of an offline player.
-               default: op
-      Fundamentals.TP:
-               description: Teleport to a player.
-               default: op
-      Fundamentals.TP.Other:
-               description: Teleport a player to another player.
-               default: op
-      Fundamentals.TPPOS:
-               description: Teleport to a specific coordinate of your world.
-               default: op
-      Fundamentals.TPA:
-               description: Request teleport to a player.
-               default: op
-      Fundamentals.TPAccept:
-               description: Accept teleport request from a player.
-               default: op
-      Fundamentals.TPDeny:
-               description: Deny teleport request from a player.
-               default: op
-      Fundamentals.TPToggle:
-               description: Toggle the ability for others to teleport to you.
-               default: op
-      Fundamentals.TPS:
-               description: Display the tick speed, and memory usage.
-               default: op
-      Fundamentals.Vanish:
-               description: Toggle your vanish state.
-               default: op
-      Fundamentals.Vanish.Other:
-               description: Toggle another persons vanish state.
-               default: op
-      Fundamentals.Who:
-               description: List all the players who are online.
-               default: op
-      Fundamentals.WhoIs:
-               description: Display detailed information about another player.
-               default: op
-      Fundamentals.Burn:
-               description: Burn a player for entered seconds.
-               default: op
-      Fundamentals.Kit:
-               description: Spawn an item kit into your inventory.
-               default: op
-      Fundamentals.Kits.*:
-               description: Give access to all kits on the server.
-               default: op
-      Fundamentals.Enchant:
-               description: Give the item in your hand an enchantment.
-               default: op
-      Fundamentals.Nametag:
-               description: Receive a nametag of given name.
-               default: op
-      Fundamentals.Stop:
-               description: Ability to shutdown the server.
-               default: op
-      Fundamentals.Weather:
-               description: Change the current weather condition.
-               default: op
-      Fundamentals.Warp:
-               description: Warp to a saved location on the server.
-               default: op
-      Fundamentals.Warps.*:
-               description: Have access to all warps on the server.
-               default: op
-      Fundamentals.SetWarp:
-               description: Set a warp location.
-               default: op
-      Fundamentals.DelWarp:
-               description: Delete a warp location.
-               default: op
-      Fundamentals.Home:
-               description: Teleport to one of your sethomes.
-               default: op
-      Fundamentals.Homes.*:
-               description: Permission for unlimited homes.
-               default: op
-      Fundamentals.SetHome:
-               description: Mark the current location as a sethome.
-               default: op
-      Fundamentals.DelHome:
-               description: Delete a sethome of choice.
-               default: op
-      Fundamentals.Enderchest:
-               description: Pull up a virtual enderchest.
-               default: op
-      Fundamentals.Enderchest.Other:
-               description: Pull up a virtual enderchest for a different player.
-               default: op
-      Fundamentals.Enderchest.Other.Edit:
-               description: Edit other players enderchest.
-               default: op
-      Fundamentals.Workbench:
-               description: Pull up a virtual workbench.
-               default: op
-      Fundamentals.Sudo:
-               description: Force another player to run a command.
-               default: op
+  Fundamentals.Admin:
+    description: Gives access to all Admin commands.
+    default: op
+    children:
+      Fundamentals.Moderator.*: true
+      Fundamentals.Enderchest.Other.Edit: true
+      Fundamentals.Kill: true
+      Fundamentals.Burn: true
+      Fundamentals.Smite: true
+      Fundamentals.Nuke: true
+      Fundamentals.GameMode: true
+      Fundamentals.GameMode.Other: true
+      Fundamentals.GameModes.*: true
+      Fundamentals.Fly: true
+      Fundamentals.Fly.Other: true
+      Fundamentals.Heal: true
+      Fundamentals.Heal.Other: true
+      Fundamentals.Feed: true
+      Fundamentals.Feed.Other: true
+      Fundamentals.ClearChat: true
+      Fundamentals.Butcher: true
+      Fundamentals.Give: true
+      Fundamentals.God: true
+      Fundamentals.God.Other: true
+      Fundamentals.SpawnEntity: true
+      Fundamentals.SocialSpy: true
+      Fundamentals.Seed: true
+      Fundamentals.Vanish: true
+      Fundamentals.Vanish.Other: true
+      Fundamentals.SetMaxHealth: true
+      Fundamentals.SetMaxHealth.Other: true
+      Fundamentals.Kits.*: true
+      Fundamentals.Enchant: true
+      Fundamentals.Workbench: true
+      Fundamentals.Enderchest: true
+      Fundamentals.TPToggle: true
+      Fundamentals.Time.Change: true
+      Fundamentals.Sudo: true
+  Fundamentals.Moderator:
+    description: Gives access to all Moderator commands.
+    default: op
+    children:
+      Fundamentals.Player.*: true
+      Fundamentals.Teleport: true
+      Fundamentals.Teleport.Other: true
+      Fundamentals.Jail: true
+      Fundamentals.Seen: true
+      Fundamentals.Who: true
+      Fundamentals.WhoIs: true
+      Fundamentals.Kick: true
+      Fundamentals.Ban: true
+      Fundamentals.Unban: true
+      Fundamentals.Time: true
+      Fundamentals.Weather: true
+      Fundamentals.InvSee: true
+      Fundamentals.Enderchest.Other: true
+      Fundamentals.Nametag: true
+      Fundamentals.Mute: true
+      Fundamentals.SetWarp: true
+      Fundamentals.DelWarp: true
+      Fundamentals.Warp: true
+      Fundamentals.Warps.*: true
+      Fundamentals.Nickname.Other: true
+  Fundamentals.Poweruser:
+    description: Gives access to all Power-User commands.
+    default: op
+    children:
+      Fundamentals.Player.*: true
+      Fundamentals.Back.OnDeath: true
+  Fundamentals.Player:
+    description: Gives access to all Player commands.
+    default: op
+    children:
+      Fundamentals.Spawn: true
+      Fundamentals.AFK: true
+      Fundamentals.Back: true
+      Fundamentals.Balance: true
+      Fundamentals.Pay: true
+      Fundamentals.Message: true
+      Fundamentals.TPA: true
+      Fundamentals.TPAccept: true
+      Fundamentals.TPDeny: true
+      Fundamentals.Kit: true
+      Fundamentals.Home: true
+      Fundamentals.SetHome: true
+      Fundamentals.DelHome: true
+  Fundamentals.AFK:
+    description: Allows Player to be marked away from keyboard.
+    default: op
+  Fundamentals.Back:
+    description: Teleport back to previous position.
+    default: op
+  Fundamentals.Back.OnDeath:
+    description: Teleport back to previous position.
+    default: op
+    children:
+      Fundamentals.Back: true
+  Fundamentals.Butcher:
+    description: Kill all monsters and or animals
+    default: op
+  Fundamentals.ClearChat:
+    description: Clear Chat for all players
+    default: op
+  Fundamentals.Time:
+    description: Check or set the time of day.
+    default: op
+  Fundamentals.Jail:
+    description: Lock up a player in jail
+    default: op
+  Fundamentals.Jail.Manage:
+    description: Create, Delete, Update jail locations.
+    default: op
+    children:
+      Fundamentals.Jail: true
+  Fundamentals.Feed:
+    description: Fill a players food bar.
+    default: op
+  Fundamentals.Feed.Other:
+    description: Fill a players food bar.
+    default: op
+  Fundamentals.Hat:
+    description: Set the item in your hand as your hat.
+    default: op
+  Fundamentals.Heal:
+    description: Heal and feed a player to full health.
+    default: op
+  Fundamentals.Heal.Other:
+    description: Heal and feed a player to full health.
+    default: op
+  Fundamentals.Fly:
+    description: Toggle your flying state.
+    default: op
+  Fundamentals.Fly.Other:
+    description: Toggle someone else's flying state.
+    default: op
+  Fundamentals.GameMode:
+    description: Use the command to update your gamemode.
+    default: op
+  Fundamentals.GameMode.Other:
+    description: Change a players GameMode.
+    default: op
+  Fundamentals.GameModes.*:
+    description: Change your GameMode.
+    default: op
+    children:
+      Fundamentals.GameModes.Survival: true
+      Fundamentals.GameModes.Creative: true
+      Fundamentals.GameModes.Adventure: true
+      Fundamentals.GameModes.Spectator: true
+  Fundamentals.Give:
+    description: Spawn an item for a player.
+    default: op
+    children:
+      Fundamentals.I: true
+  Fundamentals.I:
+    description: Spawn an item for a player.
+    default: op
+  Fundamentals.God:
+    description: Toggle GodMode for yourself.
+    default: op
+  Fundamentals.God.Other:
+    description: Toggle GodMode for someone else.
+    default: op
+  Fundamentals.InvSee:
+    description: View the inventory of another player.
+    default: op
+  Fundamentals.Kick:
+    description: Kick a player off the server.
+    default: op
+  Fundamentals.Kick.Exempt:
+    description: Mark a player as unkickable.
+    default: op
+  Fundamentals.Kill:
+    description: Set a players health to 0.
+    default: op
+  Fundamentals.Message:
+    description: Send or reply a message to someone.
+    default: op
+  Fundamentals.Nickname:
+    description: Assign yourself a nickname.
+    default: op
+  Fundamentals.Nickname.Other:
+    description: Assign someone else a nickname.
+    default: op
+  Fundamentals.Nuke:
+    description: Start spawning creepers above a player.
+    default: op
+  Fundamentals.Seed:
+    description: Display the world seed to yourself.
+    default: op
+  Fundamentals.SetMaxHealth:
+    description: Set a players maximum health points.
+    default: op
+  Fundamentals.SetMaxHealth.Other:
+    description: Set a players maximum health points.
+    default: op
+  Fundamentals.SetSpawn:
+    description: Set the server spawn-point to your location.
+    default: op
+  Fundamentals.Spawn:
+    description: Teleport to the server spawn-point.
+    default: true
+  Fundamentals.Smite:
+    description: Hit a player or location with a bolt of lightning.
+    default: op
+  Fundamentals.SocialSpy:
+    description: Recieve all private messages between others.
+    default: op
+  Fundamentals.SocialSpy.Exempt:
+    description: Protect your private messages from SocialSpy.
+    default: op
+  Fundamentals.SpawnEntity:
+    description: Spawn an entity where you are looking.
+    default: op
+  Fundamentals.Speed:
+    description: Set your fly and walk speed (1-10).
+    default: op
+  Fundamentals.Seen:
+    description: Get last-seen details of an offline player.
+    default: op
+  Fundamentals.TP:
+    description: Teleport to a player.
+    default: op
+  Fundamentals.TP.Other:
+    description: Teleport a player to another player.
+    default: op
+  Fundamentals.TPPOS:
+    description: Teleport to a specific coordinate of your world.
+    default: op
+  Fundamentals.TPA:
+    description: Request teleport to a player.
+    default: op
+  Fundamentals.TPAccept:
+    description: Accept teleport request from a player.
+    default: op
+  Fundamentals.TPDeny:
+    description: Deny teleport request from a player.
+    default: op
+  Fundamentals.TPToggle:
+    description: Toggle the ability for others to teleport to you.
+    default: op
+  Fundamentals.TPS:
+    description: Display the tick speed, and memory usage.
+    default: op
+  Fundamentals.Vanish:
+    description: Toggle your vanish state.
+    default: op
+  Fundamentals.Vanish.Other:
+    description: Toggle another persons vanish state.
+    default: op
+  Fundamentals.Who:
+    description: List all the players who are online.
+    default: op
+  Fundamentals.WhoIs:
+    description: Display detailed information about another player.
+    default: op
+  Fundamentals.Burn:
+    description: Burn a player for entered seconds.
+    default: op
+  Fundamentals.Kit:
+    description: Spawn an item kit into your inventory.
+    default: op
+  Fundamentals.Kits.*:
+    description: Give access to all kits on the server.
+    default: op
+  Fundamentals.Enchant:
+    description: Give the item in your hand an enchantment.
+    default: op
+  Fundamentals.Nametag:
+    description: Receive a nametag of given name.
+    default: op
+  Fundamentals.Stop:
+    description: Ability to shutdown the server.
+    default: op
+  Fundamentals.Weather:
+    description: Change the current weather condition.
+    default: op
+  Fundamentals.Warp:
+    description: Warp to a saved location on the server.
+    default: op
+  Fundamentals.Warps.*:
+    description: Have access to all warps on the server.
+    default: op
+  Fundamentals.SetWarp:
+    description: Set a warp location.
+    default: op
+  Fundamentals.DelWarp:
+    description: Delete a warp location.
+    default: op
+  Fundamentals.Home:
+    description: Teleport to one of your sethomes.
+    default: op
+  Fundamentals.Homes.*:
+    description: Permission for unlimited homes.
+    default: op
+  Fundamentals.SetHome:
+    description: Mark the current location as a sethome.
+    default: op
+  Fundamentals.DelHome:
+    description: Delete a sethome of choice.
+    default: op
+  Fundamentals.Enderchest:
+    description: Pull up a virtual enderchest.
+    default: op
+  Fundamentals.Enderchest.Other:
+    description: Pull up a virtual enderchest for a different player.
+    default: op
+  Fundamentals.Enderchest.Other.Edit:
+    description: Edit other players enderchest.
+    default: op
+  Fundamentals.Workbench:
+    description: Pull up a virtual workbench.
+    default: op
+  Fundamentals.Sudo:
+    description: Force another player to run a command.
+    default: op
