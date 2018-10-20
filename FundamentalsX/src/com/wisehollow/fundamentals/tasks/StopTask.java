@@ -1,5 +1,6 @@
 package com.wisehollow.fundamentals.tasks;
 
+import com.wisehollow.fundamentals.Language;
 import com.wisehollow.fundamentals.Main;
 import com.wisehollow.fundamentals.Settings;
 import org.bukkit.Bukkit;
@@ -31,7 +32,7 @@ public class StopTask implements CustomTask, Listener {
             return false;
 
         stopTask = this;
-        Bukkit.broadcastMessage(ChatColor.GREEN + "" + ChatColor.BOLD + Settings.ShutdownMessage.replaceAll("%m", String.valueOf(minutes)));
+        Bukkit.broadcastMessage(Language.getInstance().shutdownTaskStarted.replaceAll("%m", String.valueOf(minutes)));
 
         taskID = Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () ->
                 Bukkit.getServer().shutdown(), minutes * 20 * 60);
@@ -41,7 +42,7 @@ public class StopTask implements CustomTask, Listener {
 
     @Override
     public void disable() {
-        Bukkit.broadcastMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Shutdown task has been cancelled!");
+        Bukkit.broadcastMessage(Language.getInstance().shutdownTaskCancelled);
 
         stopTask = null;
         if (taskID != -1) {

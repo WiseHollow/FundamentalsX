@@ -212,7 +212,10 @@ commands:
                usage: /<command> [player] [command]
       Fundamentals:
                description: Interface with the plugin.
-               usage: /<command> [reload|version]
+               usage: /<command> [reload|version|resetLanguage]
+      Nick:
+        description: Change the nickname of a player.
+        usage: /<command> [player|nickname] [nickname]
 permissions:
       Fundamentals.Admin:
                description: Gives access to all Admin commands.
@@ -275,6 +278,7 @@ permissions:
                      Fundamentals.DelWarp: true
                      Fundamentals.Warp: true
                      Fundamentals.Warps.*: true
+                     Fundamentals.Nickname.Other: true
       Fundamentals.Poweruser:
                description: Gives access to all Power-User commands.
                default: op
@@ -381,6 +385,12 @@ permissions:
                default: op
       Fundamentals.Message:
                description: Send or reply a message to someone.
+               default: op
+      Fundamentals.Nickname:
+               description: Assign yourself a nickname.
+               default: op
+      Fundamentals.Nickname.Other:
+               description: Assign someone else a nickname.
                default: op
       Fundamentals.Nuke:
                description: Start spawning creepers above a player.

@@ -1,5 +1,7 @@
 package com.wisehollow.fundamentals;
 
+import com.sun.istack.internal.NotNull;
+import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 import com.wisehollow.fundamentals.commands.*;
 import com.wisehollow.fundamentals.userdata.MetricsLite;
 import com.wisehollow.fundamentals.listeners.*;
@@ -171,6 +173,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Sudo").setExecutor(new CommandSudo());
         this.getCommand("Fundamentals").setExecutor(commandFundamentals);
         this.getCommand("Fundamentals").setTabCompleter(commandFundamentals);
+        this.getCommand("Nick").setExecutor(new CommandNickname());
     }
 
     private void setupMetrics() {
@@ -241,6 +244,41 @@ public class Main extends JavaPlugin {
                 }
             }
         }
+    }
+
+    public YamlConfiguration getConfigFromJar(@NotNull String resource) {
+        YamlConfiguration configuration = null;
+
+        InputStream fis = plugin.getResource(resource);
+        ByteArrayOutputStream byteArrayOutputStream = null;
+        try {
+            byteArrayOutputStream = new ByteArrayOutputStream();
+            byte[] buf = new byte[1024];
+            int i;
+            while ((i = fis.read(buf)) != -1) {
+                byteArrayOutputStream.write(buf, 0, i);
+            }
+        } catch (Exception e) {
+            getLogger().severe("Failed to load config from JAR!");
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+                if (byteArrayOutputStream != null) {
+                    InputStreamReader reader = new InputStreamReader(new ByteArrayInputStream(byteArrayOutputStream.toByteArray()));
+                    configuration = YamlConfiguration.loadConfiguration(reader);
+                    byteArrayOutputStream.close();
+                }
+            } catch (Exception e) {
+                getLogger().severe(e.getMessage());
+            }
+        }
+
+        if (configuration == null)
+            throw new RuntimeException("Could not load requested resource into configuration.");
+
+        return configuration;
     }
 
     private void loadConfigFromJar() {

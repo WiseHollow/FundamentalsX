@@ -28,7 +28,7 @@ public class PlayerUtil {
 
     public static String GetPlayerPrefix(Player player) {
         if (Main.getPlugin().getChat() == null)
-            return player.getName();
+            return "";
 
         String prefix = "";
         if (Main.getPlugin().getChat() != null) {

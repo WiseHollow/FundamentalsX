@@ -36,7 +36,7 @@ public class ChatEvents implements Listener {
     public void FormatPrefix(AsyncPlayerChatEvent event) {
         if (!event.isCancelled() && Main.getChat() != null) {
             String[] playerGroups = Main.getChat().getPlayerGroups(event.getPlayer());
-            String format = "<%1$s> %2$s";
+            String format = Settings.chatFormat;
 
             if (Settings.UseAffixes && playerGroups.length > 0) {
                 final TextComponent textComponent = new TextComponent("");
@@ -63,13 +63,12 @@ public class ChatEvents implements Listener {
                 event.getRecipients().clear();
             } else {
                 String[] gPrefixes = Main.getChat().getPlayerGroups(event.getPlayer());
-                String gPrefix = null;
+                String gPrefix;
+                String uPrefix = Main.getChat().getPlayerPrefix(event.getPlayer());
                 if (gPrefixes.length > 0) {
                     gPrefix = Main.getChat().getGroupPrefix(event.getPlayer().getWorld(), gPrefixes[0]);
                     format = ChatColor.translateAlternateColorCodes('&', gPrefix) + format;
-                }
-                String uPrefix = Main.getChat().getPlayerPrefix(event.getPlayer());
-                if (uPrefix != null && !uPrefix.equals(gPrefix)) {
+                } else if (uPrefix != null) {
                     format = ChatColor.translateAlternateColorCodes('&', uPrefix) + format;
                 }
 
