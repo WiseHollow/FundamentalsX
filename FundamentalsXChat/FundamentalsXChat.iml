@@ -16,20 +16,20 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="spigot-api-1.13.1-R0.1-SNAPSHOT-shaded-b1862" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../Spigot Jar Files/spigot-api-1.13.1-R0.1-SNAPSHOT-shaded-b1862.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../Spigot Jar Files/Vault.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="spigot-api-1.13.1-R0.1-SNAPSHOT-shaded-b1862" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../Spigot Jar Files/Vault.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../Spigot Jar Files/spigot-api-1.13.1-R0.1-SNAPSHOT-shaded-b1862.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

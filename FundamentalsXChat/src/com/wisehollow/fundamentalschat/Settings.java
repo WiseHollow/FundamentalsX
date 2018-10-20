@@ -1,6 +1,8 @@
 package com.wisehollow.fundamentalschat;
 
+import com.wisehollow.fundamentals.utils.SettingsUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class Settings implements Listener {
     public static boolean UseEmojiChat = true;
     public static boolean UsePlayerMention = true;
+    public static String chatFormat;
 
     public static boolean UseAffixes = false;
     private static HashMap<String, String> affixHoverMessages = new HashMap<>();
@@ -25,6 +28,7 @@ public class Settings implements Listener {
 
         UseEmojiChat = configuration.getBoolean("Emoji_Chat");
         UsePlayerMention = configuration.getBoolean("Player_Mention");
+        chatFormat = ChatColor.translateAlternateColorCodes('&', SettingsUtil.getValueFromConfiguration("Chat_Format", String.class));
 
         UseAffixes = configuration.getBoolean("Use_Affixes");
         ConfigurationSection section = configuration.getConfigurationSection("Affixes");
@@ -41,9 +45,7 @@ public class Settings implements Listener {
     @EventHandler
     public void loadSettingsWhenFundamentalsLoads(PluginEnableEvent event) {
         if (event.getPlugin().getName().equalsIgnoreCase("FundamentalsX")) {
-            Bukkit.getScheduler().runTaskLater(Main.getPlugin(), () -> {
-                load();
-            }, 1L);
+            Bukkit.getScheduler().runTaskLater(Main.getPlugin(), Settings::load, 1L);
         }
     }
 

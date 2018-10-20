@@ -36,7 +36,7 @@ public class ChatEvents implements Listener {
     public void FormatPrefix(AsyncPlayerChatEvent event) {
         if (!event.isCancelled() && Main.getChat() != null) {
             String[] playerGroups = Main.getChat().getPlayerGroups(event.getPlayer());
-            String format = "<%1$s> %2$s";
+            String format = Settings.chatFormat;
 
             if (Settings.UseAffixes && playerGroups.length > 0) {
                 final TextComponent textComponent = new TextComponent("");

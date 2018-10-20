@@ -34,7 +34,6 @@ public class Settings {
     public static String QuitMessage = "%p has left the game.";
     public static boolean AllowUnsafeEnchantments = false;
     public static String StarterKit = "None";
-    public static String ShutdownMessage = "Server will shutdown in %m minutes";
     public static Boolean AllowMetrics = true;
     public static int DefaultSetHomeAmount = 1;
     public static int SpawnMobLimit = 10;
@@ -90,7 +89,6 @@ public class Settings {
         QuitMessage = ChatColor.translateAlternateColorCodes('&', config.getString("Quit_Message"));
         AllowUnsafeEnchantments = config.getBoolean("Allow_Unsafe_Enchantments");
         StarterKit = config.getString("Starter_Kit");
-        ShutdownMessage = config.getString("Scheduled_Shutdown_Message");
         AllowMetrics = config.getBoolean("Allow_Metrics");
         DefaultSetHomeAmount = config.getInt("Default_SetHomes");
         EnableSpawnFirstJoin = config.getBoolean("First_Join");

@@ -66,7 +66,7 @@ public class Language {
     public String invalidEntityType;
     public String spawnEntities;
     public String invalidSpeed, flySpeedSet, walkSpeedSet;
-    public String shutdownTaskAlreadyStarted;
+    public String shutdownTaskAlreadyStarted, shutdownTaskStarted, shutdownTaskCancelled;
     public String sudoPlayer;
     public String weatherSetSun, weatherSetRain, weatherSetStorm, weatherCurrent;
     public String invalidCoordinates;
@@ -201,6 +201,8 @@ public class Language {
         flySpeedSet = parse(config, "Fly speed set");
         walkSpeedSet = parse(config, "Walk speed set");
         shutdownTaskAlreadyStarted = parse(config, "Shutdown task already started");
+        shutdownTaskStarted = parse(config, "Shutdown task started");
+        shutdownTaskCancelled = parse(config, "Shutdown task cancelled");
         sudoPlayer = parse(config, "Sudo player");
         weatherSetSun = parse(config, "Weather set sun");
         weatherSetRain = parse(config, "Weather set rain");
