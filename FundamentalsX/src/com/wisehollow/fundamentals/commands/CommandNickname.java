@@ -35,14 +35,17 @@ public class CommandNickname implements CommandExecutor {
             sender.sendMessage(Language.getInstance().targetNotOnline);
             return true;
         } else if (nickname != null && nickname.length() > 20) {
-            sender.sendMessage("That nickname is too long (Max: 20 characters).");
+            sender.sendMessage(Language.getInstance().nicknameTooLong.replace("%c", "20"));
             return true;
         } else if (nickname != null) {
             if (nickname.equalsIgnoreCase("none") || nickname.equalsIgnoreCase("off")) {
                 removeNickname(target);
             } else {
+                if (!sender.equals(target))
+                    sender.sendMessage(Language.getInstance().nicknameChangedOther);
                 setNickname(target, nickname);
             }
+            return true;
         }
 
         return false;
@@ -50,11 +53,11 @@ public class CommandNickname implements CommandExecutor {
 
     private void setNickname(final Player player, final String nickname) {
         player.setDisplayName(nickname);
-        player.sendMessage("Your nickname was set to: " + nickname);
+        player.sendMessage(Language.getInstance().nicknameChanged.replace("%n", nickname));
     }
 
     private void removeNickname(final Player player) {
         player.setDisplayName(player.getName());
-        player.sendMessage("Your nickname has been removed.");
+        player.sendMessage(Language.getInstance().nicknameRemoved);
     }
 }

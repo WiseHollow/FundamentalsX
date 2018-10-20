@@ -212,7 +212,7 @@ commands:
                usage: /<command> [player] [command]
       Fundamentals:
                description: Interface with the plugin.
-               usage: /<command> [reload|version]
+               usage: /<command> [reload|version|resetLanguage]
       Nick:
         description: Change the nickname of a player.
         usage: /<command> [player|nickname] [nickname]
