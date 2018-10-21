@@ -51,13 +51,13 @@ Prevent_Lava_Damage: false
 # Enchantments and their level should be separated by a '%'
 
 Kits:
-    StarterKit:
-        delay: 25
-        items:
-            - STONE_PICKAXE 1 Starter_Pickaxe &eThis_item&f_is_received%nfrom_your_starter_kit.
-            - STONE_SHOVEL 1 Start_Shovel &eThis_item&f_is_received%nfrom_your_starter_kit.
-            - STONE_AXE 1 Starter_Axe &eThis_item&f_is_received%nfrom_your_starter_kit.
-            - STONE_SWORD 1 Starter_Sword &eThis_item&f_is_received%nfrom_your_starter_kit. sharpness%1
+  StarterKit:
+    delay: 25
+    items:
+    - STONE_PICKAXE 1 Starter_Pickaxe &eThis_item&f_is_received%nfrom_your_starter_kit.
+    - STONE_SHOVEL 1 Start_Shovel &eThis_item&f_is_received%nfrom_your_starter_kit.
+    - STONE_AXE 1 Starter_Axe &eThis_item&f_is_received%nfrom_your_starter_kit.
+    - STONE_SWORD 1 Starter_Sword &eThis_item&f_is_received%nfrom_your_starter_kit. sharpness%1
 
 ############################################################
 # +------------------------------------------------------+ #
@@ -73,7 +73,7 @@ Kits:
 
 Default_SetHomes: 1
 Home_Permissions:
-    - VIP 5
+- VIP 5
 
 ############################################################
 # +------------------------------------------------------+ #

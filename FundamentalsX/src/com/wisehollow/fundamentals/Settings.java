@@ -20,7 +20,6 @@ import java.util.List;
  */
 public class Settings {
 
-    private static FileConfiguration config = Main.getPlugin().getConfig();
     public static String languageAbbreviation = "en";
     public static String motd = "";
     public static int TeleportDelay = 0; // In seconds
@@ -81,6 +80,7 @@ public class Settings {
     }
 
     public static void load() {
+        FileConfiguration config = Main.getPlugin().getConfig();
         languageAbbreviation = config.getString("Language");
         TeleportDelay = config.getInt("Teleport_Delay");
         AFKDelay = config.getInt("Afk_Delay");
@@ -99,29 +99,6 @@ public class Settings {
         for (String s : config.getStringList("Home_Permissions")) {
             String[] keys = s.split(" ");
             SetHomeCountPermissions.put(keys[0], Integer.parseInt(keys[1]));
-        }
-
-        if (config.getConfigurationSection("Spawn_Location") != null) {
-            World world = Bukkit.getWorld(config.getString("Spawn_Location.World"));
-            if (world != null)
-                Spawn = new Location(world, config.getInt("Spawn_Location.X"), config.getInt("Spawn_Location.Y"), config.getInt("Spawn_Location.Z"), (float) config.getDouble("Spawn_Location.Yaw"), (float) config.getDouble("Spawn_Location.Pitch"));
-        }
-
-        if (config.getConfigurationSection("Spawn_Location_First_Join") != null) {
-            World world = Bukkit.getWorld(config.getString("Spawn_Location_First_Join.World"));
-            if (world != null)
-                SpawnFirstJoin = new Location(world, config.getInt("Spawn_Location_First_Join.X"), config.getInt("Spawn_Location_First_Join.Y"), config.getInt("Spawn_Location_First_Join.Z"), (float) config.getDouble("Spawn_Location_First_Join.Yaw"), (float) config.getDouble("Spawn_Location_First_Join.Pitch"));
-        }
-
-        if (config.getConfigurationSection("Jails") != null) {
-            for (String key : config.getConfigurationSection("Jails").getKeys(false)) {
-                World world = Bukkit.getWorld(config.getString("Jails." + key + ".Location.World"));
-                int x = config.getInt("Jails." + key + ".Location.X");
-                int y = config.getInt("Jails." + key + ".Location.Y");
-                int z = config.getInt("Jails." + key + ".Location.Z");
-                Location loc = new Location(world, x, y, z);
-                jails.put(key, loc);
-            }
         }
 
         if (config.getConfigurationSection("Kits") != null) {
@@ -228,47 +205,84 @@ public class Settings {
                 }
             }
         }
+
+        File spawnFile = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "spawn.yml");
+        if (spawnFile.exists()) {
+            YamlConfiguration spawnConfig = YamlConfiguration.loadConfiguration(spawnFile);
+            if (spawnConfig.getConfigurationSection("Spawn_Location") != null) {
+                World world = Bukkit.getWorld(spawnConfig.getString("Spawn_Location.World"));
+                if (world != null)
+                    Spawn = new Location(world, spawnConfig.getInt("Spawn_Location.X"), spawnConfig.getInt("Spawn_Location.Y"), spawnConfig.getInt("Spawn_Location.Z"), (float) spawnConfig.getDouble("Spawn_Location.Yaw"), (float) spawnConfig.getDouble("Spawn_Location.Pitch"));
+            }
+
+            if (spawnConfig.getConfigurationSection("Spawn_Location_First_Join") != null) {
+                World world = Bukkit.getWorld(spawnConfig.getString("Spawn_Location_First_Join.World"));
+                if (world != null)
+                    SpawnFirstJoin = new Location(world, spawnConfig.getInt("Spawn_Location_First_Join.X"), spawnConfig.getInt("Spawn_Location_First_Join.Y"), spawnConfig.getInt("Spawn_Location_First_Join.Z"), (float) spawnConfig.getDouble("Spawn_Location_First_Join.Yaw"), (float) spawnConfig.getDouble("Spawn_Location_First_Join.Pitch"));
+            }
+        }
+
+        File jailFile = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "jails.yml");
+        if (jailFile.exists()) {
+            YamlConfiguration jailConfig = YamlConfiguration.loadConfiguration(jailFile);
+
+            if (jailConfig.getConfigurationSection("Jails") != null) {
+                for (String key : jailConfig.getConfigurationSection("Jails").getKeys(false)) {
+                    World world = Bukkit.getWorld(jailConfig.getString("Jails." + key + ".Location.World"));
+                    int x = jailConfig.getInt("Jails." + key + ".Location.X");
+                    int y = jailConfig.getInt("Jails." + key + ".Location.Y");
+                    int z = jailConfig.getInt("Jails." + key + ".Location.Z");
+                    Location loc = new Location(world, x, y, z);
+                    jails.put(key, loc);
+                }
+            }
+        }
     }
 
     public static void Save() {
+        File spawnFile = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "spawn.yml");
+        File jailFile = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "jails.yml");
+        File warpFile = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "warps.yml");
+        try {
+            if (!spawnFile.exists())
+                spawnFile.createNewFile();
+            if (!jailFile.exists())
+                jailFile.createNewFile();
+            if (!warpFile.exists())
+                warpFile.createNewFile();
+        } catch (IOException ex) {
+            Main.getPlugin().getLogger().severe(ex.getMessage());
+            return;
+        }
+        YamlConfiguration spawnConfig = YamlConfiguration.loadConfiguration(spawnFile);
         //
-        // General configuration
+        // Spawn saves
         //
-
-        config.set("Teleport_Delay", TeleportDelay);
-        config.set("Afk_Delay", AFKDelay);
-        config.set("Spawn_Location.World", Spawn.getWorld().getName());
-        config.set("Spawn_Location.X", Spawn.getBlockX());
-        config.set("Spawn_Location.Y", Spawn.getBlockY());
-        config.set("Spawn_Location.Z", Spawn.getBlockZ());
-        config.set("Spawn_Location.Yaw", Spawn.getYaw());
-        config.set("Spawn_Location.Pitch", Spawn.getPitch());
+        spawnConfig.set("Spawn_Location.World", Spawn.getWorld().getName());
+        spawnConfig.set("Spawn_Location.X", Spawn.getBlockX());
+        spawnConfig.set("Spawn_Location.Y", Spawn.getBlockY());
+        spawnConfig.set("Spawn_Location.Z", Spawn.getBlockZ());
+        spawnConfig.set("Spawn_Location.Yaw", Spawn.getYaw());
+        spawnConfig.set("Spawn_Location.Pitch", Spawn.getPitch());
 
         //
         // Jail saves
         //
+        YamlConfiguration jailConfig = YamlConfiguration.loadConfiguration(jailFile);
 
-        config.set("Jails", null);
+        jailConfig.set("Jails", null);
         for (String key : jails.keySet()) {
             Location loc = jails.get(key);
-            config.set("Jails." + key + ".Location.World", loc.getWorld().getName());
-            config.set("Jails." + key + ".Location.X", loc.getBlockX());
-            config.set("Jails." + key + ".Location.Y", loc.getBlockY());
-            config.set("Jails." + key + ".Location.Z", loc.getBlockZ());
+            jailConfig.set("Jails." + key + ".Location.World", loc.getWorld().getName());
+            jailConfig.set("Jails." + key + ".Location.X", loc.getBlockX());
+            jailConfig.set("Jails." + key + ".Location.Y", loc.getBlockY());
+            jailConfig.set("Jails." + key + ".Location.Z", loc.getBlockZ());
         }
 
         //
         // Warp saves
         //
 
-        File warpFile = new File("plugins" + File.separator + "FundamentalsX" + File.separator + "warps.yml");
-        if (!warpFile.exists()) {
-            try {
-                warpFile.createNewFile();
-            } catch (IOException ex) {
-                Main.getPlugin().getLogger().severe(ex.getMessage());
-            }
-        }
         YamlConfiguration warpConfig = YamlConfiguration.loadConfiguration(warpFile);
         for (String key : warps.keySet()) {
             Location loc = warps.get(key);
@@ -280,16 +294,12 @@ public class Settings {
             warpConfig.set("Warps." + key + ".Location.Pitch", loc.getPitch());
         }
 
-        //
-        // Save to file
-        //
-
         try {
+            spawnConfig.save(spawnFile);
+            jailConfig.save(jailFile);
             warpConfig.save(warpFile);
         } catch (Exception ex) {
             Main.getPlugin().getLogger().severe(ex.getMessage());
         }
-
-        Main.getPlugin().saveConfig();
     }
 }
