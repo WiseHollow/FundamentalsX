@@ -4,6 +4,7 @@
 Balance of player: "%iSolde de %p: %b"
 Balance of self: "%iVotre solde est de: %b"
 Ban player: "%iVous avez banni %p pour la raison, '%r'."
+Broadcast: "&c[Diffuser] &r%b"
 Burn all: "%iVous avez enflammé tous les joueurs pour %s secondes."
 Burn player: "%iVous avez enflammé %p pour %s secondes."
 Cannot PVP with player: "%wVous ne pouvez pas combattre avec ce joueur pour le moment."

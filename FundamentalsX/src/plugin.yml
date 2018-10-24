@@ -8,6 +8,9 @@ softdepend: [ Vault, Multiverse-Core ]
 loadbefore: [ WorldEdit, FundamentalsXCounterGrief ]
 
 commands:
+  Broadcast:
+    description: Tell all players on the server a message.
+    usage: /<command> [message]
   SetSpawn:
     description: Set a location for the starting positions of all players.
     usage: /<command>
@@ -280,6 +283,7 @@ permissions:
       Fundamentals.Warp: true
       Fundamentals.Warps.*: true
       Fundamentals.Nickname.Other: true
+      Fundamentals.Broadcast: true
   Fundamentals.Poweruser:
     description: Gives access to all Power-User commands.
     default: op
@@ -314,6 +318,9 @@ permissions:
     default: op
     children:
       Fundamentals.Back: true
+  Fundamentals.Broadcast:
+    description: Tell all players on the server a message.
+    default: op
   Fundamentals.Butcher:
     description: Kill all monsters and or animals
     default: op

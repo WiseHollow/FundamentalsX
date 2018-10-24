@@ -175,6 +175,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Fundamentals").setTabCompleter(commandFundamentals);
         this.getCommand("Nick").setExecutor(new CommandNickname());
         this.getCommand("Hat").setExecutor(new CommandHat());
+        this.getCommand("Broadcast").setExecutor(new CommandBroadcast());
     }
 
     private void setupMetrics() {

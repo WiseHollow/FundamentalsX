@@ -25,6 +25,7 @@ public class Language {
     public String prefixInfo;
     public String prefixWarning;
 
+    public String broadcast;
     public String unauthorized;
     public String notLoggedIn;
     public String targetNotOnline;
@@ -112,6 +113,7 @@ public class Language {
         prefixInfo = ChatColor.translateAlternateColorCodes('&', config.getString("Prefix-Info"));
         prefixWarning = ChatColor.translateAlternateColorCodes('&', config.getString("Prefix-Warning"));
 
+        broadcast = parse(config, "Broadcast");
         unauthorized = parse(config, "Unauthorized");
         notLoggedIn = parse(config, "Not logged in");
         targetNotOnline = parse(config, "Target not online");
