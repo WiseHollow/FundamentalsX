@@ -174,6 +174,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Fundamentals").setExecutor(commandFundamentals);
         this.getCommand("Fundamentals").setTabCompleter(commandFundamentals);
         this.getCommand("Nick").setExecutor(new CommandNickname());
+        this.getCommand("Hat").setExecutor(new CommandHat());
     }
 
     private void setupMetrics() {
