@@ -29,12 +29,12 @@ public class CommandSetSpawn implements CommandExecutor {
             Settings.Save();
 
             player.sendMessage(Language.getInstance().firstJoinSet);
+        } else {
+            Settings.Spawn = player.getLocation().clone();
+            Settings.Save();
+
+            player.sendMessage(Language.getInstance().spawnSet);
         }
-
-        Settings.Spawn = player.getLocation().clone();
-        Settings.Save();
-
-        player.sendMessage(Language.getInstance().spawnSet);
         return true;
     }
 }

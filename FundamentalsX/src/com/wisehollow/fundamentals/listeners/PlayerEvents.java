@@ -16,6 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 import static com.wisehollow.fundamentals.tasks.TeleportTask.PreviousLocation;
@@ -95,6 +96,13 @@ public class PlayerEvents implements Listener {
     }
 
     @EventHandler
+    public void teleportToSpawn(PlayerRespawnEvent event) {
+        if (Settings.Spawn != null) {
+            event.setRespawnLocation(Settings.Spawn);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
     public void RecordTeleport(PlayerTeleportEvent event) {
         if (event.isCancelled())
             return;
@@ -102,7 +110,7 @@ public class PlayerEvents implements Listener {
         PreviousLocation.put(event.getPlayer(), event.getFrom().clone());
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void RecordTeleportOnDeath(PlayerDeathEvent event) {
         if (event.getEntity().hasPermission("Fundamentals.Back.OnDeath"))
             PreviousLocation.put(event.getEntity(), event.getEntity().getLocation());
@@ -121,8 +129,7 @@ public class PlayerEvents implements Listener {
             event.getPlayer().leaveVehicle();
             v.teleport(event.getTo());
             event.getPlayer().teleport(event.getTo());
-            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () ->
-            {
+            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> {
                 if (event.getPlayer() == null || !event.getPlayer().isOnline() || v == null)
                     return;
                 v.addPassenger(event.getPlayer());

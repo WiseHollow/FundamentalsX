@@ -43,14 +43,31 @@ public class CommandGameMode implements CommandExecutor, TabCompleter {
 
         String gm = args[0];
         GameMode mode = null;
-        if (gm.equalsIgnoreCase("0") || gm.equalsIgnoreCase("Survival") || gm.equalsIgnoreCase("s"))
+        if (gm.equalsIgnoreCase("0") || gm.equalsIgnoreCase("Survival") || gm.equalsIgnoreCase("s")) {
+            if (!sender.hasPermission("Fundamentals.GameModes.Survival")) {
+                sender.sendMessage(Language.getInstance().unauthorized);
+                return true;
+            }
             mode = GameMode.SURVIVAL;
-        if (gm.equalsIgnoreCase("1") || gm.equalsIgnoreCase("Creative") || gm.equalsIgnoreCase("c"))
+        } else if (gm.equalsIgnoreCase("1") || gm.equalsIgnoreCase("Creative") || gm.equalsIgnoreCase("c")) {
+            if (!sender.hasPermission("Fundamentals.GameModes.Creative")) {
+                sender.sendMessage(Language.getInstance().unauthorized);
+                return true;
+            }
             mode = GameMode.CREATIVE;
-        if (gm.equalsIgnoreCase("2") || gm.equalsIgnoreCase("Adventure") || gm.equalsIgnoreCase("a"))
+        } else if (gm.equalsIgnoreCase("2") || gm.equalsIgnoreCase("Adventure") || gm.equalsIgnoreCase("a")) {
+            if (!sender.hasPermission("Fundamentals.GameModes.Adventure")) {
+                sender.sendMessage(Language.getInstance().unauthorized);
+                return true;
+            }
             mode = GameMode.ADVENTURE;
-        if (gm.equalsIgnoreCase("3") || gm.equalsIgnoreCase("Spectator") || gm.equalsIgnoreCase("sp"))
+        } else if (gm.equalsIgnoreCase("3") || gm.equalsIgnoreCase("Spectator") || gm.equalsIgnoreCase("sp")) {
+            if (!sender.hasPermission("Fundamentals.GameModes.Spectator")) {
+                sender.sendMessage(Language.getInstance().unauthorized);
+                return true;
+            }
             mode = GameMode.SPECTATOR;
+        }
 
         if (mode != null) {
             player.setGameMode(mode);

@@ -4,6 +4,7 @@ import com.wisehollow.fundamentalsantigrief.Settings;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockExplodeEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ExplosionPrimeEvent;
 
 /**
@@ -19,6 +20,13 @@ public class ExplosionEvents implements Listener {
 
     @EventHandler
     public void PreventBlockDamage(BlockExplodeEvent event) {
+        if (!event.isCancelled() && Settings.PreventExplosiveBlockDamage) {
+            event.blockList().clear();
+        }
+    }
+
+    @EventHandler
+    public void preventEntityBlockDamageOnExplode(EntityExplodeEvent event) {
         if (!event.isCancelled() && Settings.PreventExplosiveBlockDamage) {
             event.blockList().clear();
         }

@@ -121,14 +121,9 @@ public class JailTask implements CustomTask, Listener {
 
     @EventHandler
     public void PreventLeave(PlayerRespawnEvent event) {
-        if (!event.getPlayer().equals(player))
-            return;
-
-        Bukkit.getServer().getScheduler().runTaskLater(Main.getPlugin(), () ->
-        {
-            if (event.getPlayer() != null && event.getPlayer().isOnline())
-                event.getPlayer().teleport(location);
-        }, 1L);
+        if (event.getPlayer().equals(player)) {
+            event.setRespawnLocation(location);
+        }
     }
 
     @EventHandler
