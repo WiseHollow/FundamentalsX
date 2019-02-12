@@ -1,5 +1,5 @@
 name: FundamentalsX
-version: 1.3.8
+version: 1.3.9
 author: WiseHollow
 main: com.wisehollow.fundamentals.Main
 api-version: 1.13
@@ -45,6 +45,7 @@ commands:
   Msg:
     description: Send a private message to a player.
     usage: /<command> [player] [message]
+    aliases: m
   R:
     description: Reply to a previously received message.
     usage: /<command> [message]
@@ -69,6 +70,9 @@ commands:
   Kill:
     description: Set a player's health to 0.
     usage: /<command> [player]
+  Fireball:
+    description: Throw a fireball at your target.
+    usage: /<command>
   CLS:
     description: Clears the chatlog for all players.
     usage: /<command>
@@ -210,6 +214,7 @@ commands:
   Enderchest:
     description: Pull up a virtual enderchest.
     usage: /<command> [player]
+    aliases: ec
   Sudo:
     description: Force a player to run a command.
     usage: /<command> [player] [command]
@@ -219,6 +224,9 @@ commands:
   Nick:
     description: Change the nickname of a player.
     usage: /<command> [player|nickname] [nickname]
+  Rules:
+    description: View the rules for the server.
+    usage: /<command>
 permissions:
   Fundamentals.Admin:
     description: Gives access to all Admin commands.
@@ -263,8 +271,9 @@ permissions:
     default: op
     children:
       Fundamentals.Player.*: true
-      Fundamentals.Teleport: true
-      Fundamentals.Teleport.Other: true
+      Fundamentals.AFK.Exempt: true
+      Fundamentals.TP: true
+      Fundamentals.TP.Other: true
       Fundamentals.Jail: true
       Fundamentals.Seen: true
       Fundamentals.Who: true
@@ -307,8 +316,12 @@ permissions:
       Fundamentals.Home: true
       Fundamentals.SetHome: true
       Fundamentals.DelHome: true
+      Fundamentals.Rules: true
   Fundamentals.AFK:
     description: Allows Player to be marked away from keyboard.
+    default: op
+  Fundamentals:AFK.Exempt:
+    description: Player will not be marked AFK automatically.
     default: op
   Fundamentals.Back:
     description: Teleport back to previous position.
@@ -352,6 +365,9 @@ permissions:
     default: op
   Fundamentals.Heal.Other:
     description: Heal and feed a player to full health.
+    default: op
+  Fundamentals.Fireball:
+    description: Shoot a fireball at your target
     default: op
   Fundamentals.Fly:
     description: Toggle your flying state.
@@ -411,6 +427,9 @@ permissions:
   Fundamentals.Nuke:
     description: Start spawning creepers above a player.
     default: op
+  Fundamentals.Rules:
+    description: View the rules of the server.
+    default: true
   Fundamentals.Seed:
     description: Display the world seed to yourself.
     default: op
@@ -422,6 +441,12 @@ permissions:
     default: op
   Fundamentals.SetSpawn:
     description: Set the server spawn-point to your location.
+    default: op
+  Fundamentals.CommandSigns.Create:
+    description: Create command signs.
+    default: op
+  Fundamentals.CommandSigns.Use:
+    description: Interact with sign commands.
     default: op
   Fundamentals.Spawn:
     description: Teleport to the server spawn-point.
@@ -537,6 +562,9 @@ permissions:
   Fundamentals.Workbench:
     description: Pull up a virtual workbench.
     default: op
+  Fundamentals.Welcome:
+    description: Will receive a message to welcome a new player.
+    default: true
   Fundamentals.Sudo:
     description: Force another player to run a command.
     default: op

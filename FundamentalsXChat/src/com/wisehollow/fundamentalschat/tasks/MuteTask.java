@@ -28,7 +28,11 @@ public class MuteTask implements Listener {
     }
 
     public static Optional<MuteTask> getOfflineTask(String name) {
-        return tasks.stream().filter(task -> task.name.equalsIgnoreCase(name)).findFirst();
+        Optional<MuteTask> optionalMuteTask = tasks.stream().filter(task -> task.name.equalsIgnoreCase(name)).findFirst();
+        if (!optionalMuteTask.isPresent())
+            return tasks.stream().filter(task -> task.name.contains(name)).findFirst();
+        else
+            return optionalMuteTask;
     }
 
     public static MuteTask insertTask(Player player) {
@@ -54,7 +58,6 @@ public class MuteTask implements Listener {
     public void Run() {
         if (player.isOnline())
             ((Player) player).sendMessage(Language.getInstance().muted);
-        tasks.add(this);
         Bukkit.getPluginManager().registerEvents(this, Main.getPlugin());
     }
 
@@ -82,7 +85,7 @@ public class MuteTask implements Listener {
     @EventHandler
     public void unregisterOnQuit(PlayerQuitEvent event) {
         if (event.getPlayer().getUniqueId().equals(uuid)) {
-            AsyncPlayerChatEvent.getHandlerList().unregister(this);
+            unregisterAll();
         }
     }
 

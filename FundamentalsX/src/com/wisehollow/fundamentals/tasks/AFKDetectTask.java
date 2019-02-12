@@ -1,5 +1,6 @@
 package com.wisehollow.fundamentals.tasks;
 
+import com.wisehollow.fundamentals.Language;
 import com.wisehollow.fundamentals.Main;
 import com.wisehollow.fundamentals.Settings;
 import org.bukkit.entity.Player;
@@ -81,13 +82,15 @@ public class AFKDetectTask implements CustomTask, Listener {
     private void Refresh() {
         if (taskID != 1)
             Main.getPlugin().getServer().getScheduler().cancelTask(taskID);
-        taskID = Main.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () ->
-        {
-            if (player == null || !player.isOnline())
-                return;
-
-            AFKTask task = new AFKTask(player);
-            task.run();
+        taskID = Main.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> {
+            if (player != null && player.isOnline() && !player.hasPermission("Fundamentals.AFK.Exempt")) {
+                if (!Settings.AFKKick) {
+                    AFKTask task = new AFKTask(player);
+                    task.run();
+                } else {
+                    player.kickPlayer(Language.getInstance().afkKick);
+                }
+            }
         }, 20 * 60 * Settings.AFKDelay);
     }
 }

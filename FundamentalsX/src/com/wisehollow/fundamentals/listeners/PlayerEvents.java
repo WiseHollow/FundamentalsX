@@ -5,6 +5,7 @@ import com.wisehollow.fundamentals.Language;
 import com.wisehollow.fundamentals.Main;
 import com.wisehollow.fundamentals.Settings;
 import com.wisehollow.fundamentals.tasks.AFKDetectTask;
+import com.wisehollow.fundamentals.tasks.TeleportTask;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,19 +20,16 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-import static com.wisehollow.fundamentals.tasks.TeleportTask.PreviousLocation;
-
 /**
  * Created by John on 10/14/2016.
  */
 public class PlayerEvents implements Listener {
     public static void Refresh() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (AFKDetectTask.GetTask(p) != null)
-                return;
-
-            AFKDetectTask task = new AFKDetectTask(p);
-            task.run();
+            if (AFKDetectTask.GetTask(p) == null && !p.hasPermission("Fundamentals:AFK.Exempt")) {
+                AFKDetectTask task = new AFKDetectTask(p);
+                task.run();
+            }
         }
     }
 
@@ -80,11 +78,10 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void AFKTaskOnLogin(PlayerJoinEvent event) {
-        if (AFKDetectTask.GetTask(event.getPlayer()) != null)
-            return;
-
-        AFKDetectTask task = new AFKDetectTask(event.getPlayer());
-        task.run();
+        if (AFKDetectTask.GetTask(event.getPlayer()) == null && !event.getPlayer().hasPermission("Fundamentals:AFK.Exempt")) {
+            AFKDetectTask task = new AFKDetectTask(event.getPlayer());
+            task.run();
+        }
     }
 
     @EventHandler
@@ -103,17 +100,9 @@ public class PlayerEvents implements Listener {
     }
 
     @EventHandler(priority = EventPriority.LOW)
-    public void RecordTeleport(PlayerTeleportEvent event) {
-        if (event.isCancelled())
-            return;
-
-        PreviousLocation.put(event.getPlayer(), event.getFrom().clone());
-    }
-
-    @EventHandler(priority = EventPriority.LOW)
     public void RecordTeleportOnDeath(PlayerDeathEvent event) {
         if (event.getEntity().hasPermission("Fundamentals.Back.OnDeath"))
-            PreviousLocation.put(event.getEntity(), event.getEntity().getLocation());
+            TeleportTask.PreviousLocation.put(event.getEntity(), event.getEntity().getLocation());
     }
 
     @EventHandler

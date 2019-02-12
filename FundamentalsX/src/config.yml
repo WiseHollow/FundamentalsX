@@ -10,6 +10,8 @@ Language: 'en'
 Teleport_Delay: 3
 # Minutes until considered away from keyboard.
 Afk_Delay: 5
+# Kick a player when he becomes AFK from idle.
+Afk_Kick: false
 # If enabled, color codes starting with '&' will convert automatically.
 Sign_Colors: true
 # If a location has been set for First Join (/setspawn fs) then make sure to have this set to true.

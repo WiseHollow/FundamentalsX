@@ -1,10 +1,10 @@
 name: FundamentalsXEconomy
-version: 1.3.8
+version: 1.3.9
 author: WiseHollow
 main: com.wisehollow.fundamentalseconomy.Main
 api-version: 1.13
 
-load: startup
+load: STARTUP
 depend: [ FundamentalsX, Vault ]
 
 commands:

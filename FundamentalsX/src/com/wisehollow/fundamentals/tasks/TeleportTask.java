@@ -5,6 +5,7 @@ import com.wisehollow.fundamentals.Main;
 import com.wisehollow.fundamentals.permissions.PermissionCheck;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -15,9 +16,12 @@ import java.util.HashMap;
  * Created by John on 10/13/2016.
  */
 public class TeleportTask implements CustomTask, Listener {
-    public static HashMap<Entity, Location> PreviousLocation = new HashMap<>(); //TODO: Make listen to teleport event and update on ANY teleport on server.
+    public static HashMap<Entity, Location> PreviousLocation = new HashMap<>();
 
     private static void teleport(Entity entity, Location target) {
+        if (entity instanceof Player) {
+            PreviousLocation.put(entity, entity.getLocation().clone());
+        }
         entity.sendMessage(Language.getInstance().teleporting);
         entity.teleport(target);
     }

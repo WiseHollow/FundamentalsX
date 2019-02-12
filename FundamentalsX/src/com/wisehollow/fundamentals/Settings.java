@@ -26,7 +26,8 @@ public class Settings {
     public static Location Spawn = Bukkit.getServer().getWorlds().get(0).getSpawnLocation();
     public static Location SpawnFirstJoin = null;
     public static boolean EnableSpawnFirstJoin = true;
-    public static int AFKDelay = 0;
+    public static int AFKDelay = 5;
+    public static boolean AFKKick = false;
     public static boolean SignColor = false;
     public static HashMap<String, Location> jails = new HashMap<>();
     public static String JoinMessage = "%p has joined the game.";
@@ -84,6 +85,7 @@ public class Settings {
         languageAbbreviation = config.getString("Language");
         TeleportDelay = config.getInt("Teleport_Delay");
         AFKDelay = config.getInt("Afk_Delay");
+        AFKKick = config.getBoolean("Afk_Kick");
         SignColor = config.getBoolean("Sign_Colors");
         JoinMessage = ChatColor.translateAlternateColorCodes('&', config.getString("Join_Message"));
         QuitMessage = ChatColor.translateAlternateColorCodes('&', config.getString("Quit_Message"));

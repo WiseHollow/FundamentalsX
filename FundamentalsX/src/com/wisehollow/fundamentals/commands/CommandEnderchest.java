@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 public class CommandEnderchest implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (!(sender instanceof Player)) {
             sender.sendMessage(Language.getInstance().notLoggedIn);
             return true;

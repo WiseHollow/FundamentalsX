@@ -1,7 +1,5 @@
 package com.wisehollow.fundamentals;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 import com.wisehollow.fundamentals.commands.*;
 import com.wisehollow.fundamentals.userdata.MetricsLite;
 import com.wisehollow.fundamentals.listeners.*;
@@ -97,6 +95,8 @@ public class Main extends JavaPlugin {
         CommandWeather commandWeather = new CommandWeather();
         CommandFundamentals commandFundamentals = new CommandFundamentals();
         CommandVanish commandVanish = new CommandVanish();
+        CommandEnderchest commandEnderchest = new CommandEnderchest();
+        CommandMessage commandMessage = new CommandMessage();
 
         this.getCommand("SetSpawn").setExecutor(new CommandSetSpawn());
         this.getCommand("Spawn").setExecutor(new CommandSpawn());
@@ -109,7 +109,8 @@ public class Main extends JavaPlugin {
         this.getCommand("TPToggle").setExecutor(new CommandTeleportToggle());
         this.getCommand("Vanish").setExecutor(commandVanish);
         this.getCommand("V").setExecutor(commandVanish);
-        this.getCommand("Msg").setExecutor(new CommandMessage());
+        this.getCommand("Msg").setExecutor(commandMessage);
+        this.getCommand("M").setExecutor(commandMessage);
         this.getCommand("R").setExecutor(new CommandReply());
         this.getCommand("Time").setExecutor(commandTime);
         this.getCommand("Time").setTabCompleter(commandTime);
@@ -119,6 +120,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Weather").setTabCompleter(commandWeather);
         this.getCommand("Heal").setExecutor(new CommandHeal());
         this.getCommand("Kill").setExecutor(new CommandKill());
+        this.getCommand("Fireball").setExecutor(new CommandFireball());
         this.getCommand("Feed").setExecutor(new CommandFeed());
         this.getCommand("CLS").setExecutor(new CommandClearChat());
         this.getCommand("GameMode").setExecutor(commandGameMode);
@@ -154,7 +156,8 @@ public class Main extends JavaPlugin {
         this.getCommand("Smite").setExecutor(new CommandSmite());
         this.getCommand("Sun").setExecutor(new CommandSun());
         this.getCommand("InvSee").setExecutor(new CommandInvSee());
-        this.getCommand("Enderchest").setExecutor(new CommandEnderchest());
+        this.getCommand("Enderchest").setExecutor(commandEnderchest);
+        this.getCommand("EC").setExecutor(commandEnderchest);
         this.getCommand("Ban").setExecutor(new CommandBan());
         this.getCommand("Unban").setExecutor(new CommandUnban());
         this.getCommand("Burn").setExecutor(new CommandBurn());
@@ -176,6 +179,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Nick").setExecutor(new CommandNickname());
         this.getCommand("Hat").setExecutor(new CommandHat());
         this.getCommand("Broadcast").setExecutor(new CommandBroadcast());
+        this.getCommand("Rules").setExecutor(new CommandRules());
     }
 
     private void setupMetrics() {
@@ -248,7 +252,7 @@ public class Main extends JavaPlugin {
         }
     }
 
-    public YamlConfiguration getConfigFromJar(@NotNull String resource) {
+    public YamlConfiguration getConfigFromJar(String resource) {
         YamlConfiguration configuration = null;
 
         InputStream fis = plugin.getResource(resource);
@@ -318,7 +322,7 @@ public class Main extends JavaPlugin {
         }
     }
 
-    private void exportInternalFile(String resource, File output) {
+    public void exportInternalFile(String resource, File output) {
         InputStream fis = plugin.getResource(resource);
         FileOutputStream fos = null;
         try {

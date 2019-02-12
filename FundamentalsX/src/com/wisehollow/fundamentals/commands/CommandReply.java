@@ -37,7 +37,9 @@ public class CommandReply implements CommandExecutor {
 
         SendPrivateMessageEvent event = new SendPrivateMessageEvent(sender, target, msg);
         Bukkit.getServer().getPluginManager().callEvent(event);
-        event.run();
+        if (!event.isCancelled()) {
+            event.run();
+        }
 
         return true;
     }
