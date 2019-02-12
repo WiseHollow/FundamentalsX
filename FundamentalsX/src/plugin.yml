@@ -224,6 +224,9 @@ commands:
   Nick:
     description: Change the nickname of a player.
     usage: /<command> [player|nickname] [nickname]
+  Rules:
+    description: View the rules for the server.
+    usage: /<command>
 permissions:
   Fundamentals.Admin:
     description: Gives access to all Admin commands.
@@ -313,6 +316,7 @@ permissions:
       Fundamentals.Home: true
       Fundamentals.SetHome: true
       Fundamentals.DelHome: true
+      Fundamentals.Rules: true
   Fundamentals.AFK:
     description: Allows Player to be marked away from keyboard.
     default: op
@@ -423,6 +427,9 @@ permissions:
   Fundamentals.Nuke:
     description: Start spawning creepers above a player.
     default: op
+  Fundamentals.Rules:
+    description: View the rules of the server.
+    default: true
   Fundamentals.Seed:
     description: Display the world seed to yourself.
     default: op

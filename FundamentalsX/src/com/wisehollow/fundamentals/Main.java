@@ -179,6 +179,7 @@ public class Main extends JavaPlugin {
         this.getCommand("Nick").setExecutor(new CommandNickname());
         this.getCommand("Hat").setExecutor(new CommandHat());
         this.getCommand("Broadcast").setExecutor(new CommandBroadcast());
+        this.getCommand("Rules").setExecutor(new CommandRules());
     }
 
     private void setupMetrics() {
@@ -321,7 +322,7 @@ public class Main extends JavaPlugin {
         }
     }
 
-    private void exportInternalFile(String resource, File output) {
+    public void exportInternalFile(String resource, File output) {
         InputStream fis = plugin.getResource(resource);
         FileOutputStream fos = null;
         try {
