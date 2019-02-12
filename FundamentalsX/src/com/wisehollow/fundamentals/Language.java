@@ -25,6 +25,7 @@ public class Language {
     public String prefixInfo;
     public String prefixWarning;
 
+    public String afkKick;
     public String broadcast;
     public String unauthorized;
     public String notLoggedIn;
@@ -87,6 +88,7 @@ public class Language {
     public String mutePlayer, muted, unmuted;
     public String mentioned;
     public String nicknameTooLong, nicknameChanged, nicknameRemoved, nicknameChangedOther;
+    public String welcome;
 
     public String playerInfo, health, food, walkSpeed, flySpeed, gameMode, location, godMode, afk, jail, vanish, lastLoggedIn;
 
@@ -226,6 +228,7 @@ public class Language {
         onlinePlayers = parse(config, "Online players");
         isNowAFK = parse(config, "Is now AFK");
         isNoLongerAFK = parse(config, "Is no longer AFK");
+        afkKick = parse(config, "AFK Kick");
         youAreJailed = parse(config, "You are jailed");
         youAreJailedForSeconds = parse(config, "You are jailed for seconds");
         youAreJailedForMinutes = parse(config, "You are jailed for minutes");
@@ -247,6 +250,7 @@ public class Language {
         nicknameChanged = parse(config, "Nickname changed");
         nicknameRemoved = parse(config, "Nickname removed");
         nicknameChangedOther = parse(config, "Nickname changed other");
+        welcome = parse(config, "Welcome");
 
         // Who-is
         playerInfo = parse(config, "Player info");

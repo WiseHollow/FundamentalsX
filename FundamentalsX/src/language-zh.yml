@@ -26,6 +26,7 @@ Prefix-Warning: "&4"
 ##########################
 # Standard messages
 ##########################
+AFK Kick: "%i因为你的状态成为AFK所以你被踢出了游戏。"
 Balance of player: "%i%p的银行款项: %b"
 Balance of self: "%i你的银行款项: %b"
 Ban player: "%i你禁止了 %p 由于这个原因, '%r'。"
@@ -154,6 +155,7 @@ Weather current: "%i目前是 %t 在这个世界。"
 Weather set rain: "%i天气被设置为下雨天。"
 Weather set storm: "%i天气被设置为暴风雨。"
 Weather set sun: "%i天气被设置为晴天。"
+Welcome: "&d%p欢迎来到服务器"
 World seed: "%i这个世界的种子是 %s。"
 You are jailed for minutes: "&w你被监禁了 %m 分钟。"
 You are jailed for seconds: "&w你被监禁了 %s 秒。"

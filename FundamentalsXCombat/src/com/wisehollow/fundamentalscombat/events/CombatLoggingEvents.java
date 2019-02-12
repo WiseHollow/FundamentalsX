@@ -1,6 +1,7 @@
 package com.wisehollow.fundamentalscombat.events;
 
 import com.wisehollow.fundamentalscombat.Main;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
@@ -21,6 +22,7 @@ public class CombatLoggingEvents implements Listener {
     }
 
     private void setLog(Player damager, Player damaged) {
+        damaged.sendMessage(ChatColor.RED + "You have engaged in combat. ");
         combatLog.put(damager.getUniqueId(), System.currentTimeMillis());
         combatLog.put(damaged.getUniqueId(), System.currentTimeMillis());
     }

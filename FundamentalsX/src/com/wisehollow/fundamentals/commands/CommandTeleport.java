@@ -33,12 +33,14 @@ public class CommandTeleport implements CommandExecutor {
 
         if (args.length == 1) {
             Player target = PlayerUtil.GetPlayer(args[0]);
-            PlayerData targetData = PlayerData.getPlayerData(target);
 
             if (target == null || !target.isOnline()) {
                 player.sendMessage(Language.getInstance().targetNotOnline);
                 return true;
-            } else if (targetData != null && targetData.hasTeleportDisabled()) {
+            }
+
+            PlayerData targetData = PlayerData.getPlayerData(target);
+            if (targetData != null && targetData.hasTeleportDisabled()) {
                 player.sendMessage(Language.getInstance().cannotTeleportToPlayer);
                 return true;
             }

@@ -26,6 +26,7 @@ Prefix-Warning: "&4"
 ##########################
 # Standard messages
 ##########################
+AFK Kick: "%iYou were kicked for going AFK."
 Balance of player: "%i%p's balance: %b"
 Balance of self: "%iYour balance: %b"
 Ban player: "%iYou have banned %p for reason, '%r'."
@@ -154,6 +155,7 @@ Weather current: "%iIt is currently %t in this world."
 Weather set rain: "%iWeather set to rain."
 Weather set storm: "%iWeather set to storm."
 Weather set sun: "%iWeather set to sunny."
+Welcome: "&dWelcome %p to the server!"
 World seed: "%iThis world's seed is %s."
 You are jailed for minutes: "&wYou have been jailed for %m minutes."
 You are jailed for seconds: "&wYou have been jailed for %s seconds."

@@ -31,7 +31,8 @@ public class CommandMute implements CommandExecutor {
                 if (target == null) {
                     sender.sendMessage(Language.getInstance().targetNotOnline);
                 } else {
-                    MuteTask.insertTask(target);
+                    MuteTask muteTask = MuteTask.insertTask(target);
+                    muteTask.Run();
                     sender.sendMessage(Language.getInstance().mutePlayer.replace("%p", target.getName()));
                 }
             }

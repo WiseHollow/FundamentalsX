@@ -1,6 +1,7 @@
 ##########################
 # Standard messages
 ##########################
+AFK Kick: "%iVous avez été frappé pour aller AFK."
 Balance of player: "%iSolde de %p: %b"
 Balance of self: "%iVotre solde est de: %b"
 Ban player: "%iVous avez banni %p pour la raison, '%r'."
@@ -129,6 +130,7 @@ Weather current: "%iLe temps est actuellement %t dans ce monde."
 Weather set rain: "%iTemps mis sur la pluie."
 Weather set storm: "%iTemps mis sur la tempête."
 Weather set sun: "%iTemps mis sur le soleil."
+Welcome: "&dBienvenue %p sur le serveur!"
 World seed: "%iLa graine de ce monde est %s."
 You are jailed for minutes: "&wVous avez été emprisonné pour %m minutes."
 You are jailed for seconds: "&wVous avez été emprisonné pour %s secondes."
